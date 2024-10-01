@@ -1,8 +1,8 @@
 dotnet tool install --global autosdk.cli --prerelease
 
 autosdk init \
-  SolutionName \
-  SomeClient \
-  https://raw.githubusercontent.com/api/openapi.json \
-  CompanyName \
+  Tavily \
+  TavilyClient \
+  https://raw.githubusercontent.com/davidmigloz/langchain_dart/refs/heads/main/packages/tavily_dart/oas/tavily_openapi.yaml \
+  tryAGI \
   --output .

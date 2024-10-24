@@ -140,11 +140,11 @@ namespace Tavily
         public async global::System.Threading.Tasks.Task<global::Tavily.SearchResponse> SearchAsync(
             string apiKey,
             string query,
-            global::Tavily.SearchRequestSearchDepth? searchDepth = global::Tavily.SearchRequestSearchDepth.Basic,
-            bool? includeImages = false,
-            bool? includeAnswer = false,
-            bool? includeRawContent = false,
-            int? maxResults = 5,
+            global::Tavily.SearchRequestSearchDepth? searchDepth = default,
+            bool? includeImages = default,
+            bool? includeAnswer = default,
+            bool? includeRawContent = default,
+            int? maxResults = default,
             global::System.Collections.Generic.IList<string>? includeDomains = default,
             global::System.Collections.Generic.IList<string>? excludeDomains = default,
             global::System.Threading.CancellationToken cancellationToken = default)

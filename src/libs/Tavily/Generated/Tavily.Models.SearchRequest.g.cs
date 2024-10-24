@@ -30,35 +30,35 @@ namespace Tavily
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("search_depth")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Tavily.JsonConverters.SearchRequestSearchDepthJsonConverter))]
-        public global::Tavily.SearchRequestSearchDepth? SearchDepth { get; set; } = global::Tavily.SearchRequestSearchDepth.Basic;
+        public global::Tavily.SearchRequestSearchDepth? SearchDepth { get; set; }
 
         /// <summary>
         /// Include a list of query related images in the response. Default is False.<br/>
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("include_images")]
-        public bool? IncludeImages { get; set; } = false;
+        public bool? IncludeImages { get; set; }
 
         /// <summary>
         /// Include answers in the search results. Default is False.<br/>
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("include_answer")]
-        public bool? IncludeAnswer { get; set; } = false;
+        public bool? IncludeAnswer { get; set; }
 
         /// <summary>
         /// Include raw content in the search results. Default is False.<br/>
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("include_raw_content")]
-        public bool? IncludeRawContent { get; set; } = false;
+        public bool? IncludeRawContent { get; set; }
 
         /// <summary>
         /// The number of maximum search results to return. Default is 5.<br/>
         /// Default Value: 5
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_results")]
-        public int? MaxResults { get; set; } = 5;
+        public int? MaxResults { get; set; }
 
         /// <summary>
         /// A list of domains to specifically include in the search results. Default is None.

@@ -12,6 +12,7 @@ namespace Tavily
         /// Your unique API key.<br/>
         /// Example: your api key
         /// </summary>
+        /// <example>your api key</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("api_key")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ApiKey { get; set; }
@@ -20,6 +21,7 @@ namespace Tavily
         /// The search query string.<br/>
         /// Example: your search query
         /// </summary>
+        /// <example>your search query</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("query")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Query { get; set; }
@@ -78,91 +80,71 @@ namespace Tavily
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
+        /// Initializes a new instance of the <see cref="SearchRequest" /> class.
         /// </summary>
-        public string ToJson(
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
+        /// <param name="apiKey">
+        /// Your unique API key.<br/>
+        /// Example: your api key
+        /// </param>
+        /// <param name="query">
+        /// The search query string.<br/>
+        /// Example: your search query
+        /// </param>
+        /// <param name="searchDepth">
+        /// The depth of the search. It can be 'basic' or advanced. Default is 'basic'.<br/>
+        /// Default Value: basic
+        /// </param>
+        /// <param name="includeImages">
+        /// Include a list of query related images in the response. Default is False.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="includeAnswer">
+        /// Include answers in the search results. Default is False.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="includeRawContent">
+        /// Include raw content in the search results. Default is False.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="maxResults">
+        /// The number of maximum search results to return. Default is 5.<br/>
+        /// Default Value: 5
+        /// </param>
+        /// <param name="includeDomains">
+        /// A list of domains to specifically include in the search results. Default is None.
+        /// </param>
+        /// <param name="excludeDomains">
+        /// A list of domains to specifically exclude from the search results. Default is None.
+        /// </param>
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+        public SearchRequest(
+            string apiKey,
+            string query,
+            global::Tavily.SearchRequestSearchDepth? searchDepth,
+            bool? includeImages,
+            bool? includeAnswer,
+            bool? includeRawContent,
+            int? maxResults,
+            global::System.Collections.Generic.IList<string>? includeDomains,
+            global::System.Collections.Generic.IList<string>? excludeDomains)
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                this.GetType(),
-                jsonSerializerContext);
+            this.ApiKey = apiKey ?? throw new global::System.ArgumentNullException(nameof(apiKey));
+            this.Query = query ?? throw new global::System.ArgumentNullException(nameof(query));
+            this.SearchDepth = searchDepth;
+            this.IncludeImages = includeImages;
+            this.IncludeAnswer = includeAnswer;
+            this.IncludeRawContent = includeRawContent;
+            this.MaxResults = maxResults;
+            this.IncludeDomains = includeDomains;
+            this.ExcludeDomains = excludeDomains;
         }
 
         /// <summary>
-        /// Serializes the current instance to a JSON string using the provided JsonSerializerOptions.
+        /// Initializes a new instance of the <see cref="SearchRequest" /> class.
         /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public string ToJson(
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
+        public SearchRequest()
         {
-            return global::System.Text.Json.JsonSerializer.Serialize(
-                this,
-                jsonSerializerOptions);
         }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerContext.
-        /// </summary>
-        public static global::Tavily.SearchRequest? FromJson(
-            string json,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize(
-                json,
-                typeof(global::Tavily.SearchRequest),
-                jsonSerializerContext) as global::Tavily.SearchRequest;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON string using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::Tavily.SearchRequest? FromJson(
-            string json,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Tavily.SearchRequest>(
-                json,
-                jsonSerializerOptions);
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerContext.
-        /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Tavily.SearchRequest?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
-        {
-            return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
-                jsonStream,
-                typeof(global::Tavily.SearchRequest),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Tavily.SearchRequest;
-        }
-
-        /// <summary>
-        /// Deserializes a JSON stream using the provided JsonSerializerOptions.
-        /// </summary>
-#if NET8_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
-        [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
-#endif
-        public static global::System.Threading.Tasks.ValueTask<global::Tavily.SearchRequest?> FromJsonStream(
-            global::System.IO.Stream jsonStream,
-            global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
-        {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Tavily.SearchRequest?>(
-                jsonStream,
-                jsonSerializerOptions);
-        }
-
     }
 }

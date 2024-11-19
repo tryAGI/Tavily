@@ -15,6 +15,7 @@ namespace Tavily
         { 
             typeof(global::Tavily.JsonConverters.SearchRequestSearchDepthJsonConverter),
             typeof(global::Tavily.JsonConverters.SearchRequestSearchDepthNullableJsonConverter),
+            typeof(global::Tavily.JsonConverters.UnixTimestampJsonConverter),
         })]
 
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.JsonSerializerContextTypes))]

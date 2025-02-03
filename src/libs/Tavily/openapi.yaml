@@ -48,7 +48,6 @@ components:
   schemas:
     SearchRequest:
       required:
-        - api_key
         - query
       type: object
       properties:

@@ -54,8 +54,8 @@ namespace Tavily
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Tavily.SearchResponse> SearchAsync(
-            string apiKey,
             string query,
+            string? apiKey = default,
             global::Tavily.SearchRequestSearchDepth? searchDepth = default,
             bool? includeImages = default,
             bool? includeAnswer = default,

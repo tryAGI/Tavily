@@ -14,8 +14,7 @@ namespace Tavily
         /// </summary>
         /// <example>your api key</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("api_key")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ApiKey { get; set; }
+        public string? ApiKey { get; set; }
 
         /// <summary>
         /// The search query string.<br/>
@@ -119,8 +118,8 @@ namespace Tavily
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public SearchRequest(
-            string apiKey,
             string query,
+            string? apiKey,
             global::Tavily.SearchRequestSearchDepth? searchDepth,
             bool? includeImages,
             bool? includeAnswer,
@@ -129,8 +128,8 @@ namespace Tavily
             global::System.Collections.Generic.IList<string>? includeDomains,
             global::System.Collections.Generic.IList<string>? excludeDomains)
         {
-            this.ApiKey = apiKey ?? throw new global::System.ArgumentNullException(nameof(apiKey));
             this.Query = query ?? throw new global::System.ArgumentNullException(nameof(query));
+            this.ApiKey = apiKey;
             this.SearchDepth = searchDepth;
             this.IncludeImages = includeImages;
             this.IncludeAnswer = includeAnswer;

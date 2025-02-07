@@ -74,7 +74,9 @@ namespace Tavily
         /// <param name="results">
         /// A list of search results.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public SearchResponse(
             string query,
             double responseTime,

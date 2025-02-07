@@ -116,7 +116,9 @@ namespace Tavily
         /// <param name="excludeDomains">
         /// A list of domains to specifically exclude from the search results. Default is None.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public SearchRequest(
             string query,
             string? apiKey,

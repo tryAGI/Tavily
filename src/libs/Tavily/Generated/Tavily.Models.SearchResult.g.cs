@@ -66,7 +66,9 @@ namespace Tavily
         /// <param name="score">
         /// The relevance score of the search result.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public SearchResult(
             string title,
             string url,

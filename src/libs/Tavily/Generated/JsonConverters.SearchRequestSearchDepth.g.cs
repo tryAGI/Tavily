@@ -28,6 +28,10 @@ namespace Tavily.JsonConverters
                     var numValue = reader.GetInt32();
                     return (global::Tavily.SearchRequestSearchDepth)numValue;
                 }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::Tavily.SearchRequestSearchDepth);
+                }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
             }

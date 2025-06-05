@@ -39,7 +39,7 @@ namespace Tavily
                 httpClient: HttpClient,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Tavily.PathBuilder(
                 path: "/search",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

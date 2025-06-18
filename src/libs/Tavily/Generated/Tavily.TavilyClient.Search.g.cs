@@ -80,17 +80,26 @@ namespace Tavily
             if ((int)__response.StatusCode == 400)
             {
                 string? __content_400 = null;
-                if (ReadResponseAsString)
+                global::System.Exception? __exception_400 = null;
+                try
                 {
-                    __content_400 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    if (ReadResponseAsString)
+                    {
+                        __content_400 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        var __contentStream_400 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    }
                 }
-                else
+                catch (global::System.Exception __ex)
                 {
-                    var __contentStream_400 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    __exception_400 = __ex;
                 }
 
                 throw new global::Tavily.ApiException(
                     message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_400,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_400,
@@ -104,17 +113,26 @@ namespace Tavily
             if ((int)__response.StatusCode == 401)
             {
                 string? __content_401 = null;
-                if (ReadResponseAsString)
+                global::System.Exception? __exception_401 = null;
+                try
                 {
-                    __content_401 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    if (ReadResponseAsString)
+                    {
+                        __content_401 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        var __contentStream_401 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    }
                 }
-                else
+                catch (global::System.Exception __ex)
                 {
-                    var __contentStream_401 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    __exception_401 = __ex;
                 }
 
                 throw new global::Tavily.ApiException(
                     message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_401,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_401,
@@ -128,17 +146,26 @@ namespace Tavily
             if ((int)__response.StatusCode == 403)
             {
                 string? __content_403 = null;
-                if (ReadResponseAsString)
+                global::System.Exception? __exception_403 = null;
+                try
                 {
-                    __content_403 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    if (ReadResponseAsString)
+                    {
+                        __content_403 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        var __contentStream_403 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    }
                 }
-                else
+                catch (global::System.Exception __ex)
                 {
-                    var __contentStream_403 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    __exception_403 = __ex;
                 }
 
                 throw new global::Tavily.ApiException(
                     message: __content_403 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_403,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_403,
@@ -152,17 +179,26 @@ namespace Tavily
             if ((int)__response.StatusCode == 404)
             {
                 string? __content_404 = null;
-                if (ReadResponseAsString)
+                global::System.Exception? __exception_404 = null;
+                try
                 {
-                    __content_404 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    if (ReadResponseAsString)
+                    {
+                        __content_404 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        var __contentStream_404 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    }
                 }
-                else
+                catch (global::System.Exception __ex)
                 {
-                    var __contentStream_404 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    __exception_404 = __ex;
                 }
 
                 throw new global::Tavily.ApiException(
                     message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_404,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_404,
@@ -176,17 +212,26 @@ namespace Tavily
             if ((int)__response.StatusCode == 405)
             {
                 string? __content_405 = null;
-                if (ReadResponseAsString)
+                global::System.Exception? __exception_405 = null;
+                try
                 {
-                    __content_405 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    if (ReadResponseAsString)
+                    {
+                        __content_405 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        var __contentStream_405 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    }
                 }
-                else
+                catch (global::System.Exception __ex)
                 {
-                    var __contentStream_405 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    __exception_405 = __ex;
                 }
 
                 throw new global::Tavily.ApiException(
                     message: __content_405 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_405,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_405,
@@ -200,17 +245,26 @@ namespace Tavily
             if ((int)__response.StatusCode == 429)
             {
                 string? __content_429 = null;
-                if (ReadResponseAsString)
+                global::System.Exception? __exception_429 = null;
+                try
                 {
-                    __content_429 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    if (ReadResponseAsString)
+                    {
+                        __content_429 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        var __contentStream_429 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    }
                 }
-                else
+                catch (global::System.Exception __ex)
                 {
-                    var __contentStream_429 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    __exception_429 = __ex;
                 }
 
                 throw new global::Tavily.ApiException(
                     message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_429,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_429,
@@ -224,17 +278,26 @@ namespace Tavily
             if ((int)__response.StatusCode == 500)
             {
                 string? __content_500 = null;
-                if (ReadResponseAsString)
+                global::System.Exception? __exception_500 = null;
+                try
                 {
-                    __content_500 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    if (ReadResponseAsString)
+                    {
+                        __content_500 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        var __contentStream_500 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    }
                 }
-                else
+                catch (global::System.Exception __ex)
                 {
-                    var __contentStream_500 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    __exception_500 = __ex;
                 }
 
                 throw new global::Tavily.ApiException(
                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_500,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_500,
@@ -248,17 +311,26 @@ namespace Tavily
             if ((int)__response.StatusCode == 503)
             {
                 string? __content_503 = null;
-                if (ReadResponseAsString)
+                global::System.Exception? __exception_503 = null;
+                try
                 {
-                    __content_503 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    if (ReadResponseAsString)
+                    {
+                        __content_503 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        var __contentStream_503 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    }
                 }
-                else
+                catch (global::System.Exception __ex)
                 {
-                    var __contentStream_503 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    __exception_503 = __ex;
                 }
 
                 throw new global::Tavily.ApiException(
                     message: __content_503 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_503,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_503,
@@ -272,17 +344,26 @@ namespace Tavily
             if ((int)__response.StatusCode == 504)
             {
                 string? __content_504 = null;
-                if (ReadResponseAsString)
+                global::System.Exception? __exception_504 = null;
+                try
                 {
-                    __content_504 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    if (ReadResponseAsString)
+                    {
+                        __content_504 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        var __contentStream_504 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    }
                 }
-                else
+                catch (global::System.Exception __ex)
                 {
-                    var __contentStream_504 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    __exception_504 = __ex;
                 }
 
                 throw new global::Tavily.ApiException(
                     message: __content_504 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_504,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_504,
@@ -313,8 +394,12 @@ namespace Tavily
                 try
                 {
                     __response.EnsureSuccessStatusCode();
+
+                    return
+                        global::Tavily.SearchResponse.FromJson(__content, JsonSerializerContext) ??
+                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
-                catch (global::System.Net.Http.HttpRequestException __ex)
+                catch (global::System.Exception __ex)
                 {
                     throw new global::Tavily.ApiException(
                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
@@ -328,18 +413,24 @@ namespace Tavily
                             h => h.Value),
                     };
                 }
-
-                return
-                    global::Tavily.SearchResponse.FromJson(__content, JsonSerializerContext) ??
-                    throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
             {
                 try
                 {
                     __response.EnsureSuccessStatusCode();
+
+                    using var __content = await __response.Content.ReadAsStreamAsync(
+#if NET5_0_OR_GREATER
+                        cancellationToken
+#endif
+                    ).ConfigureAwait(false);
+
+                    return
+                        await global::Tavily.SearchResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
-                catch (global::System.Net.Http.HttpRequestException __ex)
+                catch (global::System.Exception __ex)
                 {
                     throw new global::Tavily.ApiException(
                         message: __response.ReasonPhrase ?? string.Empty,
@@ -352,16 +443,6 @@ namespace Tavily
                             h => h.Value),
                     };
                 }
-
-                using var __content = await __response.Content.ReadAsStreamAsync(
-#if NET5_0_OR_GREATER
-                    cancellationToken
-#endif
-                ).ConfigureAwait(false);
-
-                return
-                    await global::Tavily.SearchResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
-                    throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
 

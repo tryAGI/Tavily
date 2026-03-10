@@ -10,10 +10,10 @@ C# SDK for the [Tavily](https://tavily.com/) AI search API, auto-generated from 
 
 ```bash
 # Build the solution
-dotnet build Tavily.sln
+dotnet build Tavily.slnx
 
 # Build for release (also produces NuGet package)
-dotnet build Tavily.sln -c Release
+dotnet build Tavily.slnx -c Release
 
 # Run integration tests (requires TAVILY_API_KEY env var)
 dotnet test src/tests/IntegrationTests/Tavily.IntegrationTests.csproj

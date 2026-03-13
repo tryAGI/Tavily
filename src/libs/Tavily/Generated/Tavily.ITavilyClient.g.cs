@@ -4,7 +4,7 @@
 namespace Tavily
 {
     /// <summary>
-    /// Tavily Search is a robust search API tailored specifically for LLM Agents. It seamlessly integrates with diverse data sources to ensure a superior, relevant search experience.<br/>
+    /// Our REST API provides seamless access to Tavily Search, a powerful search engine for LLM agents, and Tavily Extract, an advanced web scraping solution optimized for LLMs.<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
@@ -36,6 +36,36 @@ namespace Tavily
         /// </summary>
         global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public SearchClient Search { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ExtractClient Extract { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public CrawlClient Crawl { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public MapClient Map { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ResearchClient Research { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public UsageClient Usage { get; }
 
     }
 }

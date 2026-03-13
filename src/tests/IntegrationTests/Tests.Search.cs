@@ -9,10 +9,9 @@ public partial class Tests
             Environment.GetEnvironmentVariable("TAVILY_API_KEY") ??
             throw new AssertInconclusiveException("TAVILY_API_KEY environment variable is not found.");
 
-        using var client = new TavilyClient();
+        using var client = new TavilyClient(apiKey);
 
-        SearchResponse searchResponse = await client.SearchAsync(
-            apiKey: apiKey,
+        Response searchResponse = await client.CreateSearchAsync(
             query: "Who is Leo Messi?");
         
         foreach (var result in searchResponse.Results)

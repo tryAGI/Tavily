@@ -1,0 +1,529 @@
+
+#nullable enable
+
+namespace Tavily
+{
+    public partial class TavilyClient
+    {
+        partial void PrepareCreateSearchArguments(
+            global::System.Net.Http.HttpClient httpClient,
+            global::Tavily.Request request);
+        partial void PrepareCreateSearchRequest(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            global::Tavily.Request request);
+        partial void ProcessCreateSearchResponse(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+        partial void ProcessCreateSearchResponseContent(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpResponseMessage httpResponseMessage,
+            ref string content);
+
+        /// <summary>
+        /// Search for data based on a query<br/>
+        /// Execute a search query using Tavily Search.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Tavily.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Tavily.Response> CreateSearchAsync(
+
+            global::Tavily.Request request,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
+
+            PrepareArguments(
+                client: HttpClient);
+            PrepareCreateSearchArguments(
+                httpClient: HttpClient,
+                request: request);
+
+            var __pathBuilder = new global::Tavily.PathBuilder(
+                path: "/search",
+                baseUri: HttpClient.BaseAddress); 
+            var __path = __pathBuilder.ToString();
+            using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
+                method: global::System.Net.Http.HttpMethod.Post,
+                requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
+#if NET6_0_OR_GREATER
+            __httpRequest.Version = global::System.Net.HttpVersion.Version11;
+            __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
+#endif
+
+            foreach (var __authorization in Authorizations)
+            {
+                if (__authorization.Type == "Http" ||
+                    __authorization.Type == "OAuth2")
+                {
+                    __httpRequest.Headers.Authorization = new global::System.Net.Http.Headers.AuthenticationHeaderValue(
+                        scheme: __authorization.Name,
+                        parameter: __authorization.Value);
+                }
+                else if (__authorization.Type == "ApiKey" &&
+                         __authorization.Location == "Header")
+                {
+                    __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
+                }
+            }
+            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
+            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                content: __httpRequestContentBody,
+                encoding: global::System.Text.Encoding.UTF8,
+                mediaType: "application/json");
+            __httpRequest.Content = __httpRequestContent;
+
+            PrepareRequest(
+                client: HttpClient,
+                request: __httpRequest);
+            PrepareCreateSearchRequest(
+                httpClient: HttpClient,
+                httpRequestMessage: __httpRequest,
+                request: request);
+
+            using var __response = await HttpClient.SendAsync(
+                request: __httpRequest,
+                completionOption: global::System.Net.Http.HttpCompletionOption.ResponseContentRead,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
+
+            ProcessResponse(
+                client: HttpClient,
+                response: __response);
+            ProcessCreateSearchResponse(
+                httpClient: HttpClient,
+                httpResponseMessage: __response);
+            // Bad Request - Your request is invalid.
+            if ((int)__response.StatusCode == 400)
+            {
+                string? __content_400 = null;
+                global::System.Exception? __exception_400 = null;
+                global::Tavily.Response2? __value_400 = null;
+                try
+                {
+                    if (ReadResponseAsString)
+                    {
+                        __content_400 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_400 = global::Tavily.Response2.FromJson(__content_400, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        var __contentStream_400 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                        __value_400 = await global::Tavily.Response2.FromJsonStreamAsync(__contentStream_400, JsonSerializerContext).ConfigureAwait(false);
+                    }
+                }
+                catch (global::System.Exception __ex)
+                {
+                    __exception_400 = __ex;
+                }
+
+                throw new global::Tavily.ApiException<global::Tavily.Response2>(
+                    message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_400,
+                    statusCode: __response.StatusCode)
+                {
+                    ResponseBody = __content_400,
+                    ResponseObject = __value_400,
+                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                        __response.Headers,
+                        h => h.Key,
+                        h => h.Value),
+                };
+            }
+            // Unauthorized - Your API key is wrong or missing.
+            if ((int)__response.StatusCode == 401)
+            {
+                string? __content_401 = null;
+                global::System.Exception? __exception_401 = null;
+                global::Tavily.Response3? __value_401 = null;
+                try
+                {
+                    if (ReadResponseAsString)
+                    {
+                        __content_401 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_401 = global::Tavily.Response3.FromJson(__content_401, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        var __contentStream_401 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                        __value_401 = await global::Tavily.Response3.FromJsonStreamAsync(__contentStream_401, JsonSerializerContext).ConfigureAwait(false);
+                    }
+                }
+                catch (global::System.Exception __ex)
+                {
+                    __exception_401 = __ex;
+                }
+
+                throw new global::Tavily.ApiException<global::Tavily.Response3>(
+                    message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_401,
+                    statusCode: __response.StatusCode)
+                {
+                    ResponseBody = __content_401,
+                    ResponseObject = __value_401,
+                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                        __response.Headers,
+                        h => h.Key,
+                        h => h.Value),
+                };
+            }
+            // Too many requests - Rate limit exceeded
+            if ((int)__response.StatusCode == 429)
+            {
+                string? __content_429 = null;
+                global::System.Exception? __exception_429 = null;
+                global::Tavily.Response4? __value_429 = null;
+                try
+                {
+                    if (ReadResponseAsString)
+                    {
+                        __content_429 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_429 = global::Tavily.Response4.FromJson(__content_429, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        var __contentStream_429 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                        __value_429 = await global::Tavily.Response4.FromJsonStreamAsync(__contentStream_429, JsonSerializerContext).ConfigureAwait(false);
+                    }
+                }
+                catch (global::System.Exception __ex)
+                {
+                    __exception_429 = __ex;
+                }
+
+                throw new global::Tavily.ApiException<global::Tavily.Response4>(
+                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_429,
+                    statusCode: __response.StatusCode)
+                {
+                    ResponseBody = __content_429,
+                    ResponseObject = __value_429,
+                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                        __response.Headers,
+                        h => h.Key,
+                        h => h.Value),
+                };
+            }
+            // Key limit or Plan Limit exceeded
+            if ((int)__response.StatusCode == 432)
+            {
+                string? __content_432 = null;
+                global::System.Exception? __exception_432 = null;
+                global::Tavily.Response5? __value_432 = null;
+                try
+                {
+                    if (ReadResponseAsString)
+                    {
+                        __content_432 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_432 = global::Tavily.Response5.FromJson(__content_432, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        var __contentStream_432 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                        __value_432 = await global::Tavily.Response5.FromJsonStreamAsync(__contentStream_432, JsonSerializerContext).ConfigureAwait(false);
+                    }
+                }
+                catch (global::System.Exception __ex)
+                {
+                    __exception_432 = __ex;
+                }
+
+                throw new global::Tavily.ApiException<global::Tavily.Response5>(
+                    message: __content_432 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_432,
+                    statusCode: __response.StatusCode)
+                {
+                    ResponseBody = __content_432,
+                    ResponseObject = __value_432,
+                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                        __response.Headers,
+                        h => h.Key,
+                        h => h.Value),
+                };
+            }
+            // PayGo limit exceeded
+            if ((int)__response.StatusCode == 433)
+            {
+                string? __content_433 = null;
+                global::System.Exception? __exception_433 = null;
+                global::Tavily.Response6? __value_433 = null;
+                try
+                {
+                    if (ReadResponseAsString)
+                    {
+                        __content_433 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_433 = global::Tavily.Response6.FromJson(__content_433, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        var __contentStream_433 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                        __value_433 = await global::Tavily.Response6.FromJsonStreamAsync(__contentStream_433, JsonSerializerContext).ConfigureAwait(false);
+                    }
+                }
+                catch (global::System.Exception __ex)
+                {
+                    __exception_433 = __ex;
+                }
+
+                throw new global::Tavily.ApiException<global::Tavily.Response6>(
+                    message: __content_433 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_433,
+                    statusCode: __response.StatusCode)
+                {
+                    ResponseBody = __content_433,
+                    ResponseObject = __value_433,
+                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                        __response.Headers,
+                        h => h.Key,
+                        h => h.Value),
+                };
+            }
+            // Internal Server Error - We had a problem with our server.
+            if ((int)__response.StatusCode == 500)
+            {
+                string? __content_500 = null;
+                global::System.Exception? __exception_500 = null;
+                global::Tavily.Response7? __value_500 = null;
+                try
+                {
+                    if (ReadResponseAsString)
+                    {
+                        __content_500 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_500 = global::Tavily.Response7.FromJson(__content_500, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        var __contentStream_500 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                        __value_500 = await global::Tavily.Response7.FromJsonStreamAsync(__contentStream_500, JsonSerializerContext).ConfigureAwait(false);
+                    }
+                }
+                catch (global::System.Exception __ex)
+                {
+                    __exception_500 = __ex;
+                }
+
+                throw new global::Tavily.ApiException<global::Tavily.Response7>(
+                    message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_500,
+                    statusCode: __response.StatusCode)
+                {
+                    ResponseBody = __content_500,
+                    ResponseObject = __value_500,
+                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                        __response.Headers,
+                        h => h.Key,
+                        h => h.Value),
+                };
+            }
+
+            if (ReadResponseAsString)
+            {
+                var __content = await __response.Content.ReadAsStringAsync(
+#if NET5_0_OR_GREATER
+                    cancellationToken
+#endif
+                ).ConfigureAwait(false);
+
+                ProcessResponseContent(
+                    client: HttpClient,
+                    response: __response,
+                    content: ref __content);
+                ProcessCreateSearchResponseContent(
+                    httpClient: HttpClient,
+                    httpResponseMessage: __response,
+                    content: ref __content);
+
+                try
+                {
+                    __response.EnsureSuccessStatusCode();
+
+                    return
+                        global::Tavily.Response.FromJson(__content, JsonSerializerContext) ??
+                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                }
+                catch (global::System.Exception __ex)
+                {
+                    throw new global::Tavily.ApiException(
+                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                        innerException: __ex,
+                        statusCode: __response.StatusCode)
+                    {
+                        ResponseBody = __content,
+                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                            __response.Headers,
+                            h => h.Key,
+                            h => h.Value),
+                    };
+                }
+            }
+            else
+            {
+                try
+                {
+                    __response.EnsureSuccessStatusCode();
+
+                    using var __content = await __response.Content.ReadAsStreamAsync(
+#if NET5_0_OR_GREATER
+                        cancellationToken
+#endif
+                    ).ConfigureAwait(false);
+
+                    return
+                        await global::Tavily.Response.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        throw new global::System.InvalidOperationException("Response deserialization failed.");
+                }
+                catch (global::System.Exception __ex)
+                {
+                    throw new global::Tavily.ApiException(
+                        message: __response.ReasonPhrase ?? string.Empty,
+                        innerException: __ex,
+                        statusCode: __response.StatusCode)
+                    {
+                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                            __response.Headers,
+                            h => h.Key,
+                            h => h.Value),
+                    };
+                }
+            }
+        }
+
+        /// <summary>
+        /// Search for data based on a query<br/>
+        /// Execute a search query using Tavily Search.
+        /// </summary>
+        /// <param name="query">
+        /// The search query to execute with Tavily.<br/>
+        /// Example: who is Leo Messi?
+        /// </param>
+        /// <param name="searchDepth">
+        /// Controls the latency vs. relevance tradeoff and how `results[].content` is generated:<br/>
+        /// - `advanced`: Highest relevance with increased latency. Best for detailed, high-precision queries. Returns multiple semantically relevant snippets per URL (configurable via `chunks_per_source`).<br/>
+        /// - `basic`: A balanced option for relevance and latency. Ideal for general-purpose searches. Returns one NLP summary per URL.<br/>
+        /// - `fast`: Prioritizes lower latency while maintaining good relevance. Returns multiple semantically relevant snippets per URL (configurable via `chunks_per_source`).<br/>
+        /// - `ultra-fast`: Minimizes latency above all else. Best for time-critical use cases. Returns one NLP summary per URL.<br/>
+        /// **Cost**:<br/>
+        /// - `basic`, `fast`, `ultra-fast`: 1 API Credit<br/>
+        /// - `advanced`: 2 API Credits<br/>
+        /// See [Search Best Practices](/documentation/best-practices/best-practices-search#search-depth) for guidance on choosing the right search depth.<br/>
+        /// Default Value: basic
+        /// </param>
+        /// <param name="chunksPerSource">
+        /// Chunks are short content snippets (maximum 500 characters each) pulled directly from the source. Use `chunks_per_source` to define the maximum number of relevant chunks returned per source and to control the `content` length. Chunks will appear in the `content` field as: `&lt;chunk 1&gt; [...] &lt;chunk 2&gt; [...] &lt;chunk 3&gt;`. Available only when `search_depth` is `advanced`.<br/>
+        /// Default Value: 3
+        /// </param>
+        /// <param name="maxResults">
+        /// The maximum number of search results to return.<br/>
+        /// Default Value: 5<br/>
+        /// Example: 1
+        /// </param>
+        /// <param name="topic">
+        /// The category of the search.`news` is useful for retrieving real-time updates, particularly about politics, sports, and major current events covered by mainstream media sources. `general` is for broader, more general-purpose searches that may include a wide range of sources.<br/>
+        /// Default Value: general
+        /// </param>
+        /// <param name="timeRange">
+        /// The time range back from the current date to filter results based on publish date or last updated date. Useful when looking for sources that have published or updated data.
+        /// </param>
+        /// <param name="startDate">
+        /// Will return all results after the specified start date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD<br/>
+        /// Example: 2025-02-09
+        /// </param>
+        /// <param name="endDate">
+        /// Will return all results before the specified end date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD<br/>
+        /// Example: 2025-12-29
+        /// </param>
+        /// <param name="includeAnswer">
+        /// Include an LLM-generated answer to the provided query. `basic` or `true` returns a quick answer. `advanced` returns a more detailed answer.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="includeRawContent">
+        /// Include the cleaned and parsed HTML content of each search result. `markdown` or `true` returns search result content in markdown format. `text` returns the plain text from the results and may increase latency.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="includeImages">
+        /// Also perform an image search and include the results in the response.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="includeImageDescriptions">
+        /// When `include_images` is `true`, also add a descriptive text for each image.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="includeFavicon">
+        /// Whether to include the favicon URL for each result.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="includeDomains">
+        /// A list of domains to specifically include in the search results. Maximum 300 domains.
+        /// </param>
+        /// <param name="excludeDomains">
+        /// A list of domains to specifically exclude from the search results. Maximum 150 domains.
+        /// </param>
+        /// <param name="country">
+        /// Boost search results from a specific country. This will prioritize content from the selected country in the search results. Available only if topic is `general`.
+        /// </param>
+        /// <param name="autoParameters">
+        /// When `auto_parameters` is enabled, Tavily automatically configures search parameters based on your query's content and intent. You can still set other parameters manually, and your explicit values will override the automatic ones. The parameters `include_answer`, `include_raw_content`, and `max_results` must always be set manually, as they directly affect response size. Note: `search_depth` may be automatically set to advanced when it's likely to improve results. This uses 2 API credits per request. To avoid the extra cost, you can explicitly set `search_depth` to `basic`.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="exactMatch">
+        /// Ensure that only search results containing the exact quoted phrase(s) in the query are returned, bypassing synonyms or semantic variations. Wrap target phrases in quotes within your query (e.g. `"John Smith" CEO Acme Corp`). Punctuation is typically ignored inside quotes.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="includeUsage">
+        /// Whether to include credit usage information in the response.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Tavily.Response> CreateSearchAsync(
+            string query,
+            global::Tavily.RequestSearchDepth? searchDepth = default,
+            int? chunksPerSource = default,
+            int? maxResults = default,
+            global::Tavily.RequestTopic? topic = default,
+            global::Tavily.RequestTimeRange? timeRange = default,
+            string? startDate = default,
+            string? endDate = default,
+            global::Tavily.OneOf<bool?, global::Tavily.RequestIncludeAnswer?>? includeAnswer = default,
+            global::Tavily.OneOf<bool?, global::Tavily.RequestIncludeRawContent?>? includeRawContent = default,
+            bool? includeImages = default,
+            bool? includeImageDescriptions = default,
+            bool? includeFavicon = default,
+            global::System.Collections.Generic.IList<string>? includeDomains = default,
+            global::System.Collections.Generic.IList<string>? excludeDomains = default,
+            global::Tavily.RequestCountry? country = default,
+            bool? autoParameters = default,
+            bool? exactMatch = default,
+            bool? includeUsage = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Tavily.Request
+            {
+                Query = query,
+                SearchDepth = searchDepth,
+                ChunksPerSource = chunksPerSource,
+                MaxResults = maxResults,
+                Topic = topic,
+                TimeRange = timeRange,
+                StartDate = startDate,
+                EndDate = endDate,
+                IncludeAnswer = includeAnswer,
+                IncludeRawContent = includeRawContent,
+                IncludeImages = includeImages,
+                IncludeImageDescriptions = includeImageDescriptions,
+                IncludeFavicon = includeFavicon,
+                IncludeDomains = includeDomains,
+                ExcludeDomains = excludeDomains,
+                Country = country,
+                AutoParameters = autoParameters,
+                ExactMatch = exactMatch,
+                IncludeUsage = includeUsage,
+            };
+
+            return await CreateSearchAsync(
+                request: __request,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+    }
+}

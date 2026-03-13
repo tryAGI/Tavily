@@ -6,7 +6,7 @@
 [![Discord](https://img.shields.io/discord/1115206893015662663?label=Discord&logo=discord&logoColor=white&color=d82679)](https://discord.gg/Ca2xhfBf3v)
 
 ## Features 🔥
-- Fully generated C# SDK based on [official Tavily OpenAPI specification](https://raw.githubusercontent.com/Tavily/assemblyai-api-spec/main/openapi.yml) using [AutoSDK](https://github.com/HavenDV/AutoSDK)
+- Fully generated C# SDK based on the [official Tavily OpenAPI specification](https://docs.tavily.com/documentation/api-reference/openapi.json) using [AutoSDK](https://github.com/HavenDV/AutoSDK)
 - Same day update to support new features
 - Updated and supported automatically if there are no breaking changes
 - All modern .NET features - nullability, trimming, NativeAOT, etc.
@@ -18,12 +18,11 @@ using Tavily;
 
 var apiKey =
     Environment.GetEnvironmentVariable("TAVILY_API_KEY") ??
-    throw new AssertInconclusiveException("TAVILY_API_KEY environment variable is not found.");
+    throw new InvalidOperationException("TAVILY_API_KEY environment variable is not found.");
 
-using var client = new TavilyClient();
+using var client = new TavilyClient(apiKey);
 
-SearchResponse searchResponse = await client.SearchAsync(
-    apiKey: apiKey,
+Response searchResponse = await client.CreateSearchAsync(
     query: "Who is Leo Messi?");
 
 foreach (var result in searchResponse.Results)

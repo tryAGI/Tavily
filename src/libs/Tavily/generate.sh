@@ -1,14 +1,17 @@
-dotnet tool install --global autosdk.cli --prerelease
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+readonly openapi_url="https://docs.tavily.com/documentation/api-reference/openapi.json"
+
+dotnet tool update --global autosdk.cli --prerelease || dotnet tool install --global autosdk.cli --prerelease
 rm -rf Generated
-curl -o openapi.yaml https://raw.githubusercontent.com/davidmigloz/langchain_dart/refs/heads/main/packages/tavily_dart/oas/tavily_openapi.yaml
+curl --fail --silent --show-error --location "$openapi_url" -o openapi.yaml
 dotnet run --project ../../helpers/FixOpenApiSpec openapi.yaml
-if [ $? -ne 0 ]; then
- echo "Failed, exiting..."
- exit 1
-fi
 autosdk generate openapi.yaml \
   --namespace Tavily \
   --clientClassName TavilyClient \
   --targetFramework net8.0 \
   --output Generated \
+  --security-scheme "Http:Header:Bearer" \
   --exclude-deprecated-operations

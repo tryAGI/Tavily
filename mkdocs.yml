@@ -1,7 +1,10 @@
 site_name: Tavily .NET Documentation
 nav:
 - Overview: index.md
-# EXAMPLES #
+# EXAMPLES:START
+- Examples:
+  - Search: samples/Search.md
+# EXAMPLES:END
         
 theme:
   name: material

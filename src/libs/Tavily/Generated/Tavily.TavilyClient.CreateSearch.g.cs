@@ -168,60 +168,23 @@ namespace Tavily
                         h => h.Value),
                 };
             }
-            // Too many requests - Rate limit exceeded
-            if ((int)__response.StatusCode == 429)
-            {
-                string? __content_429 = null;
-                global::System.Exception? __exception_429 = null;
-                global::Tavily.Response4? __value_429 = null;
-                try
-                {
-                    if (ReadResponseAsString)
-                    {
-                        __content_429 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_429 = global::Tavily.Response4.FromJson(__content_429, JsonSerializerContext);
-                    }
-                    else
-                    {
-                        var __contentStream_429 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                        __value_429 = await global::Tavily.Response4.FromJsonStreamAsync(__contentStream_429, JsonSerializerContext).ConfigureAwait(false);
-                    }
-                }
-                catch (global::System.Exception __ex)
-                {
-                    __exception_429 = __ex;
-                }
-
-                throw new global::Tavily.ApiException<global::Tavily.Response4>(
-                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
-                    innerException: __exception_429,
-                    statusCode: __response.StatusCode)
-                {
-                    ResponseBody = __content_429,
-                    ResponseObject = __value_429,
-                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
-                        __response.Headers,
-                        h => h.Key,
-                        h => h.Value),
-                };
-            }
             // Key limit or Plan Limit exceeded
             if ((int)__response.StatusCode == 432)
             {
                 string? __content_432 = null;
                 global::System.Exception? __exception_432 = null;
-                global::Tavily.Response5? __value_432 = null;
+                global::Tavily.Response4? __value_432 = null;
                 try
                 {
                     if (ReadResponseAsString)
                     {
                         __content_432 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_432 = global::Tavily.Response5.FromJson(__content_432, JsonSerializerContext);
+                        __value_432 = global::Tavily.Response4.FromJson(__content_432, JsonSerializerContext);
                     }
                     else
                     {
                         var __contentStream_432 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                        __value_432 = await global::Tavily.Response5.FromJsonStreamAsync(__contentStream_432, JsonSerializerContext).ConfigureAwait(false);
+                        __value_432 = await global::Tavily.Response4.FromJsonStreamAsync(__contentStream_432, JsonSerializerContext).ConfigureAwait(false);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -229,7 +192,7 @@ namespace Tavily
                     __exception_432 = __ex;
                 }
 
-                throw new global::Tavily.ApiException<global::Tavily.Response5>(
+                throw new global::Tavily.ApiException<global::Tavily.Response4>(
                     message: __content_432 ?? __response.ReasonPhrase ?? string.Empty,
                     innerException: __exception_432,
                     statusCode: __response.StatusCode)
@@ -247,18 +210,18 @@ namespace Tavily
             {
                 string? __content_433 = null;
                 global::System.Exception? __exception_433 = null;
-                global::Tavily.Response6? __value_433 = null;
+                global::Tavily.Response5? __value_433 = null;
                 try
                 {
                     if (ReadResponseAsString)
                     {
                         __content_433 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_433 = global::Tavily.Response6.FromJson(__content_433, JsonSerializerContext);
+                        __value_433 = global::Tavily.Response5.FromJson(__content_433, JsonSerializerContext);
                     }
                     else
                     {
                         var __contentStream_433 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                        __value_433 = await global::Tavily.Response6.FromJsonStreamAsync(__contentStream_433, JsonSerializerContext).ConfigureAwait(false);
+                        __value_433 = await global::Tavily.Response5.FromJsonStreamAsync(__contentStream_433, JsonSerializerContext).ConfigureAwait(false);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -266,13 +229,50 @@ namespace Tavily
                     __exception_433 = __ex;
                 }
 
-                throw new global::Tavily.ApiException<global::Tavily.Response6>(
+                throw new global::Tavily.ApiException<global::Tavily.Response5>(
                     message: __content_433 ?? __response.ReasonPhrase ?? string.Empty,
                     innerException: __exception_433,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_433,
                     ResponseObject = __value_433,
+                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                        __response.Headers,
+                        h => h.Key,
+                        h => h.Value),
+                };
+            }
+            // Too many requests - Rate limit exceeded
+            if ((int)__response.StatusCode == 429)
+            {
+                string? __content_429 = null;
+                global::System.Exception? __exception_429 = null;
+                global::Tavily.Response6? __value_429 = null;
+                try
+                {
+                    if (ReadResponseAsString)
+                    {
+                        __content_429 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_429 = global::Tavily.Response6.FromJson(__content_429, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        var __contentStream_429 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                        __value_429 = await global::Tavily.Response6.FromJsonStreamAsync(__contentStream_429, JsonSerializerContext).ConfigureAwait(false);
+                    }
+                }
+                catch (global::System.Exception __ex)
+                {
+                    __exception_429 = __ex;
+                }
+
+                throw new global::Tavily.ApiException<global::Tavily.Response6>(
+                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_429,
+                    statusCode: __response.StatusCode)
+                {
+                    ResponseBody = __content_429,
+                    ResponseObject = __value_429,
                     ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
                         __response.Headers,
                         h => h.Key,
@@ -423,14 +423,17 @@ namespace Tavily
         /// Default Value: general
         /// </param>
         /// <param name="timeRange">
-        /// The time range back from the current date to filter results based on publish date or last updated date. Useful when looking for sources that have published or updated data.
+        /// The time range back from the current date to filter results based on publish date or last updated date. Useful when looking for sources that have published or updated data.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="startDate">
         /// Will return all results after the specified start date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464<br/>
         /// Example: 2025-02-09
         /// </param>
         /// <param name="endDate">
         /// Will return all results before the specified end date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464<br/>
         /// Example: 2025-12-29
         /// </param>
         /// <param name="includeAnswer">
@@ -454,13 +457,16 @@ namespace Tavily
         /// Default Value: false
         /// </param>
         /// <param name="includeDomains">
-        /// A list of domains to specifically include in the search results. Maximum 300 domains.
+        /// A list of domains to specifically include in the search results. Maximum 300 domains.<br/>
+        /// Default Value: []
         /// </param>
         /// <param name="excludeDomains">
-        /// A list of domains to specifically exclude from the search results. Maximum 150 domains.
+        /// A list of domains to specifically exclude from the search results. Maximum 150 domains.<br/>
+        /// Default Value: []
         /// </param>
         /// <param name="country">
-        /// Boost search results from a specific country. This will prioritize content from the selected country in the search results. Available only if topic is `general`.
+        /// Boost search results from a specific country. This will prioritize content from the selected country in the search results. Available only if topic is `general`.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="autoParameters">
         /// When `auto_parameters` is enabled, Tavily automatically configures search parameters based on your query's content and intent. You can still set other parameters manually, and your explicit values will override the automatic ones. The parameters `include_answer`, `include_raw_content`, and `max_results` must always be set manually, as they directly affect response size. Note: `search_depth` may be automatically set to advanced when it's likely to improve results. This uses 2 API credits per request. To avoid the extra cost, you can explicitly set `search_depth` to `basic`.<br/>
@@ -472,6 +478,11 @@ namespace Tavily
         /// </param>
         /// <param name="includeUsage">
         /// Whether to include credit usage information in the response.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="safeSearch">
+        /// 🔒 Enterprise only. <br/>
+        ///  whether to filter out adult or unsafe content from results. Not supported for `fast` or `ultra-fast` search depths.<br/>
         /// Default Value: false
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -496,6 +507,7 @@ namespace Tavily
             bool? autoParameters = default,
             bool? exactMatch = default,
             bool? includeUsage = default,
+            bool? safeSearch = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Tavily.Request
@@ -519,6 +531,7 @@ namespace Tavily
                 AutoParameters = autoParameters,
                 ExactMatch = exactMatch,
                 IncludeUsage = includeUsage,
+                SafeSearch = safeSearch,
             };
 
             return await CreateSearchAsync(

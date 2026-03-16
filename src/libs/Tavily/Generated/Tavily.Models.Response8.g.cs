@@ -15,16 +15,18 @@ namespace Tavily
         public global::System.Collections.Generic.IList<global::Tavily.ResponseResult2>? Results { get; set; }
 
         /// <summary>
-        /// A list of URLs that could not be processed.
+        /// A list of URLs that could not be processed.<br/>
+        /// Example: []
         /// </summary>
+        /// <example>[]</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("failed_results")]
         public global::System.Collections.Generic.IList<global::Tavily.ResponseFailedResult>? FailedResults { get; set; }
 
         /// <summary>
         /// Time in seconds it took to complete the request.<br/>
-        /// Example: 0.02
+        /// Example: 0.02F
         /// </summary>
-        /// <example>0.02</example>
+        /// <example>0.02F</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("response_time")]
         public float? ResponseTime { get; set; }
 
@@ -57,11 +59,12 @@ namespace Tavily
         /// A list of extracted content from the provided URLs.
         /// </param>
         /// <param name="failedResults">
-        /// A list of URLs that could not be processed.
+        /// A list of URLs that could not be processed.<br/>
+        /// Example: []
         /// </param>
         /// <param name="responseTime">
         /// Time in seconds it took to complete the request.<br/>
-        /// Example: 0.02
+        /// Example: 0.02F
         /// </param>
         /// <param name="usage">
         /// Credit usage details for the request.<br/>

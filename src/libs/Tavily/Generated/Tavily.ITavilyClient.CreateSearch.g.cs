@@ -50,14 +50,17 @@ namespace Tavily
         /// Default Value: general
         /// </param>
         /// <param name="timeRange">
-        /// The time range back from the current date to filter results based on publish date or last updated date. Useful when looking for sources that have published or updated data.
+        /// The time range back from the current date to filter results based on publish date or last updated date. Useful when looking for sources that have published or updated data.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="startDate">
         /// Will return all results after the specified start date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464<br/>
         /// Example: 2025-02-09
         /// </param>
         /// <param name="endDate">
         /// Will return all results before the specified end date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464<br/>
         /// Example: 2025-12-29
         /// </param>
         /// <param name="includeAnswer">
@@ -81,13 +84,16 @@ namespace Tavily
         /// Default Value: false
         /// </param>
         /// <param name="includeDomains">
-        /// A list of domains to specifically include in the search results. Maximum 300 domains.
+        /// A list of domains to specifically include in the search results. Maximum 300 domains.<br/>
+        /// Default Value: []
         /// </param>
         /// <param name="excludeDomains">
-        /// A list of domains to specifically exclude from the search results. Maximum 150 domains.
+        /// A list of domains to specifically exclude from the search results. Maximum 150 domains.<br/>
+        /// Default Value: []
         /// </param>
         /// <param name="country">
-        /// Boost search results from a specific country. This will prioritize content from the selected country in the search results. Available only if topic is `general`.
+        /// Boost search results from a specific country. This will prioritize content from the selected country in the search results. Available only if topic is `general`.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="autoParameters">
         /// When `auto_parameters` is enabled, Tavily automatically configures search parameters based on your query's content and intent. You can still set other parameters manually, and your explicit values will override the automatic ones. The parameters `include_answer`, `include_raw_content`, and `max_results` must always be set manually, as they directly affect response size. Note: `search_depth` may be automatically set to advanced when it's likely to improve results. This uses 2 API credits per request. To avoid the extra cost, you can explicitly set `search_depth` to `basic`.<br/>
@@ -99,6 +105,11 @@ namespace Tavily
         /// </param>
         /// <param name="includeUsage">
         /// Whether to include credit usage information in the response.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="safeSearch">
+        /// 🔒 Enterprise only. <br/>
+        ///  whether to filter out adult or unsafe content from results. Not supported for `fast` or `ultra-fast` search depths.<br/>
         /// Default Value: false
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -123,6 +134,7 @@ namespace Tavily
             bool? autoParameters = default,
             bool? exactMatch = default,
             bool? includeUsage = default,
+            bool? safeSearch = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

@@ -26,9 +26,9 @@ namespace Tavily
 
         /// <summary>
         /// Time in seconds it took to complete the request.<br/>
-        /// Example: 1.23
+        /// Example: 1.23F
         /// </summary>
-        /// <example>1.23</example>
+        /// <example>1.23F</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("response_time")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int ResponseTime { get; set; }
@@ -51,7 +51,7 @@ namespace Tavily
         /// </param>
         /// <param name="responseTime">
         /// Time in seconds it took to complete the request.<br/>
-        /// Example: 1.23
+        /// Example: 1.23F
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

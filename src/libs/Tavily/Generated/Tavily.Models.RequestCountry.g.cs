@@ -4,7 +4,8 @@
 namespace Tavily
 {
     /// <summary>
-    /// Boost search results from a specific country. This will prioritize content from the selected country in the search results. Available only if topic is `general`.
+    /// Boost search results from a specific country. This will prioritize content from the selected country in the search results. Available only if topic is `general`.<br/>
+    /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
     /// </summary>
     public enum RequestCountry
     {

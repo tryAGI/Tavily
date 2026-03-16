@@ -496,19 +496,19 @@ namespace Tavily
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDiscriminator? Type117 { get; set; }
+        public global::Tavily.ResponseStatus? Type117 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDiscriminatorStatus? Type118 { get; set; }
+        public global::Tavily.Response39? Type118 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response39? Type119 { get; set; }
+        public global::Tavily.ResponseDiscriminator? Type119 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseStatus? Type120 { get; set; }
+        public global::Tavily.ResponseDiscriminatorStatus? Type120 { get; set; }
         /// <summary>
         /// 
         /// </summary>

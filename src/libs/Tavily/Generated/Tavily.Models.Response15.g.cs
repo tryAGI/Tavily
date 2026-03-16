@@ -26,9 +26,9 @@ namespace Tavily
 
         /// <summary>
         /// Time in seconds it took to complete the request.<br/>
-        /// Example: 1.23
+        /// Example: 1.23F
         /// </summary>
-        /// <example>1.23</example>
+        /// <example>1.23F</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("response_time")]
         public float? ResponseTime { get; set; }
 
@@ -67,7 +67,7 @@ namespace Tavily
         /// </param>
         /// <param name="responseTime">
         /// Time in seconds it took to complete the request.<br/>
-        /// Example: 1.23
+        /// Example: 1.23F
         /// </param>
         /// <param name="usage">
         /// Credit usage details for the request.<br/>

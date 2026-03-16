@@ -4,10 +4,10 @@
 namespace Tavily.JsonConverters
 {
     /// <inheritdoc />
-    public class Response39JsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Tavily.Response39>
+    public class Response38JsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Tavily.Response38>
     {
         /// <inheritdoc />
-        public override global::Tavily.Response39 Read(
+        public override global::Tavily.Response38 Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -36,7 +36,7 @@ namespace Tavily.JsonConverters
                 failed = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
-            var __value = new global::Tavily.Response39(
+            var __value = new global::Tavily.Response38(
                 discriminator?.Status,
                 completed,
 
@@ -49,7 +49,7 @@ namespace Tavily.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Tavily.Response39 value,
+            global::Tavily.Response38 value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));

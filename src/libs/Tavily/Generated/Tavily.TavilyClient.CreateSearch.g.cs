@@ -168,23 +168,60 @@ namespace Tavily
                         h => h.Value),
                 };
             }
+            // Too many requests - Rate limit exceeded
+            if ((int)__response.StatusCode == 429)
+            {
+                string? __content_429 = null;
+                global::System.Exception? __exception_429 = null;
+                global::Tavily.Response4? __value_429 = null;
+                try
+                {
+                    if (ReadResponseAsString)
+                    {
+                        __content_429 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_429 = global::Tavily.Response4.FromJson(__content_429, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        var __contentStream_429 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                        __value_429 = await global::Tavily.Response4.FromJsonStreamAsync(__contentStream_429, JsonSerializerContext).ConfigureAwait(false);
+                    }
+                }
+                catch (global::System.Exception __ex)
+                {
+                    __exception_429 = __ex;
+                }
+
+                throw new global::Tavily.ApiException<global::Tavily.Response4>(
+                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_429,
+                    statusCode: __response.StatusCode)
+                {
+                    ResponseBody = __content_429,
+                    ResponseObject = __value_429,
+                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                        __response.Headers,
+                        h => h.Key,
+                        h => h.Value),
+                };
+            }
             // Key limit or Plan Limit exceeded
             if ((int)__response.StatusCode == 432)
             {
                 string? __content_432 = null;
                 global::System.Exception? __exception_432 = null;
-                global::Tavily.Response4? __value_432 = null;
+                global::Tavily.Response5? __value_432 = null;
                 try
                 {
                     if (ReadResponseAsString)
                     {
                         __content_432 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_432 = global::Tavily.Response4.FromJson(__content_432, JsonSerializerContext);
+                        __value_432 = global::Tavily.Response5.FromJson(__content_432, JsonSerializerContext);
                     }
                     else
                     {
                         var __contentStream_432 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                        __value_432 = await global::Tavily.Response4.FromJsonStreamAsync(__contentStream_432, JsonSerializerContext).ConfigureAwait(false);
+                        __value_432 = await global::Tavily.Response5.FromJsonStreamAsync(__contentStream_432, JsonSerializerContext).ConfigureAwait(false);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -192,7 +229,7 @@ namespace Tavily
                     __exception_432 = __ex;
                 }
 
-                throw new global::Tavily.ApiException<global::Tavily.Response4>(
+                throw new global::Tavily.ApiException<global::Tavily.Response5>(
                     message: __content_432 ?? __response.ReasonPhrase ?? string.Empty,
                     innerException: __exception_432,
                     statusCode: __response.StatusCode)
@@ -210,18 +247,18 @@ namespace Tavily
             {
                 string? __content_433 = null;
                 global::System.Exception? __exception_433 = null;
-                global::Tavily.Response5? __value_433 = null;
+                global::Tavily.Response6? __value_433 = null;
                 try
                 {
                     if (ReadResponseAsString)
                     {
                         __content_433 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_433 = global::Tavily.Response5.FromJson(__content_433, JsonSerializerContext);
+                        __value_433 = global::Tavily.Response6.FromJson(__content_433, JsonSerializerContext);
                     }
                     else
                     {
                         var __contentStream_433 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                        __value_433 = await global::Tavily.Response5.FromJsonStreamAsync(__contentStream_433, JsonSerializerContext).ConfigureAwait(false);
+                        __value_433 = await global::Tavily.Response6.FromJsonStreamAsync(__contentStream_433, JsonSerializerContext).ConfigureAwait(false);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -229,50 +266,13 @@ namespace Tavily
                     __exception_433 = __ex;
                 }
 
-                throw new global::Tavily.ApiException<global::Tavily.Response5>(
+                throw new global::Tavily.ApiException<global::Tavily.Response6>(
                     message: __content_433 ?? __response.ReasonPhrase ?? string.Empty,
                     innerException: __exception_433,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_433,
                     ResponseObject = __value_433,
-                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
-                        __response.Headers,
-                        h => h.Key,
-                        h => h.Value),
-                };
-            }
-            // Too many requests - Rate limit exceeded
-            if ((int)__response.StatusCode == 429)
-            {
-                string? __content_429 = null;
-                global::System.Exception? __exception_429 = null;
-                global::Tavily.Response6? __value_429 = null;
-                try
-                {
-                    if (ReadResponseAsString)
-                    {
-                        __content_429 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_429 = global::Tavily.Response6.FromJson(__content_429, JsonSerializerContext);
-                    }
-                    else
-                    {
-                        var __contentStream_429 = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                        __value_429 = await global::Tavily.Response6.FromJsonStreamAsync(__contentStream_429, JsonSerializerContext).ConfigureAwait(false);
-                    }
-                }
-                catch (global::System.Exception __ex)
-                {
-                    __exception_429 = __ex;
-                }
-
-                throw new global::Tavily.ApiException<global::Tavily.Response6>(
-                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
-                    innerException: __exception_429,
-                    statusCode: __response.StatusCode)
-                {
-                    ResponseBody = __content_429,
-                    ResponseObject = __value_429,
                     ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
                         __response.Headers,
                         h => h.Key,

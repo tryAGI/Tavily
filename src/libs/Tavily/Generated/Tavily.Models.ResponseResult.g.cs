@@ -34,15 +34,17 @@ namespace Tavily
 
         /// <summary>
         /// The relevance score of the search result.<br/>
-        /// Example: 0.81025416
+        /// Example: 0.81025416F
         /// </summary>
-        /// <example>0.81025416</example>
+        /// <example>0.81025416F</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("score")]
         public float? Score { get; set; }
 
         /// <summary>
-        /// The cleaned and parsed HTML content of the search result. Only if `include_raw_content` is true.
+        /// The cleaned and parsed HTML content of the search result. Only if `include_raw_content` is true.<br/>
+        /// Example: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
+        /// <example>openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("raw_content")]
         public string? RawContent { get; set; }
 
@@ -77,10 +79,11 @@ namespace Tavily
         /// </param>
         /// <param name="score">
         /// The relevance score of the search result.<br/>
-        /// Example: 0.81025416
+        /// Example: 0.81025416F
         /// </param>
         /// <param name="rawContent">
-        /// The cleaned and parsed HTML content of the search result. Only if `include_raw_content` is true.
+        /// The cleaned and parsed HTML content of the search result. Only if `include_raw_content` is true.<br/>
+        /// Example: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="favicon">
         /// The favicon URL for the result.<br/>

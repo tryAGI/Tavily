@@ -6,8 +6,8 @@ readonly openapi_url="https://docs.tavily.com/documentation/api-reference/openap
 
 dotnet tool update --global autosdk.cli --prerelease || dotnet tool install --global autosdk.cli --prerelease
 rm -rf Generated
-curl --fail --silent --show-error --location "$openapi_url" -o openapi.yaml
-autosdk generate openapi.yaml \
+curl --fail --silent --show-error --location "$openapi_url" -o openapi.json
+autosdk generate openapi.json \
   --namespace Tavily \
   --clientClassName TavilyClient \
   --targetFramework net8.0 \

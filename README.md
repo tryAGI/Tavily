@@ -35,6 +35,25 @@ foreach (var result in searchResponse.Results)
 }
 ```
 
+### Microsoft.Extensions.AI
+
+The SDK provides [`AIFunction`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.ai.aifunction) wrappers for use with any `IChatClient`:
+```csharp
+using Tavily;
+using Microsoft.Extensions.AI;
+
+using var tavilyClient = new TavilyClient(tavilyApiKey);
+
+// Create AI tools for search and extract
+AIFunction searchTool = tavilyClient.AsSearchTool();
+AIFunction extractTool = tavilyClient.AsExtractTool();
+
+// Use with any IChatClient (OpenAI, Anthropic, Ollama, etc.)
+var response = await chatClient.GetResponseAsync(
+    [new ChatMessage(ChatRole.User, "Search for the latest .NET 10 features")],
+    new ChatOptions { Tools = [searchTool] });
+```
+
 ## Support
 
 Priority place for bugs: https://github.com/tryAGI/Tavily/issues  

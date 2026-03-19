@@ -11,6 +11,7 @@
 - Updated and supported automatically if there are no breaking changes
 - All modern .NET features - nullability, trimming, NativeAOT, etc.
 - Support .Net Framework/.Net Standard 2.0
+- Microsoft.Extensions.AI `AIFunction` tool wrappers for search and extract
 
 ### Usage
 ```csharp
@@ -33,6 +34,25 @@ foreach (var result in searchResponse.Results)
     Console.WriteLine($"Url: {result.Url}");
     Console.WriteLine();
 }
+```
+
+### Microsoft.Extensions.AI
+
+The SDK provides [`AIFunction`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.ai.aifunction) wrappers for use with any `IChatClient`:
+```csharp
+using Tavily;
+using Microsoft.Extensions.AI;
+
+using var tavilyClient = new TavilyClient(tavilyApiKey);
+
+// Create AI tools for search and extract
+AIFunction searchTool = tavilyClient.AsSearchTool();
+AIFunction extractTool = tavilyClient.AsExtractTool();
+
+// Use with any IChatClient (OpenAI, Anthropic, Ollama, etc.)
+var response = await chatClient.GetResponseAsync(
+    [new ChatMessage(ChatRole.User, "Search for the latest .NET 10 features")],
+    new ChatOptions { Tools = [searchTool] });
 ```
 
 ## Support

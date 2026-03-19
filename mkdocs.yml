@@ -5,7 +5,10 @@ nav:
   - Microsoft.Extensions.AI: guides/meai.md
 # EXAMPLES:START
 - Examples:
-  - Search: samples/Search.md
+  - As Tool Creates Extract Tool: examples/as-tool-creates-extract-tool.md
+  - As Tool Creates Search Tool: examples/as-tool-creates-search-tool.md
+  - As Tool Search Returns Results: examples/as-tool-search-returns-results.md
+  - Search: examples/search.md
 # EXAMPLES:END
         
 theme:

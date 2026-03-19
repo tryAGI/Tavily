@@ -1,3 +1,9 @@
+/*
+order: 40
+title: Search
+slug: search
+*/
+
 namespace Tavily.IntegrationTests;
 
 public partial class Tests

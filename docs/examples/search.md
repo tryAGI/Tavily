@@ -1,3 +1,9 @@
+# Search
+
+
+
+This example assumes `using Tavily;` is in scope and `apiKey` contains your Tavily API key.
+
 ```csharp
 var apiKey =
     Environment.GetEnvironmentVariable("TAVILY_API_KEY") ??

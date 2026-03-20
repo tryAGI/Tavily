@@ -11,11 +11,16 @@ namespace Tavily
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Tavily.ApiException"></exception>
+        /// <remarks>
+        /// from tavily import TavilyClient<br/>
+        /// tavily_client = TavilyClient(api_key="tvly-YOUR_API_KEY")<br/>
+        /// response = tavily_client.research("What are the latest developments in AI?")<br/>
+        /// print(response)
+        /// </remarks>
         global::System.Threading.Tasks.Task<global::Tavily.Response31> CreateResearchAsync(
 
             global::Tavily.Request5 request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Initiate a research task<br/>
         /// Tavily Research performs comprehensive research on a given topic by conducting multiple searches, analyzing sources, and generating a detailed research report.

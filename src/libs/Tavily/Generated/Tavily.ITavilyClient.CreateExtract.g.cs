@@ -11,11 +11,16 @@ namespace Tavily
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Tavily.ApiException"></exception>
+        /// <remarks>
+        /// from tavily import TavilyClient<br/>
+        /// tavily_client = TavilyClient(api_key="tvly-YOUR_API_KEY")<br/>
+        /// response = tavily_client.extract("https://en.wikipedia.org/wiki/Artificial_intelligence")<br/>
+        /// print(response)
+        /// </remarks>
         global::System.Threading.Tasks.Task<global::Tavily.Response8> CreateExtractAsync(
 
             global::Tavily.Request2 request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Retrieve raw web content from specified URLs<br/>
         /// Extract web page content from one or more specified URLs using Tavily Extract.

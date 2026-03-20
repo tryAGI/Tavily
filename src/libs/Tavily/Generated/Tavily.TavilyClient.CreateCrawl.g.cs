@@ -28,6 +28,12 @@ namespace Tavily
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Tavily.ApiException"></exception>
+        /// <remarks>
+        /// from tavily import TavilyClient<br/>
+        /// tavily_client = TavilyClient(api_key="tvly-YOUR_API_KEY")<br/>
+        /// response = tavily_client.crawl("https://docs.tavily.com", instructions="Find all pages on the Python SDK")<br/>
+        /// print(response)
+        /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Tavily.Response15> CreateCrawlAsync(
 
             global::Tavily.Request3 request,
@@ -446,7 +452,6 @@ namespace Tavily
                 }
             }
         }
-
         /// <summary>
         /// Initiate a web crawl from a base URL<br/>
         /// Tavily Crawl is a graph-based website traversal tool that can explore hundreds of paths in parallel with built-in extraction and intelligent discovery.

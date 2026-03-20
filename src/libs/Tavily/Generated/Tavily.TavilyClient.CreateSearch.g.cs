@@ -28,6 +28,12 @@ namespace Tavily
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Tavily.ApiException"></exception>
+        /// <remarks>
+        /// from tavily import TavilyClient<br/>
+        /// tavily_client = TavilyClient(api_key="tvly-YOUR_API_KEY")<br/>
+        /// response = tavily_client.search("Who is Leo Messi?")<br/>
+        /// print(response)
+        /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Tavily.Response> CreateSearchAsync(
 
             global::Tavily.Request request,
@@ -408,7 +414,6 @@ namespace Tavily
                 }
             }
         }
-
         /// <summary>
         /// Search for data based on a query<br/>
         /// Execute a search query using Tavily Search.

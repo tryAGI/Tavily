@@ -40,35 +40,5 @@ namespace Tavily
         global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; }
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public SearchClient Search { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public ExtractClient Extract { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public CrawlClient Crawl { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public MapClient Map { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public ResearchClient Research { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public UsageClient Usage { get; }
-
     }
 }

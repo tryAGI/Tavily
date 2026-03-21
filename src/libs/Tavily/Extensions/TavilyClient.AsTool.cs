@@ -20,7 +20,7 @@ public static class TavilyToolExtensions
     public static AIFunction AsSearchTool(
         this TavilyClient client,
         int maxResults = 5,
-        RequestSearchDepth searchDepth = RequestSearchDepth.Basic,
+        CreateSearchRequestSearchDepth searchDepth = CreateSearchRequestSearchDepth.Basic,
         bool includeAnswer = true)
     {
         ArgumentNullException.ThrowIfNull(client);
@@ -64,7 +64,7 @@ public static class TavilyToolExtensions
             description: "Extracts and returns the main content from a given URL.");
     }
 
-    private static string FormatSearchResponse(Response response)
+    private static string FormatSearchResponse(CreateSearchResponse response)
     {
         var parts = new List<string>();
 

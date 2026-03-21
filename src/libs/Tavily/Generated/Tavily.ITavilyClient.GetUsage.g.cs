@@ -11,7 +11,7 @@ namespace Tavily
         /// <param name="xProjectId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Tavily.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Tavily.Response43> GetUsageAsync(
+        global::System.Threading.Tasks.Task<global::Tavily.GetUsageResponse> GetUsageAsync(
             string? xProjectId = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

@@ -17,9 +17,9 @@ namespace Tavily
         /// response = tavily_client.crawl("https://docs.tavily.com", instructions="Find all pages on the Python SDK")<br/>
         /// print(response)
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Tavily.Response15> CreateCrawlAsync(
+        global::System.Threading.Tasks.Task<global::Tavily.CreateCrawlResponse> CreateCrawlAsync(
 
-            global::Tavily.Request3 request,
+            global::Tavily.CreateCrawlRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Initiate a web crawl from a base URL<br/>
@@ -95,7 +95,7 @@ namespace Tavily
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Tavily.Response15> CreateCrawlAsync(
+        global::System.Threading.Tasks.Task<global::Tavily.CreateCrawlResponse> CreateCrawlAsync(
             string url,
             string? instructions = default,
             int? chunksPerSource = default,
@@ -108,8 +108,8 @@ namespace Tavily
             global::System.Collections.Generic.IList<string>? excludeDomains = default,
             bool? allowExternal = default,
             bool? includeImages = default,
-            global::Tavily.RequestExtractDepth2? extractDepth = default,
-            global::Tavily.RequestFormat2? format = default,
+            global::Tavily.CreateCrawlRequestExtractDepth? extractDepth = default,
+            global::Tavily.CreateCrawlRequestFormat? format = default,
             bool? includeFavicon = default,
             float? timeout = default,
             bool? includeUsage = default,

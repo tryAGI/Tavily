@@ -17,9 +17,9 @@ namespace Tavily
         /// response = tavily_client.search("Who is Leo Messi?")<br/>
         /// print(response)
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Tavily.Response> CreateSearchAsync(
+        global::System.Threading.Tasks.Task<global::Tavily.CreateSearchResponse> CreateSearchAsync(
 
-            global::Tavily.Request request,
+            global::Tavily.CreateSearchRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Search for data based on a query<br/>
@@ -119,23 +119,23 @@ namespace Tavily
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Tavily.Response> CreateSearchAsync(
+        global::System.Threading.Tasks.Task<global::Tavily.CreateSearchResponse> CreateSearchAsync(
             string query,
-            global::Tavily.RequestSearchDepth? searchDepth = default,
+            global::Tavily.CreateSearchRequestSearchDepth? searchDepth = default,
             int? chunksPerSource = default,
             int? maxResults = default,
-            global::Tavily.RequestTopic? topic = default,
-            global::Tavily.RequestTimeRange? timeRange = default,
+            global::Tavily.CreateSearchRequestTopic? topic = default,
+            global::Tavily.CreateSearchRequestTimeRange? timeRange = default,
             string? startDate = default,
             string? endDate = default,
-            global::Tavily.OneOf<bool?, global::Tavily.RequestIncludeAnswer?>? includeAnswer = default,
-            global::Tavily.OneOf<bool?, global::Tavily.RequestIncludeRawContent?>? includeRawContent = default,
+            global::Tavily.OneOf<bool?, global::Tavily.CreateSearchRequestIncludeAnswer?>? includeAnswer = default,
+            global::Tavily.OneOf<bool?, global::Tavily.CreateSearchRequestIncludeRawContent?>? includeRawContent = default,
             bool? includeImages = default,
             bool? includeImageDescriptions = default,
             bool? includeFavicon = default,
             global::System.Collections.Generic.IList<string>? includeDomains = default,
             global::System.Collections.Generic.IList<string>? excludeDomains = default,
-            global::Tavily.RequestCountry? country = default,
+            global::Tavily.CreateSearchRequestCountry? country = default,
             bool? autoParameters = default,
             bool? exactMatch = default,
             bool? includeUsage = default,

@@ -17,9 +17,9 @@ namespace Tavily
         /// response = tavily_client.research("What are the latest developments in AI?")<br/>
         /// print(response)
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Tavily.Response31> CreateResearchAsync(
+        global::System.Threading.Tasks.Task<global::Tavily.CreateResearchResponse> CreateResearchAsync(
 
-            global::Tavily.Request5 request,
+            global::Tavily.CreateResearchRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Initiate a research task<br/>
@@ -48,12 +48,12 @@ namespace Tavily
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Tavily.Response31> CreateResearchAsync(
+        global::System.Threading.Tasks.Task<global::Tavily.CreateResearchResponse> CreateResearchAsync(
             string input,
-            global::Tavily.RequestModel? model = default,
+            global::Tavily.CreateResearchRequestModel? model = default,
             bool? stream = default,
-            global::Tavily.RequestOutputSchema? outputSchema = default,
-            global::Tavily.RequestCitationFormat? citationFormat = default,
+            global::Tavily.CreateResearchRequestOutputSchema? outputSchema = default,
+            global::Tavily.CreateResearchRequestCitationFormat? citationFormat = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

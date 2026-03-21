@@ -7,11 +7,11 @@ namespace Tavily
     {
         partial void PrepareCreateMapArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Tavily.Request4 request);
+            global::Tavily.CreateMapRequest request);
         partial void PrepareCreateMapRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Tavily.Request4 request);
+            global::Tavily.CreateMapRequest request);
         partial void ProcessCreateMapResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -34,9 +34,9 @@ namespace Tavily
         /// response = tavily_client.map("https://docs.tavily.com")<br/>
         /// print(response)
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Tavily.Response23> CreateMapAsync(
+        public async global::System.Threading.Tasks.Task<global::Tavily.CreateMapResponse> CreateMapAsync(
 
-            global::Tavily.Request4 request,
+            global::Tavily.CreateMapRequest request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -105,19 +105,19 @@ namespace Tavily
             {
                 string? __content_400 = null;
                 global::System.Exception? __exception_400 = null;
-                global::Tavily.Response24? __value_400 = null;
+                global::Tavily.CreateMapResponse2? __value_400 = null;
                 try
                 {
                     if (ReadResponseAsString)
                     {
                         __content_400 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_400 = global::Tavily.Response24.FromJson(__content_400, JsonSerializerContext);
+                        __value_400 = global::Tavily.CreateMapResponse2.FromJson(__content_400, JsonSerializerContext);
                     }
                     else
                     {
                         __content_400 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-                        __value_400 = global::Tavily.Response24.FromJson(__content_400, JsonSerializerContext);
+                        __value_400 = global::Tavily.CreateMapResponse2.FromJson(__content_400, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -125,7 +125,7 @@ namespace Tavily
                     __exception_400 = __ex;
                 }
 
-                throw new global::Tavily.ApiException<global::Tavily.Response24>(
+                throw new global::Tavily.ApiException<global::Tavily.CreateMapResponse2>(
                     message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
                     innerException: __exception_400,
                     statusCode: __response.StatusCode)
@@ -143,19 +143,19 @@ namespace Tavily
             {
                 string? __content_401 = null;
                 global::System.Exception? __exception_401 = null;
-                global::Tavily.Response25? __value_401 = null;
+                global::Tavily.CreateMapResponse3? __value_401 = null;
                 try
                 {
                     if (ReadResponseAsString)
                     {
                         __content_401 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_401 = global::Tavily.Response25.FromJson(__content_401, JsonSerializerContext);
+                        __value_401 = global::Tavily.CreateMapResponse3.FromJson(__content_401, JsonSerializerContext);
                     }
                     else
                     {
                         __content_401 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-                        __value_401 = global::Tavily.Response25.FromJson(__content_401, JsonSerializerContext);
+                        __value_401 = global::Tavily.CreateMapResponse3.FromJson(__content_401, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -163,7 +163,7 @@ namespace Tavily
                     __exception_401 = __ex;
                 }
 
-                throw new global::Tavily.ApiException<global::Tavily.Response25>(
+                throw new global::Tavily.ApiException<global::Tavily.CreateMapResponse3>(
                     message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
                     innerException: __exception_401,
                     statusCode: __response.StatusCode)
@@ -181,19 +181,19 @@ namespace Tavily
             {
                 string? __content_403 = null;
                 global::System.Exception? __exception_403 = null;
-                global::Tavily.Response26? __value_403 = null;
+                global::Tavily.CreateMapResponse4? __value_403 = null;
                 try
                 {
                     if (ReadResponseAsString)
                     {
                         __content_403 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_403 = global::Tavily.Response26.FromJson(__content_403, JsonSerializerContext);
+                        __value_403 = global::Tavily.CreateMapResponse4.FromJson(__content_403, JsonSerializerContext);
                     }
                     else
                     {
                         __content_403 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-                        __value_403 = global::Tavily.Response26.FromJson(__content_403, JsonSerializerContext);
+                        __value_403 = global::Tavily.CreateMapResponse4.FromJson(__content_403, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -201,7 +201,7 @@ namespace Tavily
                     __exception_403 = __ex;
                 }
 
-                throw new global::Tavily.ApiException<global::Tavily.Response26>(
+                throw new global::Tavily.ApiException<global::Tavily.CreateMapResponse4>(
                     message: __content_403 ?? __response.ReasonPhrase ?? string.Empty,
                     innerException: __exception_403,
                     statusCode: __response.StatusCode)
@@ -219,19 +219,19 @@ namespace Tavily
             {
                 string? __content_429 = null;
                 global::System.Exception? __exception_429 = null;
-                global::Tavily.Response27? __value_429 = null;
+                global::Tavily.CreateMapResponse5? __value_429 = null;
                 try
                 {
                     if (ReadResponseAsString)
                     {
                         __content_429 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_429 = global::Tavily.Response27.FromJson(__content_429, JsonSerializerContext);
+                        __value_429 = global::Tavily.CreateMapResponse5.FromJson(__content_429, JsonSerializerContext);
                     }
                     else
                     {
                         __content_429 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-                        __value_429 = global::Tavily.Response27.FromJson(__content_429, JsonSerializerContext);
+                        __value_429 = global::Tavily.CreateMapResponse5.FromJson(__content_429, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -239,7 +239,7 @@ namespace Tavily
                     __exception_429 = __ex;
                 }
 
-                throw new global::Tavily.ApiException<global::Tavily.Response27>(
+                throw new global::Tavily.ApiException<global::Tavily.CreateMapResponse5>(
                     message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
                     innerException: __exception_429,
                     statusCode: __response.StatusCode)
@@ -257,19 +257,19 @@ namespace Tavily
             {
                 string? __content_432 = null;
                 global::System.Exception? __exception_432 = null;
-                global::Tavily.Response28? __value_432 = null;
+                global::Tavily.CreateMapResponse6? __value_432 = null;
                 try
                 {
                     if (ReadResponseAsString)
                     {
                         __content_432 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_432 = global::Tavily.Response28.FromJson(__content_432, JsonSerializerContext);
+                        __value_432 = global::Tavily.CreateMapResponse6.FromJson(__content_432, JsonSerializerContext);
                     }
                     else
                     {
                         __content_432 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-                        __value_432 = global::Tavily.Response28.FromJson(__content_432, JsonSerializerContext);
+                        __value_432 = global::Tavily.CreateMapResponse6.FromJson(__content_432, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -277,7 +277,7 @@ namespace Tavily
                     __exception_432 = __ex;
                 }
 
-                throw new global::Tavily.ApiException<global::Tavily.Response28>(
+                throw new global::Tavily.ApiException<global::Tavily.CreateMapResponse6>(
                     message: __content_432 ?? __response.ReasonPhrase ?? string.Empty,
                     innerException: __exception_432,
                     statusCode: __response.StatusCode)
@@ -295,19 +295,19 @@ namespace Tavily
             {
                 string? __content_433 = null;
                 global::System.Exception? __exception_433 = null;
-                global::Tavily.Response29? __value_433 = null;
+                global::Tavily.CreateMapResponse7? __value_433 = null;
                 try
                 {
                     if (ReadResponseAsString)
                     {
                         __content_433 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_433 = global::Tavily.Response29.FromJson(__content_433, JsonSerializerContext);
+                        __value_433 = global::Tavily.CreateMapResponse7.FromJson(__content_433, JsonSerializerContext);
                     }
                     else
                     {
                         __content_433 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-                        __value_433 = global::Tavily.Response29.FromJson(__content_433, JsonSerializerContext);
+                        __value_433 = global::Tavily.CreateMapResponse7.FromJson(__content_433, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -315,7 +315,7 @@ namespace Tavily
                     __exception_433 = __ex;
                 }
 
-                throw new global::Tavily.ApiException<global::Tavily.Response29>(
+                throw new global::Tavily.ApiException<global::Tavily.CreateMapResponse7>(
                     message: __content_433 ?? __response.ReasonPhrase ?? string.Empty,
                     innerException: __exception_433,
                     statusCode: __response.StatusCode)
@@ -333,19 +333,19 @@ namespace Tavily
             {
                 string? __content_500 = null;
                 global::System.Exception? __exception_500 = null;
-                global::Tavily.Response30? __value_500 = null;
+                global::Tavily.CreateMapResponse8? __value_500 = null;
                 try
                 {
                     if (ReadResponseAsString)
                     {
                         __content_500 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_500 = global::Tavily.Response30.FromJson(__content_500, JsonSerializerContext);
+                        __value_500 = global::Tavily.CreateMapResponse8.FromJson(__content_500, JsonSerializerContext);
                     }
                     else
                     {
                         __content_500 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-                        __value_500 = global::Tavily.Response30.FromJson(__content_500, JsonSerializerContext);
+                        __value_500 = global::Tavily.CreateMapResponse8.FromJson(__content_500, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -353,7 +353,7 @@ namespace Tavily
                     __exception_500 = __ex;
                 }
 
-                throw new global::Tavily.ApiException<global::Tavily.Response30>(
+                throw new global::Tavily.ApiException<global::Tavily.CreateMapResponse8>(
                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
                     innerException: __exception_500,
                     statusCode: __response.StatusCode)
@@ -389,7 +389,7 @@ namespace Tavily
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::Tavily.Response23.FromJson(__content, JsonSerializerContext) ??
+                        global::Tavily.CreateMapResponse.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -420,7 +420,7 @@ namespace Tavily
                     ).ConfigureAwait(false);
 
                     return
-                        await global::Tavily.Response23.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        await global::Tavily.CreateMapResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)
@@ -507,7 +507,7 @@ namespace Tavily
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Tavily.Response23> CreateMapAsync(
+        public async global::System.Threading.Tasks.Task<global::Tavily.CreateMapResponse> CreateMapAsync(
             string url,
             string? instructions = default,
             int? maxDepth = default,
@@ -522,7 +522,7 @@ namespace Tavily
             bool? includeUsage = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Tavily.Request4
+            var __request = new global::Tavily.CreateMapRequest
             {
                 Url = url,
                 Instructions = instructions,

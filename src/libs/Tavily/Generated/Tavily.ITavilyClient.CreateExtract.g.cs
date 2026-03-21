@@ -17,9 +17,9 @@ namespace Tavily
         /// response = tavily_client.extract("https://en.wikipedia.org/wiki/Artificial_intelligence")<br/>
         /// print(response)
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Tavily.Response8> CreateExtractAsync(
+        global::System.Threading.Tasks.Task<global::Tavily.CreateExtractResponse> CreateExtractAsync(
 
-            global::Tavily.Request2 request,
+            global::Tavily.CreateExtractRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieve raw web content from specified URLs<br/>
@@ -59,14 +59,14 @@ namespace Tavily
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Tavily.Response8> CreateExtractAsync(
+        global::System.Threading.Tasks.Task<global::Tavily.CreateExtractResponse> CreateExtractAsync(
             global::Tavily.OneOf<string, global::System.Collections.Generic.IList<string>> urls,
             string? query = default,
             int? chunksPerSource = default,
-            global::Tavily.RequestExtractDepth? extractDepth = default,
+            global::Tavily.CreateExtractRequestExtractDepth? extractDepth = default,
             bool? includeImages = default,
             bool? includeFavicon = default,
-            global::Tavily.RequestFormat? format = default,
+            global::Tavily.CreateExtractRequestFormat? format = default,
             float? timeout = default,
             bool? includeUsage = default,
             global::System.Threading.CancellationToken cancellationToken = default);

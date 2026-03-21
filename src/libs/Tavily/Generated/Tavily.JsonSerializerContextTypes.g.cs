@@ -68,23 +68,23 @@ namespace Tavily
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Request? Type10 { get; set; }
+        public global::Tavily.CreateSearchRequest? Type10 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.RequestSearchDepth? Type11 { get; set; }
+        public global::Tavily.CreateSearchRequestSearchDepth? Type11 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.RequestTopic? Type12 { get; set; }
+        public global::Tavily.CreateSearchRequestTopic? Type12 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.RequestTimeRange? Type13 { get; set; }
+        public global::Tavily.CreateSearchRequestTimeRange? Type13 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.OneOf<bool?, global::Tavily.RequestIncludeAnswer?>? Type14 { get; set; }
+        public global::Tavily.OneOf<bool?, global::Tavily.CreateSearchRequestIncludeAnswer?>? Type14 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -92,15 +92,15 @@ namespace Tavily
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.RequestIncludeAnswer? Type16 { get; set; }
+        public global::Tavily.CreateSearchRequestIncludeAnswer? Type16 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.OneOf<bool?, global::Tavily.RequestIncludeRawContent?>? Type17 { get; set; }
+        public global::Tavily.OneOf<bool?, global::Tavily.CreateSearchRequestIncludeRawContent?>? Type17 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.RequestIncludeRawContent? Type18 { get; set; }
+        public global::Tavily.CreateSearchRequestIncludeRawContent? Type18 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -108,11 +108,11 @@ namespace Tavily
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.RequestCountry? Type20 { get; set; }
+        public global::Tavily.CreateSearchRequestCountry? Type20 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Request2? Type21 { get; set; }
+        public global::Tavily.CreateExtractRequest? Type21 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -120,11 +120,11 @@ namespace Tavily
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.RequestExtractDepth? Type23 { get; set; }
+        public global::Tavily.CreateExtractRequestExtractDepth? Type23 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.RequestFormat? Type24 { get; set; }
+        public global::Tavily.CreateExtractRequestFormat? Type24 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -132,435 +132,435 @@ namespace Tavily
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Request3? Type26 { get; set; }
+        public global::Tavily.CreateCrawlRequest? Type26 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.RequestExtractDepth2? Type27 { get; set; }
+        public global::Tavily.CreateCrawlRequestExtractDepth? Type27 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.RequestFormat2? Type28 { get; set; }
+        public global::Tavily.CreateCrawlRequestFormat? Type28 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Request4? Type29 { get; set; }
+        public global::Tavily.CreateMapRequest? Type29 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Request5? Type30 { get; set; }
+        public global::Tavily.CreateResearchRequest? Type30 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.RequestModel? Type31 { get; set; }
+        public global::Tavily.CreateResearchRequestModel? Type31 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.RequestOutputSchema? Type32 { get; set; }
+        public global::Tavily.CreateResearchRequestOutputSchema? Type32 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Tavily.RequestOutputSchemaProperties2>? Type33 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Tavily.CreateResearchRequestOutputSchemaProperties2>? Type33 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.RequestOutputSchemaProperties2? Type34 { get; set; }
+        public global::Tavily.CreateResearchRequestOutputSchemaProperties2? Type34 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.RequestOutputSchemaPropertiesType? Type35 { get; set; }
+        public global::Tavily.CreateResearchRequestOutputSchemaPropertiesType? Type35 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.RequestCitationFormat? Type36 { get; set; }
+        public global::Tavily.CreateResearchRequestCitationFormat? Type36 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response? Type37 { get; set; }
+        public global::Tavily.CreateSearchResponse? Type37 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Tavily.ResponseImage>? Type38 { get; set; }
+        public global::System.Collections.Generic.IList<global::Tavily.CreateSearchResponseImage>? Type38 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseImage? Type39 { get; set; }
+        public global::Tavily.CreateSearchResponseImage? Type39 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Tavily.ResponseResult>? Type40 { get; set; }
+        public global::System.Collections.Generic.IList<global::Tavily.CreateSearchResponseResult>? Type40 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseResult? Type41 { get; set; }
+        public global::Tavily.CreateSearchResponseResult? Type41 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response2? Type42 { get; set; }
+        public global::Tavily.CreateSearchResponse2? Type42 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail? Type43 { get; set; }
+        public global::Tavily.CreateSearchResponseDetail? Type43 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response3? Type44 { get; set; }
+        public global::Tavily.CreateSearchResponse3? Type44 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail2? Type45 { get; set; }
+        public global::Tavily.CreateSearchResponseDetail2? Type45 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response4? Type46 { get; set; }
+        public global::Tavily.CreateSearchResponse4? Type46 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail3? Type47 { get; set; }
+        public global::Tavily.CreateSearchResponseDetail3? Type47 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response5? Type48 { get; set; }
+        public global::Tavily.CreateSearchResponse5? Type48 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail4? Type49 { get; set; }
+        public global::Tavily.CreateSearchResponseDetail4? Type49 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response6? Type50 { get; set; }
+        public global::Tavily.CreateSearchResponse6? Type50 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail5? Type51 { get; set; }
+        public global::Tavily.CreateSearchResponseDetail5? Type51 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response7? Type52 { get; set; }
+        public global::Tavily.CreateSearchResponse7? Type52 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail6? Type53 { get; set; }
+        public global::Tavily.CreateSearchResponseDetail6? Type53 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response8? Type54 { get; set; }
+        public global::Tavily.CreateExtractResponse? Type54 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Tavily.ResponseResult2>? Type55 { get; set; }
+        public global::System.Collections.Generic.IList<global::Tavily.CreateExtractResponseResult>? Type55 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseResult2? Type56 { get; set; }
+        public global::Tavily.CreateExtractResponseResult? Type56 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Tavily.ResponseFailedResult>? Type57 { get; set; }
+        public global::System.Collections.Generic.IList<global::Tavily.CreateExtractResponseFailedResult>? Type57 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseFailedResult? Type58 { get; set; }
+        public global::Tavily.CreateExtractResponseFailedResult? Type58 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response9? Type59 { get; set; }
+        public global::Tavily.CreateExtractResponse2? Type59 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail7? Type60 { get; set; }
+        public global::Tavily.CreateExtractResponseDetail? Type60 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response10? Type61 { get; set; }
+        public global::Tavily.CreateExtractResponse3? Type61 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail8? Type62 { get; set; }
+        public global::Tavily.CreateExtractResponseDetail2? Type62 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response11? Type63 { get; set; }
+        public global::Tavily.CreateExtractResponse4? Type63 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail9? Type64 { get; set; }
+        public global::Tavily.CreateExtractResponseDetail3? Type64 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response12? Type65 { get; set; }
+        public global::Tavily.CreateExtractResponse5? Type65 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail10? Type66 { get; set; }
+        public global::Tavily.CreateExtractResponseDetail4? Type66 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response13? Type67 { get; set; }
+        public global::Tavily.CreateExtractResponse6? Type67 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail11? Type68 { get; set; }
+        public global::Tavily.CreateExtractResponseDetail5? Type68 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response14? Type69 { get; set; }
+        public global::Tavily.CreateExtractResponse7? Type69 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail12? Type70 { get; set; }
+        public global::Tavily.CreateExtractResponseDetail6? Type70 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response15? Type71 { get; set; }
+        public global::Tavily.CreateCrawlResponse? Type71 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Tavily.ResponseResult3>? Type72 { get; set; }
+        public global::System.Collections.Generic.IList<global::Tavily.CreateCrawlResponseResult>? Type72 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseResult3? Type73 { get; set; }
+        public global::Tavily.CreateCrawlResponseResult? Type73 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response16? Type74 { get; set; }
+        public global::Tavily.CreateCrawlResponse2? Type74 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail13? Type75 { get; set; }
+        public global::Tavily.CreateCrawlResponseDetail? Type75 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response17? Type76 { get; set; }
+        public global::Tavily.CreateCrawlResponse3? Type76 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail14? Type77 { get; set; }
+        public global::Tavily.CreateCrawlResponseDetail2? Type77 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response18? Type78 { get; set; }
+        public global::Tavily.CreateCrawlResponse4? Type78 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail15? Type79 { get; set; }
+        public global::Tavily.CreateCrawlResponseDetail3? Type79 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response19? Type80 { get; set; }
+        public global::Tavily.CreateCrawlResponse5? Type80 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail16? Type81 { get; set; }
+        public global::Tavily.CreateCrawlResponseDetail4? Type81 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response20? Type82 { get; set; }
+        public global::Tavily.CreateCrawlResponse6? Type82 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail17? Type83 { get; set; }
+        public global::Tavily.CreateCrawlResponseDetail5? Type83 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response21? Type84 { get; set; }
+        public global::Tavily.CreateCrawlResponse7? Type84 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail18? Type85 { get; set; }
+        public global::Tavily.CreateCrawlResponseDetail6? Type85 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response22? Type86 { get; set; }
+        public global::Tavily.CreateCrawlResponse8? Type86 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail19? Type87 { get; set; }
+        public global::Tavily.CreateCrawlResponseDetail7? Type87 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response23? Type88 { get; set; }
+        public global::Tavily.CreateMapResponse? Type88 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response24? Type89 { get; set; }
+        public global::Tavily.CreateMapResponse2? Type89 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail20? Type90 { get; set; }
+        public global::Tavily.CreateMapResponseDetail? Type90 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response25? Type91 { get; set; }
+        public global::Tavily.CreateMapResponse3? Type91 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail21? Type92 { get; set; }
+        public global::Tavily.CreateMapResponseDetail2? Type92 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response26? Type93 { get; set; }
+        public global::Tavily.CreateMapResponse4? Type93 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail22? Type94 { get; set; }
+        public global::Tavily.CreateMapResponseDetail3? Type94 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response27? Type95 { get; set; }
+        public global::Tavily.CreateMapResponse5? Type95 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail23? Type96 { get; set; }
+        public global::Tavily.CreateMapResponseDetail4? Type96 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response28? Type97 { get; set; }
+        public global::Tavily.CreateMapResponse6? Type97 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail24? Type98 { get; set; }
+        public global::Tavily.CreateMapResponseDetail5? Type98 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response29? Type99 { get; set; }
+        public global::Tavily.CreateMapResponse7? Type99 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail25? Type100 { get; set; }
+        public global::Tavily.CreateMapResponseDetail6? Type100 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response30? Type101 { get; set; }
+        public global::Tavily.CreateMapResponse8? Type101 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail26? Type102 { get; set; }
+        public global::Tavily.CreateMapResponseDetail7? Type102 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response31? Type103 { get; set; }
+        public global::Tavily.CreateResearchResponse? Type103 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response32? Type104 { get; set; }
+        public global::Tavily.CreateResearchResponse2? Type104 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail27? Type105 { get; set; }
+        public global::Tavily.CreateResearchResponseDetail? Type105 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response33? Type106 { get; set; }
+        public global::Tavily.CreateResearchResponse3? Type106 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail28? Type107 { get; set; }
+        public global::Tavily.CreateResearchResponseDetail2? Type107 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response34? Type108 { get; set; }
+        public global::Tavily.CreateResearchResponse4? Type108 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail29? Type109 { get; set; }
+        public global::Tavily.CreateResearchResponseDetail3? Type109 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response35? Type110 { get; set; }
+        public global::Tavily.CreateResearchResponse5? Type110 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail30? Type111 { get; set; }
+        public global::Tavily.CreateResearchResponseDetail4? Type111 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response36? Type112 { get; set; }
+        public global::Tavily.CreateResearchResponse6? Type112 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail31? Type113 { get; set; }
+        public global::Tavily.CreateResearchResponseDetail5? Type113 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response37? Type114 { get; set; }
+        public global::Tavily.CreateResearchResponse7? Type114 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail32? Type115 { get; set; }
+        public global::Tavily.CreateResearchResponseDetail6? Type115 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response38? Type116 { get; set; }
+        public global::Tavily.GetResearchResponse? Type116 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDiscriminator? Type117 { get; set; }
+        public global::Tavily.GetResearchResponseDiscriminator? Type117 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDiscriminatorStatus? Type118 { get; set; }
+        public global::Tavily.GetResearchResponseDiscriminatorStatus? Type118 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response39? Type119 { get; set; }
+        public global::Tavily.GetResearchResponse2? Type119 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseStatus? Type120 { get; set; }
+        public global::Tavily.GetResearchResponseStatus? Type120 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response40? Type121 { get; set; }
+        public global::Tavily.GetResearchResponse3? Type121 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail33? Type122 { get; set; }
+        public global::Tavily.GetResearchResponseDetail? Type122 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response41? Type123 { get; set; }
+        public global::Tavily.GetResearchResponse4? Type123 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail34? Type124 { get; set; }
+        public global::Tavily.GetResearchResponseDetail2? Type124 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response42? Type125 { get; set; }
+        public global::Tavily.GetResearchResponse5? Type125 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail35? Type126 { get; set; }
+        public global::Tavily.GetResearchResponseDetail3? Type126 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response43? Type127 { get; set; }
+        public global::Tavily.GetUsageResponse? Type127 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseKey? Type128 { get; set; }
+        public global::Tavily.GetUsageResponseKey? Type128 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseAccount? Type129 { get; set; }
+        public global::Tavily.GetUsageResponseAccount? Type129 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response44? Type130 { get; set; }
+        public global::Tavily.GetUsageResponse2? Type130 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail36? Type131 { get; set; }
+        public global::Tavily.GetUsageResponseDetail? Type131 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.Response45? Type132 { get; set; }
+        public global::Tavily.GetUsageResponse3? Type132 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.ResponseDetail37? Type133 { get; set; }
+        public global::Tavily.GetUsageResponseDetail2? Type133 { get; set; }
 
         /// <summary>
         /// 
@@ -577,22 +577,22 @@ namespace Tavily
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Tavily.ResponseImage>? ListType3 { get; set; }
+        public global::System.Collections.Generic.List<global::Tavily.CreateSearchResponseImage>? ListType3 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Tavily.ResponseResult>? ListType4 { get; set; }
+        public global::System.Collections.Generic.List<global::Tavily.CreateSearchResponseResult>? ListType4 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Tavily.ResponseResult2>? ListType5 { get; set; }
+        public global::System.Collections.Generic.List<global::Tavily.CreateExtractResponseResult>? ListType5 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Tavily.ResponseFailedResult>? ListType6 { get; set; }
+        public global::System.Collections.Generic.List<global::Tavily.CreateExtractResponseFailedResult>? ListType6 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Tavily.ResponseResult3>? ListType7 { get; set; }
+        public global::System.Collections.Generic.List<global::Tavily.CreateCrawlResponseResult>? ListType7 { get; set; }
     }
 }

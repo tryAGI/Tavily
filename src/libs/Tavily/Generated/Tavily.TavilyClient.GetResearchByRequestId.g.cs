@@ -34,7 +34,7 @@ namespace Tavily
         /// response = tavily_client.get_research("123e4567-e89b-12d3-a456-426614174111")<br/>
         /// print(response)
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Tavily.Response38> GetResearchByRequestIdAsync(
+        public async global::System.Threading.Tasks.Task<global::Tavily.GetResearchResponse> GetResearchByRequestIdAsync(
             string requestId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -96,19 +96,19 @@ namespace Tavily
             {
                 string? __content_401 = null;
                 global::System.Exception? __exception_401 = null;
-                global::Tavily.Response40? __value_401 = null;
+                global::Tavily.GetResearchResponse3? __value_401 = null;
                 try
                 {
                     if (ReadResponseAsString)
                     {
                         __content_401 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_401 = global::Tavily.Response40.FromJson(__content_401, JsonSerializerContext);
+                        __value_401 = global::Tavily.GetResearchResponse3.FromJson(__content_401, JsonSerializerContext);
                     }
                     else
                     {
                         __content_401 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-                        __value_401 = global::Tavily.Response40.FromJson(__content_401, JsonSerializerContext);
+                        __value_401 = global::Tavily.GetResearchResponse3.FromJson(__content_401, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -116,7 +116,7 @@ namespace Tavily
                     __exception_401 = __ex;
                 }
 
-                throw new global::Tavily.ApiException<global::Tavily.Response40>(
+                throw new global::Tavily.ApiException<global::Tavily.GetResearchResponse3>(
                     message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
                     innerException: __exception_401,
                     statusCode: __response.StatusCode)
@@ -134,19 +134,19 @@ namespace Tavily
             {
                 string? __content_404 = null;
                 global::System.Exception? __exception_404 = null;
-                global::Tavily.Response41? __value_404 = null;
+                global::Tavily.GetResearchResponse4? __value_404 = null;
                 try
                 {
                     if (ReadResponseAsString)
                     {
                         __content_404 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_404 = global::Tavily.Response41.FromJson(__content_404, JsonSerializerContext);
+                        __value_404 = global::Tavily.GetResearchResponse4.FromJson(__content_404, JsonSerializerContext);
                     }
                     else
                     {
                         __content_404 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-                        __value_404 = global::Tavily.Response41.FromJson(__content_404, JsonSerializerContext);
+                        __value_404 = global::Tavily.GetResearchResponse4.FromJson(__content_404, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -154,7 +154,7 @@ namespace Tavily
                     __exception_404 = __ex;
                 }
 
-                throw new global::Tavily.ApiException<global::Tavily.Response41>(
+                throw new global::Tavily.ApiException<global::Tavily.GetResearchResponse4>(
                     message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
                     innerException: __exception_404,
                     statusCode: __response.StatusCode)
@@ -172,19 +172,19 @@ namespace Tavily
             {
                 string? __content_500 = null;
                 global::System.Exception? __exception_500 = null;
-                global::Tavily.Response42? __value_500 = null;
+                global::Tavily.GetResearchResponse5? __value_500 = null;
                 try
                 {
                     if (ReadResponseAsString)
                     {
                         __content_500 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_500 = global::Tavily.Response42.FromJson(__content_500, JsonSerializerContext);
+                        __value_500 = global::Tavily.GetResearchResponse5.FromJson(__content_500, JsonSerializerContext);
                     }
                     else
                     {
                         __content_500 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-                        __value_500 = global::Tavily.Response42.FromJson(__content_500, JsonSerializerContext);
+                        __value_500 = global::Tavily.GetResearchResponse5.FromJson(__content_500, JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)
@@ -192,7 +192,7 @@ namespace Tavily
                     __exception_500 = __ex;
                 }
 
-                throw new global::Tavily.ApiException<global::Tavily.Response42>(
+                throw new global::Tavily.ApiException<global::Tavily.GetResearchResponse5>(
                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
                     innerException: __exception_500,
                     statusCode: __response.StatusCode)
@@ -228,7 +228,7 @@ namespace Tavily
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::Tavily.Response38.FromJson(__content, JsonSerializerContext) ??
+                        global::Tavily.GetResearchResponse.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -259,7 +259,7 @@ namespace Tavily
                     ).ConfigureAwait(false);
 
                     return
-                        await global::Tavily.Response38.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        await global::Tavily.GetResearchResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)

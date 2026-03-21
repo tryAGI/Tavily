@@ -17,9 +17,9 @@ namespace Tavily
         /// response = tavily_client.map("https://docs.tavily.com")<br/>
         /// print(response)
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Tavily.Response23> CreateMapAsync(
+        global::System.Threading.Tasks.Task<global::Tavily.CreateMapResponse> CreateMapAsync(
 
-            global::Tavily.Request4 request,
+            global::Tavily.CreateMapRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Initiate a web mapping from a base URL<br/>
@@ -76,7 +76,7 @@ namespace Tavily
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task<global::Tavily.Response23> CreateMapAsync(
+        global::System.Threading.Tasks.Task<global::Tavily.CreateMapResponse> CreateMapAsync(
             string url,
             string? instructions = default,
             int? maxDepth = default,

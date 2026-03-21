@@ -17,7 +17,7 @@ namespace Tavily
         /// response = tavily_client.get_research("123e4567-e89b-12d3-a456-426614174111")<br/>
         /// print(response)
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Tavily.Response38> GetResearchByRequestIdAsync(
+        global::System.Threading.Tasks.Task<global::Tavily.GetResearchResponse> GetResearchByRequestIdAsync(
             string requestId,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

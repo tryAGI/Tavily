@@ -12,15 +12,15 @@ namespace Tavily
         /// <summary>
         /// 
         /// </summary>
+        Finance,
+        /// <summary>
+        /// 
+        /// </summary>
         General,
         /// <summary>
         /// 
         /// </summary>
         News,
-        /// <summary>
-        /// 
-        /// </summary>
-        Finance,
     }
 
     /// <summary>
@@ -35,9 +35,9 @@ namespace Tavily
         {
             return value switch
             {
+                CreateSearchRequestTopic.Finance => "finance",
                 CreateSearchRequestTopic.General => "general",
                 CreateSearchRequestTopic.News => "news",
-                CreateSearchRequestTopic.Finance => "finance",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -48,9 +48,9 @@ namespace Tavily
         {
             return value switch
             {
+                "finance" => CreateSearchRequestTopic.Finance,
                 "general" => CreateSearchRequestTopic.General,
                 "news" => CreateSearchRequestTopic.News,
-                "finance" => CreateSearchRequestTopic.Finance,
                 _ => null,
             };
         }

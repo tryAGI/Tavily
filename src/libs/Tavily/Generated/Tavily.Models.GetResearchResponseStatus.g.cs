@@ -11,11 +11,11 @@ namespace Tavily
         /// <summary>
         /// 
         /// </summary>
-        Pending,
+        InProgress,
         /// <summary>
         /// 
         /// </summary>
-        InProgress,
+        Pending,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Tavily
         {
             return value switch
             {
-                GetResearchResponseStatus.Pending => "pending",
                 GetResearchResponseStatus.InProgress => "in_progress",
+                GetResearchResponseStatus.Pending => "pending",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Tavily
         {
             return value switch
             {
-                "pending" => GetResearchResponseStatus.Pending,
                 "in_progress" => GetResearchResponseStatus.InProgress,
+                "pending" => GetResearchResponseStatus.Pending,
                 _ => null,
             };
         }

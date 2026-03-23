@@ -11,11 +11,11 @@ namespace Tavily
         /// <summary>
         /// 
         /// </summary>
-        Basic,
+        Advanced,
         /// <summary>
         /// 
         /// </summary>
-        Advanced,
+        Basic,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Tavily
         {
             return value switch
             {
-                CreateSearchRequestIncludeAnswer.Basic => "basic",
                 CreateSearchRequestIncludeAnswer.Advanced => "advanced",
+                CreateSearchRequestIncludeAnswer.Basic => "basic",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Tavily
         {
             return value switch
             {
-                "basic" => CreateSearchRequestIncludeAnswer.Basic,
                 "advanced" => CreateSearchRequestIncludeAnswer.Advanced,
+                "basic" => CreateSearchRequestIncludeAnswer.Basic,
                 _ => null,
             };
         }

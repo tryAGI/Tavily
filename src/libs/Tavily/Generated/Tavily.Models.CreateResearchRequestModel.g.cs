@@ -12,15 +12,15 @@ namespace Tavily
         /// <summary>
         /// 
         /// </summary>
+        Auto,
+        /// <summary>
+        /// 
+        /// </summary>
         Mini,
         /// <summary>
         /// 
         /// </summary>
         Pro,
-        /// <summary>
-        /// 
-        /// </summary>
-        Auto,
     }
 
     /// <summary>
@@ -35,9 +35,9 @@ namespace Tavily
         {
             return value switch
             {
+                CreateResearchRequestModel.Auto => "auto",
                 CreateResearchRequestModel.Mini => "mini",
                 CreateResearchRequestModel.Pro => "pro",
-                CreateResearchRequestModel.Auto => "auto",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -48,9 +48,9 @@ namespace Tavily
         {
             return value switch
             {
+                "auto" => CreateResearchRequestModel.Auto,
                 "mini" => CreateResearchRequestModel.Mini,
                 "pro" => CreateResearchRequestModel.Pro,
-                "auto" => CreateResearchRequestModel.Auto,
                 _ => null,
             };
         }

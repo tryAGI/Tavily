@@ -11,11 +11,7 @@ namespace Tavily
         /// <summary>
         /// object, string, integer, number, or array.
         /// </summary>
-        Object,
-        /// <summary>
-        /// object, string, integer, number, or array.
-        /// </summary>
-        String,
+        Array,
         /// <summary>
         /// object, string, integer, number, or array.
         /// </summary>
@@ -27,7 +23,11 @@ namespace Tavily
         /// <summary>
         /// object, string, integer, number, or array.
         /// </summary>
-        Array,
+        Object,
+        /// <summary>
+        /// object, string, integer, number, or array.
+        /// </summary>
+        String,
     }
 
     /// <summary>
@@ -42,11 +42,11 @@ namespace Tavily
         {
             return value switch
             {
-                CreateResearchRequestOutputSchemaPropertiesType.Object => "object",
-                CreateResearchRequestOutputSchemaPropertiesType.String => "string",
+                CreateResearchRequestOutputSchemaPropertiesType.Array => "array",
                 CreateResearchRequestOutputSchemaPropertiesType.Integer => "integer",
                 CreateResearchRequestOutputSchemaPropertiesType.Number => "number",
-                CreateResearchRequestOutputSchemaPropertiesType.Array => "array",
+                CreateResearchRequestOutputSchemaPropertiesType.Object => "object",
+                CreateResearchRequestOutputSchemaPropertiesType.String => "string",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -57,11 +57,11 @@ namespace Tavily
         {
             return value switch
             {
-                "object" => CreateResearchRequestOutputSchemaPropertiesType.Object,
-                "string" => CreateResearchRequestOutputSchemaPropertiesType.String,
+                "array" => CreateResearchRequestOutputSchemaPropertiesType.Array,
                 "integer" => CreateResearchRequestOutputSchemaPropertiesType.Integer,
                 "number" => CreateResearchRequestOutputSchemaPropertiesType.Number,
-                "array" => CreateResearchRequestOutputSchemaPropertiesType.Array,
+                "object" => CreateResearchRequestOutputSchemaPropertiesType.Object,
+                "string" => CreateResearchRequestOutputSchemaPropertiesType.String,
                 _ => null,
             };
         }

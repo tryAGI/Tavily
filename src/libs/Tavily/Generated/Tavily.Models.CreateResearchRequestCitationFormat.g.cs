@@ -12,7 +12,11 @@ namespace Tavily
         /// <summary>
         /// 
         /// </summary>
-        Numbered,
+        Apa,
+        /// <summary>
+        /// 
+        /// </summary>
+        Chicago,
         /// <summary>
         /// 
         /// </summary>
@@ -20,11 +24,7 @@ namespace Tavily
         /// <summary>
         /// 
         /// </summary>
-        Apa,
-        /// <summary>
-        /// 
-        /// </summary>
-        Chicago,
+        Numbered,
     }
 
     /// <summary>
@@ -39,10 +39,10 @@ namespace Tavily
         {
             return value switch
             {
-                CreateResearchRequestCitationFormat.Numbered => "numbered",
-                CreateResearchRequestCitationFormat.Mla => "mla",
                 CreateResearchRequestCitationFormat.Apa => "apa",
                 CreateResearchRequestCitationFormat.Chicago => "chicago",
+                CreateResearchRequestCitationFormat.Mla => "mla",
+                CreateResearchRequestCitationFormat.Numbered => "numbered",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -53,10 +53,10 @@ namespace Tavily
         {
             return value switch
             {
-                "numbered" => CreateResearchRequestCitationFormat.Numbered,
-                "mla" => CreateResearchRequestCitationFormat.Mla,
                 "apa" => CreateResearchRequestCitationFormat.Apa,
                 "chicago" => CreateResearchRequestCitationFormat.Chicago,
+                "mla" => CreateResearchRequestCitationFormat.Mla,
+                "numbered" => CreateResearchRequestCitationFormat.Numbered,
                 _ => null,
             };
         }

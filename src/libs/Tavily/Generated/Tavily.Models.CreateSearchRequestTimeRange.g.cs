@@ -12,27 +12,11 @@ namespace Tavily
         /// <summary>
         /// 
         /// </summary>
-        Day,
-        /// <summary>
-        /// 
-        /// </summary>
-        Week,
-        /// <summary>
-        /// 
-        /// </summary>
-        Month,
-        /// <summary>
-        /// 
-        /// </summary>
-        Year,
-        /// <summary>
-        /// 
-        /// </summary>
         D,
         /// <summary>
         /// 
         /// </summary>
-        W,
+        Day,
         /// <summary>
         /// 
         /// </summary>
@@ -40,7 +24,23 @@ namespace Tavily
         /// <summary>
         /// 
         /// </summary>
+        Month,
+        /// <summary>
+        /// 
+        /// </summary>
+        W,
+        /// <summary>
+        /// 
+        /// </summary>
+        Week,
+        /// <summary>
+        /// 
+        /// </summary>
         Y,
+        /// <summary>
+        /// 
+        /// </summary>
+        Year,
     }
 
     /// <summary>
@@ -55,14 +55,14 @@ namespace Tavily
         {
             return value switch
             {
-                CreateSearchRequestTimeRange.Day => "day",
-                CreateSearchRequestTimeRange.Week => "week",
-                CreateSearchRequestTimeRange.Month => "month",
-                CreateSearchRequestTimeRange.Year => "year",
                 CreateSearchRequestTimeRange.D => "d",
-                CreateSearchRequestTimeRange.W => "w",
+                CreateSearchRequestTimeRange.Day => "day",
                 CreateSearchRequestTimeRange.M => "m",
+                CreateSearchRequestTimeRange.Month => "month",
+                CreateSearchRequestTimeRange.W => "w",
+                CreateSearchRequestTimeRange.Week => "week",
                 CreateSearchRequestTimeRange.Y => "y",
+                CreateSearchRequestTimeRange.Year => "year",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -73,14 +73,14 @@ namespace Tavily
         {
             return value switch
             {
-                "day" => CreateSearchRequestTimeRange.Day,
-                "week" => CreateSearchRequestTimeRange.Week,
-                "month" => CreateSearchRequestTimeRange.Month,
-                "year" => CreateSearchRequestTimeRange.Year,
                 "d" => CreateSearchRequestTimeRange.D,
-                "w" => CreateSearchRequestTimeRange.W,
+                "day" => CreateSearchRequestTimeRange.Day,
                 "m" => CreateSearchRequestTimeRange.M,
+                "month" => CreateSearchRequestTimeRange.Month,
+                "w" => CreateSearchRequestTimeRange.W,
+                "week" => CreateSearchRequestTimeRange.Week,
                 "y" => CreateSearchRequestTimeRange.Y,
+                "year" => CreateSearchRequestTimeRange.Year,
                 _ => null,
             };
         }

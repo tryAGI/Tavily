@@ -73,15 +73,15 @@ namespace Tavily
 
             typeof(global::Tavily.JsonConverters.CreateResearchRequestCitationFormatNullableJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.GetResearchResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Tavily.JsonConverters.GetResearchResponseDiscriminatorStatusNullableJsonConverter),
-
             typeof(global::Tavily.JsonConverters.GetResearchResponseStatusJsonConverter),
 
             typeof(global::Tavily.JsonConverters.GetResearchResponseStatusNullableJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.GetResearchResponseJsonConverter),
+            typeof(global::Tavily.JsonConverters.GetResearchResponseDiscriminatorStatusJsonConverter),
+
+            typeof(global::Tavily.JsonConverters.GetResearchResponseDiscriminatorStatusNullableJsonConverter),
+
+            typeof(global::Tavily.JsonConverters.GetResearchResponse2JsonConverter),
 
             typeof(global::Tavily.JsonConverters.OneOfJsonConverter<string, object>),
 
@@ -136,6 +136,8 @@ namespace Tavily
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponseImage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.CreateSearchResponseResult>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponseResult))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.CreateSearchResponseResultImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponseResultImage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponse2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponseDetail))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponse3))]
@@ -211,10 +213,10 @@ namespace Tavily
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchResponse7))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchResponseDetail6))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponseStatus))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponse2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponseDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponseDiscriminatorStatus))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponse2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponseStatus))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponse3))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponseDetail))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponse4))]
@@ -233,6 +235,7 @@ namespace Tavily
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.OneOf<string, global::System.Collections.Generic.List<string>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateSearchResponseImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateSearchResponseResult>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateSearchResponseResultImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateExtractResponseResult>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateExtractResponseFailedResult>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateCrawlResponseResult>))]

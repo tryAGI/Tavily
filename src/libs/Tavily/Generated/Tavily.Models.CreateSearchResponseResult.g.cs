@@ -57,6 +57,12 @@ namespace Tavily
         public string? Favicon { get; set; }
 
         /// <summary>
+        /// A list of images extracted from this search result. Only included when `include_images` is `true`. If `include_image_descriptions` is `true`, each item will have `url` and `description`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("images")]
+        public global::System.Collections.Generic.IList<global::Tavily.CreateSearchResponseResultImage>? Images { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -89,6 +95,9 @@ namespace Tavily
         /// The favicon URL for the result.<br/>
         /// Example: https://britannica.com/favicon.png
         /// </param>
+        /// <param name="images">
+        /// A list of images extracted from this search result. Only included when `include_images` is `true`. If `include_image_descriptions` is `true`, each item will have `url` and `description`.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -98,7 +107,8 @@ namespace Tavily
             string? content,
             float? score,
             string? rawContent,
-            string? favicon)
+            string? favicon,
+            global::System.Collections.Generic.IList<global::Tavily.CreateSearchResponseResultImage>? images)
         {
             this.Title = title;
             this.Url = url;
@@ -106,6 +116,7 @@ namespace Tavily
             this.Score = score;
             this.RawContent = rawContent;
             this.Favicon = favicon;
+            this.Images = images;
         }
 
         /// <summary>

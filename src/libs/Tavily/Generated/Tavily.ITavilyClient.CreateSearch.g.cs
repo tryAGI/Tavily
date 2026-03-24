@@ -77,7 +77,7 @@ namespace Tavily
         /// Default Value: false
         /// </param>
         /// <param name="includeImages">
-        /// Also perform an image search and include the results in the response.<br/>
+        /// Include images in the response. Returns both a top-level `images` list of query-related images and an `images` array inside each result object with images extracted from that specific source.<br/>
         /// Default Value: false
         /// </param>
         /// <param name="includeImageDescriptions">

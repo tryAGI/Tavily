@@ -142,7 +142,7 @@
                   },
                   "include_images": {
                     "type": "boolean",
-                    "description": "Also perform an image search and include the results in the response.",
+                    "description": "Include images in the response. Returns both a top-level `images` list of query-related images and an `images` array inside each result object with images extracted from that specific source.",
                     "default": false
                   },
                   "include_image_descriptions": {
@@ -392,7 +392,7 @@
                     },
                     "images": {
                       "type": "array",
-                      "description": "List of query-related images. If `include_image_descriptions` is true, each item will have `url` and `description`.",
+                      "description": "A list of query-related images from image search. If `include_image_descriptions` is true, each item will have `url` and `description`. Note: per-result images are also returned inside each result object's `images` field.",
                       "example": [],
                       "items": {
                         "type": "object",
@@ -442,6 +442,21 @@
                             "type": "string",
                             "description": "The favicon URL for the result.",
                             "example": "https://britannica.com/favicon.png"
+                          },
+                          "images": {
+                            "type": "array",
+                            "description": "A list of images extracted from this search result. Only included when `include_images` is `true`. If `include_image_descriptions` is `true`, each item will have `url` and `description`.",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "url": {
+                                  "type": "string"
+                                },
+                                "description": {
+                                  "type": "string"
+                                }
+                              }
+                            }
                           }
                         }
                       }
@@ -534,31 +549,6 @@
               }
             }
           },
-          "429": {
-            "description": "Too many requests - Rate limit exceeded",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                },
-                "example": {
-                  "detail": {
-                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
-                  }
-                }
-              }
-            }
-          },
           "432": {
             "description": "Key limit or Plan Limit exceeded",
             "content": {
@@ -604,6 +594,31 @@
                 "example": {
                   "detail": {
                     "error": "This request exceeds the pay-as-you-go limit. You can increase your limit on the Tavily dashboard."
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests - Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "detail": {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "detail": {
+                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
                   }
                 }
               }
@@ -730,8 +745,8 @@
                     "type": "number",
                     "format": "float",
                     "description": "Maximum time in seconds to wait for the URL extraction before timing out. Must be between 1.0 and 60.0 seconds. If not specified, default timeouts are applied based on extract_depth: 10 seconds for basic extraction and 30 seconds for advanced extraction.",
-                    "minimum": 1,
-                    "maximum": 60,
+                    "minimum": 1.0,
+                    "maximum": 60.0,
                     "default": "None"
                   },
                   "include_usage": {
@@ -828,8 +843,8 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request",
+          "429": {
+            "description": "Too many requests - Rate limit exceeded",
             "content": {
               "application/json": {
                 "schema": {
@@ -847,7 +862,7 @@
                 },
                 "example": {
                   "detail": {
-                    "error": "<400 Bad Request, (e.g Max 20 URLs are allowed.)>"
+                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
                   }
                 }
               }
@@ -878,8 +893,8 @@
               }
             }
           },
-          "429": {
-            "description": "Too many requests - Rate limit exceeded",
+          "400": {
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -897,7 +912,7 @@
                 },
                 "example": {
                   "detail": {
-                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
+                    "error": "<400 Bad Request, (e.g Max 20 URLs are allowed.)>"
                   }
                 }
               }
@@ -2124,30 +2139,6 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Research task is completed or failed.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/schemas/ResearchTaskCompleted"
-                    },
-                    {
-                      "$ref": "#/components/schemas/ResearchTaskFailed"
-                    }
-                  ],
-                  "discriminator": {
-                    "propertyName": "status",
-                    "mapping": {
-                      "completed": "#/components/schemas/ResearchTaskCompleted",
-                      "failed": "#/components/schemas/ResearchTaskFailed"
-                    }
-                  }
-                }
-              }
-            }
-          },
           "202": {
             "description": "Research task is not yet completed (pending or in_progress).",
             "content": {
@@ -2184,6 +2175,30 @@
                   "request_id": "123e4567-e89b-12d3-a456-426614174111",
                   "status": "in_progress",
                   "response_time": 1.23
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Research task is completed or failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ResearchTaskCompleted"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ResearchTaskFailed"
+                    }
+                  ],
+                  "discriminator": {
+                    "propertyName": "status",
+                    "mapping": {
+                      "completed": "#/components/schemas/ResearchTaskCompleted",
+                      "failed": "#/components/schemas/ResearchTaskFailed"
+                    }
+                  }
                 }
               }
             }

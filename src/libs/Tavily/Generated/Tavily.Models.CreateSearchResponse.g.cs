@@ -27,7 +27,7 @@ namespace Tavily
         public required string Answer { get; set; }
 
         /// <summary>
-        /// List of query-related images. If `include_image_descriptions` is true, each item will have `url` and `description`.<br/>
+        /// A list of query-related images from image search. If `include_image_descriptions` is true, each item will have `url` and `description`. Note: per-result images are also returned inside each result object's `images` field.<br/>
         /// Example: []
         /// </summary>
         /// <example>[]</example>
@@ -93,7 +93,7 @@ namespace Tavily
         /// Example: Lionel Messi, born in 1987, is an Argentine footballer widely regarded as one of the greatest players of his generation. He spent the majority of his career playing for FC Barcelona, where he won numerous domestic league titles and UEFA Champions League titles. Messi is known for his exceptional dribbling skills, vision, and goal-scoring ability. He has won multiple FIFA Ballon d'Or awards, numerous La Liga titles with Barcelona, and holds the record for most goals scored in a calendar year. In 2014, he led Argentina to the World Cup final, and in 2015, he helped Barcelona capture another treble. Despite turning 36 in June, Messi remains highly influential in the sport.
         /// </param>
         /// <param name="images">
-        /// List of query-related images. If `include_image_descriptions` is true, each item will have `url` and `description`.<br/>
+        /// A list of query-related images from image search. If `include_image_descriptions` is true, each item will have `url` and `description`. Note: per-result images are also returned inside each result object's `images` field.<br/>
         /// Example: []
         /// </param>
         /// <param name="results">

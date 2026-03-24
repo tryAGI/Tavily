@@ -1,4 +1,3 @@
-#pragma warning disable CS0618 // Type or member is obsolete
 
 #nullable enable
 
@@ -7,223 +6,72 @@ namespace Tavily
     /// <summary>
     /// 
     /// </summary>
-    public readonly partial struct GetResearchResponse : global::System.IEquatable<GetResearchResponse>
+    public sealed partial class GetResearchResponse
     {
         /// <summary>
-        /// 
+        /// The unique identifier of the research task.<br/>
+        /// Example: 123e4567-e89b-12d3-a456-426614174111
         /// </summary>
-        public global::Tavily.GetResearchResponseDiscriminatorStatus? Status { get; }
+        /// <example>123e4567-e89b-12d3-a456-426614174111</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("request_id")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string RequestId { get; set; }
 
         /// <summary>
-        /// Example: {"request_id":"123e4567-e89b-12d3-a456-426614174111","created_at":"2025-01-15T10:30:00Z","status":"completed","content":"Research Report: Latest Developments in AI\n\n## Executive Summary\n\nArtificial Intelligence has seen significant advancements in recent months, with major breakthroughs in large language models, multimodal AI systems, and real-world applications...","sources":[{"title":"Latest AI Developments","url":"https://example.com/ai-news","favicon":"https://example.com/favicon.ico"},{"title":"AI Research Breakthroughs","url":"https://example.com/ai-research","favicon":"https://example.com/favicon.ico"}],"response_time":1.23}
+        /// Current status of the research task.
         /// </summary>
-#if NET6_0_OR_GREATER
-        public global::Tavily.ResearchTaskCompleted? Completed { get; init; }
-#else
-        public global::Tavily.ResearchTaskCompleted? Completed { get; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("status")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Tavily.JsonConverters.GetResearchResponseStatusJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Tavily.GetResearchResponseStatus Status { get; set; }
+
+        /// <summary>
+        /// Time in seconds it took to complete the request.<br/>
+        /// Example: 1.23F
+        /// </summary>
+        /// <example>1.23F</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("response_time")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required int ResponseTime { get; set; }
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetResearchResponse" /> class.
+        /// </summary>
+        /// <param name="requestId">
+        /// The unique identifier of the research task.<br/>
+        /// Example: 123e4567-e89b-12d3-a456-426614174111
+        /// </param>
+        /// <param name="status">
+        /// Current status of the research task.
+        /// </param>
+        /// <param name="responseTime">
+        /// Time in seconds it took to complete the request.<br/>
+        /// Example: 1.23F
+        /// </param>
+#if NET7_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-
-        /// <summary>
-        /// 
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Completed))]
-#endif
-        public bool IsCompleted => Completed != null;
-
-        /// <summary>
-        /// Example: {"request_id":"123e4567-e89b-12d3-a456-426614174111","status":"failed"}
-        /// </summary>
-#if NET6_0_OR_GREATER
-        public global::Tavily.ResearchTaskFailed? Failed { get; init; }
-#else
-        public global::Tavily.ResearchTaskFailed? Failed { get; }
-#endif
-
-        /// <summary>
-        /// 
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Failed))]
-#endif
-        public bool IsFailed => Failed != null;
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator GetResearchResponse(global::Tavily.ResearchTaskCompleted value) => new GetResearchResponse((global::Tavily.ResearchTaskCompleted?)value);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator global::Tavily.ResearchTaskCompleted?(GetResearchResponse @this) => @this.Completed;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public GetResearchResponse(global::Tavily.ResearchTaskCompleted? value)
-        {
-            Completed = value;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator GetResearchResponse(global::Tavily.ResearchTaskFailed value) => new GetResearchResponse((global::Tavily.ResearchTaskFailed?)value);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator global::Tavily.ResearchTaskFailed?(GetResearchResponse @this) => @this.Failed;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public GetResearchResponse(global::Tavily.ResearchTaskFailed? value)
-        {
-            Failed = value;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
         public GetResearchResponse(
-            global::Tavily.GetResearchResponseDiscriminatorStatus? status,
-            global::Tavily.ResearchTaskCompleted? completed,
-            global::Tavily.ResearchTaskFailed? failed
-            )
+            string requestId,
+            global::Tavily.GetResearchResponseStatus status,
+            int responseTime)
         {
-            Status = status;
-
-            Completed = completed;
-            Failed = failed;
+            this.RequestId = requestId ?? throw new global::System.ArgumentNullException(nameof(requestId));
+            this.Status = status;
+            this.ResponseTime = responseTime;
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="GetResearchResponse" /> class.
         /// </summary>
-        public object? Object =>
-            Failed as object ??
-            Completed as object 
-            ;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public override string? ToString() =>
-            Completed?.ToString() ??
-            Failed?.ToString() 
-            ;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool Validate()
+        public GetResearchResponse()
         {
-            return IsCompleted && !IsFailed || !IsCompleted && IsFailed;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public TResult? Match<TResult>(
-            global::System.Func<global::Tavily.ResearchTaskCompleted?, TResult>? completed = null,
-            global::System.Func<global::Tavily.ResearchTaskFailed?, TResult>? failed = null,
-            bool validate = true)
-        {
-            if (validate)
-            {
-                Validate();
-            }
-
-            if (IsCompleted && completed != null)
-            {
-                return completed(Completed!);
-            }
-            else if (IsFailed && failed != null)
-            {
-                return failed(Failed!);
-            }
-
-            return default(TResult);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void Match(
-            global::System.Action<global::Tavily.ResearchTaskCompleted?>? completed = null,
-            global::System.Action<global::Tavily.ResearchTaskFailed?>? failed = null,
-            bool validate = true)
-        {
-            if (validate)
-            {
-                Validate();
-            }
-
-            if (IsCompleted)
-            {
-                completed?.Invoke(Completed!);
-            }
-            else if (IsFailed)
-            {
-                failed?.Invoke(Failed!);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public override int GetHashCode()
-        {
-            var fields = new object?[]
-            {
-                Completed,
-                typeof(global::Tavily.ResearchTaskCompleted),
-                Failed,
-                typeof(global::Tavily.ResearchTaskFailed),
-            };
-            const int offset = unchecked((int)2166136261);
-            const int prime = 16777619;
-            static int HashCodeAggregator(int hashCode, object? value) => value == null
-                ? (hashCode ^ 0) * prime
-                : (hashCode ^ value.GetHashCode()) * prime;
-
-            return global::System.Linq.Enumerable.Aggregate(fields, offset, HashCodeAggregator);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool Equals(GetResearchResponse other)
-        {
-            return
-                global::System.Collections.Generic.EqualityComparer<global::Tavily.ResearchTaskCompleted?>.Default.Equals(Completed, other.Completed) &&
-                global::System.Collections.Generic.EqualityComparer<global::Tavily.ResearchTaskFailed?>.Default.Equals(Failed, other.Failed) 
-                ;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static bool operator ==(GetResearchResponse obj1, GetResearchResponse obj2)
-        {
-            return global::System.Collections.Generic.EqualityComparer<GetResearchResponse>.Default.Equals(obj1, obj2);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static bool operator !=(GetResearchResponse obj1, GetResearchResponse obj2)
-        {
-            return !(obj1 == obj2);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public override bool Equals(object? obj)
-        {
-            return obj is GetResearchResponse o && Equals(o);
         }
     }
 }

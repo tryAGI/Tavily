@@ -549,6 +549,31 @@
               }
             }
           },
+          "429": {
+            "description": "Too many requests - Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "detail": {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "detail": {
+                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
+                  }
+                }
+              }
+            }
+          },
           "432": {
             "description": "Key limit or Plan Limit exceeded",
             "content": {
@@ -594,31 +619,6 @@
                 "example": {
                   "detail": {
                     "error": "This request exceeds the pay-as-you-go limit. You can increase your limit on the Tavily dashboard."
-                  }
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Too many requests - Rate limit exceeded",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                },
-                "example": {
-                  "detail": {
-                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
                   }
                 }
               }
@@ -745,8 +745,8 @@
                     "type": "number",
                     "format": "float",
                     "description": "Maximum time in seconds to wait for the URL extraction before timing out. Must be between 1.0 and 60.0 seconds. If not specified, default timeouts are applied based on extract_depth: 10 seconds for basic extraction and 30 seconds for advanced extraction.",
-                    "minimum": 1.0,
-                    "maximum": 60.0,
+                    "minimum": 1,
+                    "maximum": 60,
                     "default": "None"
                   },
                   "include_usage": {
@@ -843,8 +843,8 @@
               }
             }
           },
-          "429": {
-            "description": "Too many requests - Rate limit exceeded",
+          "400": {
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -862,7 +862,7 @@
                 },
                 "example": {
                   "detail": {
-                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
+                    "error": "<400 Bad Request, (e.g Max 20 URLs are allowed.)>"
                   }
                 }
               }
@@ -893,8 +893,8 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request",
+          "429": {
+            "description": "Too many requests - Rate limit exceeded",
             "content": {
               "application/json": {
                 "schema": {
@@ -912,7 +912,7 @@
                 },
                 "example": {
                   "detail": {
-                    "error": "<400 Bad Request, (e.g Max 20 URLs are allowed.)>"
+                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
                   }
                 }
               }
@@ -2139,6 +2139,30 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Research task is completed or failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ResearchTaskCompleted"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ResearchTaskFailed"
+                    }
+                  ],
+                  "discriminator": {
+                    "propertyName": "status",
+                    "mapping": {
+                      "completed": "#/components/schemas/ResearchTaskCompleted",
+                      "failed": "#/components/schemas/ResearchTaskFailed"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "202": {
             "description": "Research task is not yet completed (pending or in_progress).",
             "content": {
@@ -2175,30 +2199,6 @@
                   "request_id": "123e4567-e89b-12d3-a456-426614174111",
                   "status": "in_progress",
                   "response_time": 1.23
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "Research task is completed or failed.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/schemas/ResearchTaskCompleted"
-                    },
-                    {
-                      "$ref": "#/components/schemas/ResearchTaskFailed"
-                    }
-                  ],
-                  "discriminator": {
-                    "propertyName": "status",
-                    "mapping": {
-                      "completed": "#/components/schemas/ResearchTaskCompleted",
-                      "failed": "#/components/schemas/ResearchTaskFailed"
-                    }
-                  }
                 }
               }
             }

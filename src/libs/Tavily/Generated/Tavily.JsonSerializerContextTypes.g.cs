@@ -504,19 +504,19 @@ namespace Tavily
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.GetResearchResponseStatus? Type119 { get; set; }
+        public global::Tavily.GetResearchResponseDiscriminator? Type119 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.GetResearchResponse2? Type120 { get; set; }
+        public global::Tavily.GetResearchResponseDiscriminatorStatus? Type120 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.GetResearchResponseDiscriminator? Type121 { get; set; }
+        public global::Tavily.GetResearchResponse2? Type121 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.GetResearchResponseDiscriminatorStatus? Type122 { get; set; }
+        public global::Tavily.GetResearchResponseStatus? Type122 { get; set; }
         /// <summary>
         /// 
         /// </summary>

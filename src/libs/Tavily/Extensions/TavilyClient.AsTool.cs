@@ -1,3 +1,4 @@
+#pragma warning disable CS3002 // Return type is not CLS-compliant
 using System.Text.Json;
 using Microsoft.Extensions.AI;
 

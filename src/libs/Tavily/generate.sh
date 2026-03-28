@@ -4,7 +4,7 @@ set -euo pipefail
 
 readonly openapi_url="https://docs.tavily.com/documentation/api-reference/openapi.json"
 
-dotnet tool update --global autosdk.cli --prerelease || dotnet tool install --global autosdk.cli --prerelease
+dotnet tool install --global autosdk.cli --prerelease
 rm -rf Generated
 curl --fail --silent --show-error --location "$openapi_url" -o openapi.json
 autosdk generate openapi.json \

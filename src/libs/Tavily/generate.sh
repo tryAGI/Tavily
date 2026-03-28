@@ -10,7 +10,7 @@ curl --fail --silent --show-error --location "$openapi_url" -o openapi.json
 autosdk generate openapi.json \
   --namespace Tavily \
   --clientClassName TavilyClient \
-  --targetFramework net8.0 \
+  --targetFramework net10.0 \
   --output Generated \
   --security-scheme "Http:Header:Bearer" \
   --exclude-deprecated-operations

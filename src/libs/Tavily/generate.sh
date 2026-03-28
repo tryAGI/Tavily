@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+# OpenAPI spec: https://docs.tavily.com/documentation/api-reference/openapi.json
+
 readonly openapi_url="https://docs.tavily.com/documentation/api-reference/openapi.json"
 
 dotnet tool install --global autosdk.cli --prerelease

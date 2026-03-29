@@ -74,9 +74,6 @@ namespace Tavily
         /// Timestamp when the research task was created.<br/>
         /// Example: 2025-01-15T10:30:00Z
         /// </param>
-        /// <param name="status">
-        /// The current status of the research task.
-        /// </param>
         /// <param name="content">
         /// The research report content. Can be a string or a structured object if output_schema was provided.
         /// </param>
@@ -86,6 +83,9 @@ namespace Tavily
         /// <param name="responseTime">
         /// Time in seconds it took to complete the request.<br/>
         /// Example: 1.23F
+        /// </param>
+        /// <param name="status">
+        /// The current status of the research task.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -100,10 +100,10 @@ namespace Tavily
         {
             this.RequestId = requestId ?? throw new global::System.ArgumentNullException(nameof(requestId));
             this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
+            this.Status = status;
             this.Content = content;
             this.Sources = sources ?? throw new global::System.ArgumentNullException(nameof(sources));
             this.ResponseTime = responseTime;
-            this.Status = status;
         }
 
         /// <summary>

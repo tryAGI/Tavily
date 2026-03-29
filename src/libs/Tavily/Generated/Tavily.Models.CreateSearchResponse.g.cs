@@ -99,13 +99,13 @@ namespace Tavily
         /// <param name="results">
         /// A list of sorted search results, ranked by relevancy.
         /// </param>
-        /// <param name="autoParameters">
-        /// A dictionary of the selected auto_parameters, only shown when `auto_parameters` is true.<br/>
-        /// Example: {"topic":"general","search_depth":"basic"}
-        /// </param>
         /// <param name="responseTime">
         /// Time in seconds it took to complete the request.<br/>
         /// Example: 1.67
+        /// </param>
+        /// <param name="autoParameters">
+        /// A dictionary of the selected auto_parameters, only shown when `auto_parameters` is true.<br/>
+        /// Example: {"topic":"general","search_depth":"basic"}
         /// </param>
         /// <param name="usage">
         /// Credit usage details for the request.<br/>
@@ -132,8 +132,8 @@ namespace Tavily
             this.Answer = answer ?? throw new global::System.ArgumentNullException(nameof(answer));
             this.Images = images ?? throw new global::System.ArgumentNullException(nameof(images));
             this.Results = results ?? throw new global::System.ArgumentNullException(nameof(results));
-            this.ResponseTime = responseTime;
             this.AutoParameters = autoParameters;
+            this.ResponseTime = responseTime;
             this.Usage = usage;
             this.RequestId = requestId;
         }

@@ -46,12 +46,12 @@ namespace Tavily
         /// The unique identifier of the research task.<br/>
         /// Example: 123e4567-e89b-12d3-a456-426614174111
         /// </param>
-        /// <param name="status">
-        /// The current status of the research task.
-        /// </param>
         /// <param name="responseTime">
         /// Time in seconds it took to complete the request.<br/>
         /// Example: 1.23F
+        /// </param>
+        /// <param name="status">
+        /// The current status of the research task.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -62,8 +62,8 @@ namespace Tavily
             global::Tavily.ResearchTaskFailedStatus status)
         {
             this.RequestId = requestId ?? throw new global::System.ArgumentNullException(nameof(requestId));
-            this.ResponseTime = responseTime;
             this.Status = status;
+            this.ResponseTime = responseTime;
         }
 
         /// <summary>

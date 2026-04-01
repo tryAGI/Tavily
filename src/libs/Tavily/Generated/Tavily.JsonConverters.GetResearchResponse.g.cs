@@ -59,13 +59,13 @@ namespace Tavily.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Tavily.ResearchTaskCompleted), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Tavily.ResearchTaskCompleted?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Tavily.ResearchTaskCompleted).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Completed, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Completed!, typeInfo);
             }
             else if (value.IsFailed)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Tavily.ResearchTaskFailed), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Tavily.ResearchTaskFailed?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Tavily.ResearchTaskFailed).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Failed, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Failed!, typeInfo);
             }
         }
     }

@@ -546,7 +546,6 @@ namespace Tavily
             bool? includeUsage = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Tavily.CreateCrawlRequest
             {
                 Url = url,

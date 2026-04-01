@@ -449,7 +449,6 @@ namespace Tavily
             global::Tavily.CreateResearchRequestCitationFormat? citationFormat = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Tavily.CreateResearchRequest
             {
                 Input = input,

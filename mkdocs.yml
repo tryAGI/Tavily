@@ -1,4 +1,9 @@
 site_name: Tavily .NET Documentation
+site_description: Documentation for the tryAGI .NET SDK for Tavily.
+site_url: https://tryagi.github.io/Tavily/
+repo_url: https://github.com/tryAGI/Tavily
+repo_name: tryAGI/Tavily
+edit_uri: edit/main/docs/
 nav:
 - Overview: index.md
 - Guides:
@@ -10,53 +15,21 @@ nav:
   - As Tool Search Returns Results: examples/as-tool-search-returns-results.md
   - Search: examples/search.md
 # EXAMPLES:END
-        
+
 theme:
-  name: material
-  static_templates:
-    - 404.html
-  language: 'en'
-  palette:
-    # Palette toggle for light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: white
-      accent: red
-      toggle:
-        icon: material/weather-sunny
-        name: Switch to dark mode
-
-    # Palette toggle for dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: blue
-      accent: blue
-      toggle:
-        icon: material/weather-night
-        name: Switch to light mode
-  include_search_page: false
-  search_index_only: true
+  name: tryagi
   favicon: 'media/icon128.png'
-  icon:
-    logo: 'material/file-document'
-  features:
-    - content.action.edit
-    - navigation.instant
-  font:
-    text: 'Fira Sans'
-    code: 'Fira Mono'
 
-extra:
-  version:
-    provider: mike
-
-extra_css:
-  - 'css/extra.css?v=14'
+plugins:
+  - search
+  - copy-to-llm
 
 markdown_extensions:
   - admonition
+  - attr_list
   - def_list
   - footnotes
+  - md_in_html
   - meta
   - toc:
       permalink: ""

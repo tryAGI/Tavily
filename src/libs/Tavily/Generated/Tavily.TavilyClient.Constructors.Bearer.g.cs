@@ -6,6 +6,7 @@ namespace Tavily
     public sealed partial class TavilyClient
     {
         /// <inheritdoc cref="TavilyClient(global::System.Net.Http.HttpClient?, global::System.Uri?, global::System.Collections.Generic.List{global::Tavily.EndPointAuthorization}?, bool)"/>
+
         public TavilyClient(
             string apiKey,
             global::System.Net.Http.HttpClient? httpClient = null,

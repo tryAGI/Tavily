@@ -5,6 +5,25 @@ namespace Tavily
 {
     public partial class TavilyClient
     {
+
+
+        private static readonly global::Tavily.EndPointSecurityRequirement s_CreateResearchSecurityRequirement0 =
+            new global::Tavily.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Tavily.EndPointAuthorizationRequirement[]
+                {                    new global::Tavily.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Tavily.EndPointSecurityRequirement[] s_CreateResearchSecurityRequirements =
+            new global::Tavily.EndPointSecurityRequirement[]
+            {                s_CreateResearchSecurityRequirement0,
+            };
         partial void PrepareCreateResearchArguments(
             global::System.Net.Http.HttpClient httpClient,
             global::Tavily.CreateResearchRequest request);
@@ -47,9 +66,15 @@ namespace Tavily
                 httpClient: HttpClient,
                 request: request);
 
+
+            var __authorizations = global::Tavily.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_CreateResearchSecurityRequirements,
+                operationName: "CreateResearchAsync");
+
             var __pathBuilder = new global::Tavily.PathBuilder(
                 path: "/research",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -59,7 +84,7 @@ namespace Tavily
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

@@ -5,6 +5,25 @@ namespace Tavily
 {
     public partial class TavilyClient
     {
+
+
+        private static readonly global::Tavily.EndPointSecurityRequirement s_GetUsageSecurityRequirement0 =
+            new global::Tavily.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Tavily.EndPointAuthorizationRequirement[]
+                {                    new global::Tavily.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Tavily.EndPointSecurityRequirement[] s_GetUsageSecurityRequirements =
+            new global::Tavily.EndPointSecurityRequirement[]
+            {                s_GetUsageSecurityRequirement0,
+            };
         partial void PrepareGetUsageArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string? xProjectId);
@@ -38,9 +57,15 @@ namespace Tavily
                 httpClient: HttpClient,
                 xProjectId: ref xProjectId);
 
+
+            var __authorizations = global::Tavily.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_GetUsageSecurityRequirements,
+                operationName: "GetUsageAsync");
+
             var __pathBuilder = new global::Tavily.PathBuilder(
                 path: "/usage",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -50,7 +75,7 @@ namespace Tavily
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

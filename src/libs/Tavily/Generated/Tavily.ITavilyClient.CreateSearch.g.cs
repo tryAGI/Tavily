@@ -9,6 +9,7 @@ namespace Tavily
         /// Execute a search query using Tavily Search.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Tavily.ApiException"></exception>
         /// <remarks>
@@ -20,6 +21,7 @@ namespace Tavily
         global::System.Threading.Tasks.Task<global::Tavily.CreateSearchResponse> CreateSearchAsync(
 
             global::Tavily.CreateSearchRequest request,
+            global::Tavily.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Search for data based on a query<br/>
@@ -117,6 +119,7 @@ namespace Tavily
         ///  whether to filter out adult or unsafe content from results. Not supported for `fast` or `ultra-fast` search depths.<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Tavily.CreateSearchResponse> CreateSearchAsync(
@@ -140,6 +143,7 @@ namespace Tavily
             bool? exactMatch = default,
             bool? includeUsage = default,
             bool? safeSearch = default,
+            global::Tavily.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

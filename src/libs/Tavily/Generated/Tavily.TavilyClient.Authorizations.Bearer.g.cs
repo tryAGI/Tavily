@@ -25,6 +25,7 @@ namespace Tavily
             Authorizations.Add(new global::Tavily.EndPointAuthorization
             {
                 Type = "Http",
+                SchemeId = "HttpBearer",
                 Location = "Header",
                 Name = "Bearer",
                 Value = apiKey,

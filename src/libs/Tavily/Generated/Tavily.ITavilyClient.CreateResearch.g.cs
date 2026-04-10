@@ -9,6 +9,7 @@ namespace Tavily
         /// Tavily Research performs comprehensive research on a given topic by conducting multiple searches, analyzing sources, and generating a detailed research report.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Tavily.ApiException"></exception>
         /// <remarks>
@@ -20,6 +21,7 @@ namespace Tavily
         global::System.Threading.Tasks.Task<global::Tavily.CreateResearchResponse> CreateResearchAsync(
 
             global::Tavily.CreateResearchRequest request,
+            global::Tavily.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Initiate a research task<br/>
@@ -46,6 +48,7 @@ namespace Tavily
         /// The format for citations in the research report.<br/>
         /// Default Value: numbered
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Tavily.CreateResearchResponse> CreateResearchAsync(
@@ -54,6 +57,7 @@ namespace Tavily
             bool? stream = default,
             global::Tavily.CreateResearchRequestOutputSchema? outputSchema = default,
             global::Tavily.CreateResearchRequestCitationFormat? citationFormat = default,
+            global::Tavily.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

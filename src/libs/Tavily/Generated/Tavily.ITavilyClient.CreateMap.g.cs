@@ -9,6 +9,7 @@ namespace Tavily
         /// Tavily Map traverses websites like a graph and can explore hundreds of paths in parallel with intelligent discovery to generate comprehensive site maps.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Tavily.ApiException"></exception>
         /// <remarks>
@@ -20,6 +21,7 @@ namespace Tavily
         global::System.Threading.Tasks.Task<global::Tavily.CreateMapResponse> CreateMapAsync(
 
             global::Tavily.CreateMapRequest request,
+            global::Tavily.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Initiate a web mapping from a base URL<br/>
@@ -74,6 +76,7 @@ namespace Tavily
         /// Whether to include credit usage information in the response.`NOTE:`The value may be 0 if the total successful pages mapped has not yet reached 10 calls. See our [Credits &amp; Pricing documentation](https://docs.tavily.com/documentation/api-credits) for details.<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Tavily.CreateMapResponse> CreateMapAsync(
@@ -89,6 +92,7 @@ namespace Tavily
             bool? allowExternal = default,
             float? timeout = default,
             bool? includeUsage = default,
+            global::Tavily.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

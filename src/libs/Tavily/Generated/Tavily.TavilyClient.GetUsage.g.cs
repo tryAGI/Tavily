@@ -115,10 +115,10 @@ namespace Tavily
                 } 
             }
 
-                if (xProjectId != default)
-                {
-                    __httpRequest.Headers.TryAddWithoutValidation("X-Project-ID", xProjectId.ToString());
-                }
+            if (xProjectId != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("X-Project-ID", xProjectId.ToString());
+            }
 
                 global::Tavily.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,

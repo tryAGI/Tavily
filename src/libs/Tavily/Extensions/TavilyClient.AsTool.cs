@@ -1,5 +1,4 @@
 #pragma warning disable CS3002 // Return type is not CLS-compliant
-using System.Text.Json;
 using Microsoft.Extensions.AI;
 
 namespace Tavily;
@@ -59,7 +58,7 @@ public static class TavilyToolExtensions
                     urls: url,
                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
-                return JsonSerializer.Serialize(response);
+                return response;
             },
             name: "ExtractWebContent",
             description: "Extracts and returns the main content from a given URL.");

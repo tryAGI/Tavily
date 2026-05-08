@@ -32,6 +32,19 @@ namespace Tavily
         public bool IsCompleted => Completed != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickCompleted(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Tavily.ResearchTaskCompleted? value)
+        {
+            value = Completed;
+            return IsCompleted;
+        }
+
+        /// <summary>
         /// Example: {"request_id":"123e4567-e89b-12d3-a456-426614174111","status":"failed"}
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -47,6 +60,19 @@ namespace Tavily
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Failed))]
 #endif
         public bool IsFailed => Failed != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickFailed(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Tavily.ResearchTaskFailed? value)
+        {
+            value = Failed;
+            return IsFailed;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -126,8 +152,8 @@ namespace Tavily
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Tavily.ResearchTaskCompleted?, TResult>? completed = null,
-            global::System.Func<global::Tavily.ResearchTaskFailed?, TResult>? failed = null,
+            global::System.Func<global::Tavily.ResearchTaskCompleted, TResult>? completed = null,
+            global::System.Func<global::Tavily.ResearchTaskFailed, TResult>? failed = null,
             bool validate = true)
         {
             if (validate)
@@ -151,8 +177,32 @@ namespace Tavily
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Tavily.ResearchTaskCompleted?>? completed = null,
-            global::System.Action<global::Tavily.ResearchTaskFailed?>? failed = null,
+            global::System.Action<global::Tavily.ResearchTaskCompleted>? completed = null,
+
+            global::System.Action<global::Tavily.ResearchTaskFailed>? failed = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsCompleted)
+            {
+                completed?.Invoke(Completed!);
+            }
+            else if (IsFailed)
+            {
+                failed?.Invoke(Failed!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Tavily.ResearchTaskCompleted>? completed = null,
+            global::System.Action<global::Tavily.ResearchTaskFailed>? failed = null,
             bool validate = true)
         {
             if (validate)

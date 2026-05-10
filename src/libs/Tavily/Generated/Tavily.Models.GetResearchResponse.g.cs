@@ -94,6 +94,11 @@ namespace Tavily
         /// <summary>
         /// 
         /// </summary>
+        public static GetResearchResponse FromCompleted(global::Tavily.ResearchTaskCompleted? value) => new GetResearchResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator GetResearchResponse(global::Tavily.ResearchTaskFailed value) => new GetResearchResponse((global::Tavily.ResearchTaskFailed?)value);
 
         /// <summary>
@@ -108,6 +113,11 @@ namespace Tavily
         {
             Failed = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static GetResearchResponse FromFailed(global::Tavily.ResearchTaskFailed? value) => new GetResearchResponse(value);
 
         /// <summary>
         /// 

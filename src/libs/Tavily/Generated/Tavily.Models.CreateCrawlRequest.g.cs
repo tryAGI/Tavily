@@ -256,5 +256,6 @@ namespace Tavily
         public CreateCrawlRequest()
         {
         }
+
     }
 }

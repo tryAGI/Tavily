@@ -191,5 +191,6 @@ namespace Tavily
         public CreateMapRequest()
         {
         }
+
     }
 }

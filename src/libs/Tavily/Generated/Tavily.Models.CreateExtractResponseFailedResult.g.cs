@@ -52,5 +52,6 @@ namespace Tavily
         public CreateExtractResponseFailedResult()
         {
         }
+
     }
 }

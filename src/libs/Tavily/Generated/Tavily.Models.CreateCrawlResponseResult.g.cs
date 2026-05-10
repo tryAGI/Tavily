@@ -69,5 +69,6 @@ namespace Tavily
         public CreateCrawlResponseResult()
         {
         }
+
     }
 }

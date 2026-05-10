@@ -39,5 +39,6 @@ namespace Tavily
         public CreateExtractResponseDetail2()
         {
         }
+
     }
 }

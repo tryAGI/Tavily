@@ -45,6 +45,13 @@ namespace Tavily
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Tavily.ResearchTaskCompleted PickCompleted() => IsCompleted
+            ? Completed!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Completed' but the value was {ToString()}.");
+
+        /// <summary>
         /// Example: {"request_id":"123e4567-e89b-12d3-a456-426614174111","status":"failed"}
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -73,6 +80,13 @@ namespace Tavily
             value = Failed;
             return IsFailed;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Tavily.ResearchTaskFailed PickFailed() => IsFailed
+            ? Failed!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Failed' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

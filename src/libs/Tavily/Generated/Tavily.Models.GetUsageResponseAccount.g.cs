@@ -170,5 +170,6 @@ namespace Tavily
         public GetUsageResponseAccount()
         {
         }
+
     }
 }

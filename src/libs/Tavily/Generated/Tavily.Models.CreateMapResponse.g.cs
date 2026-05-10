@@ -100,5 +100,6 @@ namespace Tavily
         public CreateMapResponse()
         {
         }
+
     }
 }

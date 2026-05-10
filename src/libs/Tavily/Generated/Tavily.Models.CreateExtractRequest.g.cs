@@ -145,5 +145,6 @@ namespace Tavily
         public CreateExtractRequest()
         {
         }
+
     }
 }

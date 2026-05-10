@@ -144,5 +144,6 @@ namespace Tavily
         public CreateSearchResponse()
         {
         }
+
     }
 }

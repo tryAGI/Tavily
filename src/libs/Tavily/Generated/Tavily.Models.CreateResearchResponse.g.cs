@@ -120,5 +120,6 @@ namespace Tavily
         public CreateResearchResponse()
         {
         }
+
     }
 }

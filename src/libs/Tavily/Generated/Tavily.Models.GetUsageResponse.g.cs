@@ -50,5 +50,6 @@ namespace Tavily
         public GetUsageResponse()
         {
         }
+
     }
 }

@@ -54,5 +54,6 @@ namespace Tavily
         public CreateResearchRequestOutputSchema()
         {
         }
+
     }
 }

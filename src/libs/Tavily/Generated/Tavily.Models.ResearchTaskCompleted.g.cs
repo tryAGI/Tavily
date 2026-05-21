@@ -112,5 +112,6 @@ namespace Tavily
         public ResearchTaskCompleted()
         {
         }
+
     }
 }

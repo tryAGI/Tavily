@@ -73,5 +73,6 @@ namespace Tavily
         public GetResearchResponse2()
         {
         }
+
     }
 }

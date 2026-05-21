@@ -325,5 +325,6 @@ namespace Tavily
         public CreateSearchRequest()
         {
         }
+
     }
 }

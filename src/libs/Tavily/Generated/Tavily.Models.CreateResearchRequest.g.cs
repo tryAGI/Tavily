@@ -102,5 +102,6 @@ namespace Tavily
         public CreateResearchRequest()
         {
         }
+
     }
 }

@@ -97,5 +97,6 @@ namespace Tavily
         public CreateExtractResponse()
         {
         }
+
     }
 }

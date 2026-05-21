@@ -77,5 +77,6 @@ namespace Tavily
         public CreateResearchRequestOutputSchemaProperties2()
         {
         }
+
     }
 }

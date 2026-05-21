@@ -48,5 +48,6 @@ namespace Tavily
         public CreateSearchResponseResultImage()
         {
         }
+
     }
 }

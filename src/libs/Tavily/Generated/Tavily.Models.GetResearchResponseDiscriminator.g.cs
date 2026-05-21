@@ -40,5 +40,6 @@ namespace Tavily
         public GetResearchResponseDiscriminator()
         {
         }
+
     }
 }

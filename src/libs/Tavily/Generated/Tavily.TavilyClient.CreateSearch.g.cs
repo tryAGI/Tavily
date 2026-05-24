@@ -374,18 +374,17 @@ namespace Tavily
                                     __exception_400 = __ex;
                                 }
 
-                                throw new global::Tavily.ApiException<global::Tavily.CreateSearchResponse2>(
+
+                                throw global::Tavily.ApiException<global::Tavily.CreateSearchResponse2>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_400,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_400,
-                                    ResponseObject = __value_400,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_400,
+                                    responseObject: __value_400,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Unauthorized - Your API key is wrong or missing.
                             if ((int)__response.StatusCode == 401)
@@ -412,18 +411,17 @@ namespace Tavily
                                     __exception_401 = __ex;
                                 }
 
-                                throw new global::Tavily.ApiException<global::Tavily.CreateSearchResponse3>(
+
+                                throw global::Tavily.ApiException<global::Tavily.CreateSearchResponse3>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_401,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_401,
-                                    ResponseObject = __value_401,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_401,
+                                    responseObject: __value_401,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Too many requests - Rate limit exceeded
                             if ((int)__response.StatusCode == 429)
@@ -450,18 +448,17 @@ namespace Tavily
                                     __exception_429 = __ex;
                                 }
 
-                                throw new global::Tavily.ApiException<global::Tavily.CreateSearchResponse4>(
+
+                                throw global::Tavily.ApiException<global::Tavily.CreateSearchResponse4>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_429,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_429,
-                                    ResponseObject = __value_429,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_429,
+                                    responseObject: __value_429,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Key limit or Plan Limit exceeded
                             if ((int)__response.StatusCode == 432)
@@ -488,18 +485,17 @@ namespace Tavily
                                     __exception_432 = __ex;
                                 }
 
-                                throw new global::Tavily.ApiException<global::Tavily.CreateSearchResponse5>(
+
+                                throw global::Tavily.ApiException<global::Tavily.CreateSearchResponse5>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_432 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_432,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_432,
-                                    ResponseObject = __value_432,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_432,
+                                    responseObject: __value_432,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // PayGo limit exceeded
                             if ((int)__response.StatusCode == 433)
@@ -526,18 +522,17 @@ namespace Tavily
                                     __exception_433 = __ex;
                                 }
 
-                                throw new global::Tavily.ApiException<global::Tavily.CreateSearchResponse6>(
+
+                                throw global::Tavily.ApiException<global::Tavily.CreateSearchResponse6>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_433 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_433,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_433,
-                                    ResponseObject = __value_433,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_433,
+                                    responseObject: __value_433,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Internal Server Error - We had a problem with our server.
                             if ((int)__response.StatusCode == 500)
@@ -564,18 +559,17 @@ namespace Tavily
                                     __exception_500 = __ex;
                                 }
 
-                                throw new global::Tavily.ApiException<global::Tavily.CreateSearchResponse7>(
+
+                                throw global::Tavily.ApiException<global::Tavily.CreateSearchResponse7>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_500,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_500,
-                                    ResponseObject = __value_500,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_500,
+                                    responseObject: __value_500,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
 
                             if (__effectiveReadResponseAsString)
@@ -609,17 +603,15 @@ namespace Tavily
                                 }
                                 catch (global::System.Exception __ex)
                                 {
-                                    throw new global::Tavily.ApiException(
+                                    throw global::Tavily.ApiException.Create(
+                                        statusCode: __response.StatusCode,
                                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
-                                        statusCode: __response.StatusCode)
-                                    {
-                                        ResponseBody = __content,
-                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        responseBody: __content,
+                                        responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                             __response.Headers,
                                             h => h.Key,
-                                            h => h.Value),
-                                    };
+                                            h => h.Value));
                                 }
                             }
                             else
@@ -656,17 +648,15 @@ namespace Tavily
                                     {
                                     }
 
-                                    throw new global::Tavily.ApiException(
+                                    throw global::Tavily.ApiException.Create(
+                                        statusCode: __response.StatusCode,
                                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
-                                        statusCode: __response.StatusCode)
-                                    {
-                                        ResponseBody = __content,
-                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        responseBody: __content,
+                                        responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                             __response.Headers,
                                             h => h.Key,
-                                            h => h.Value),
-                                    };
+                                            h => h.Value));
                                 }
                             }
 

@@ -50,6 +50,32 @@ namespace Tavily
         public global::Tavily.CreateResearchRequestCitationFormat? CitationFormat { get; set; }
 
         /// <summary>
+        /// Soft preference for sources. The research agent prioritizes these domains, but URLs from other domains can still appear in the final report. Matching is host-based and includes subdomains (e.g., `sec.gov` matches `sec.gov` and `data.sec.gov`). Maximum 20 entries.<br/>
+        /// Default Value: []<br/>
+        /// Example: [sec.gov, ec.europa.eu]
+        /// </summary>
+        /// <example>[sec.gov, ec.europa.eu]</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("include_domains")]
+        public global::System.Collections.Generic.IList<string>? IncludeDomains { get; set; }
+
+        /// <summary>
+        /// Hard blocklist. No URL from a listed domain or any of its subdomains appears in the response. Subdomain matching is downward only — blocking `medium.com` also blocks `blog.medium.com`, but blocking `blog.medium.com` leaves `medium.com` itself allowed. Maximum 20 entries.<br/>
+        /// Default Value: []<br/>
+        /// Example: [reddit.com, quora.com]
+        /// </summary>
+        /// <example>[reddit.com, quora.com]</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("exclude_domains")]
+        public global::System.Collections.Generic.IList<string>? ExcludeDomains { get; set; }
+
+        /// <summary>
+        /// Typed control over response size. Ranges are targets, not hard caps — individual responses can fall outside when the question requires it.<br/>
+        /// Default Value: standard
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("output_length")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Tavily.JsonConverters.CreateResearchRequestOutputLengthJsonConverter))]
+        public global::Tavily.CreateResearchRequestOutputLength? OutputLength { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -79,6 +105,20 @@ namespace Tavily
         /// The format for citations in the research report.<br/>
         /// Default Value: numbered
         /// </param>
+        /// <param name="includeDomains">
+        /// Soft preference for sources. The research agent prioritizes these domains, but URLs from other domains can still appear in the final report. Matching is host-based and includes subdomains (e.g., `sec.gov` matches `sec.gov` and `data.sec.gov`). Maximum 20 entries.<br/>
+        /// Default Value: []<br/>
+        /// Example: [sec.gov, ec.europa.eu]
+        /// </param>
+        /// <param name="excludeDomains">
+        /// Hard blocklist. No URL from a listed domain or any of its subdomains appears in the response. Subdomain matching is downward only — blocking `medium.com` also blocks `blog.medium.com`, but blocking `blog.medium.com` leaves `medium.com` itself allowed. Maximum 20 entries.<br/>
+        /// Default Value: []<br/>
+        /// Example: [reddit.com, quora.com]
+        /// </param>
+        /// <param name="outputLength">
+        /// Typed control over response size. Ranges are targets, not hard caps — individual responses can fall outside when the question requires it.<br/>
+        /// Default Value: standard
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -87,13 +127,19 @@ namespace Tavily
             global::Tavily.CreateResearchRequestModel? model,
             bool? stream,
             global::Tavily.CreateResearchRequestOutputSchema? outputSchema,
-            global::Tavily.CreateResearchRequestCitationFormat? citationFormat)
+            global::Tavily.CreateResearchRequestCitationFormat? citationFormat,
+            global::System.Collections.Generic.IList<string>? includeDomains,
+            global::System.Collections.Generic.IList<string>? excludeDomains,
+            global::Tavily.CreateResearchRequestOutputLength? outputLength)
         {
             this.Input = input ?? throw new global::System.ArgumentNullException(nameof(input));
             this.Model = model;
             this.Stream = stream;
             this.OutputSchema = outputSchema;
             this.CitationFormat = citationFormat;
+            this.IncludeDomains = includeDomains;
+            this.ExcludeDomains = excludeDomains;
+            this.OutputLength = outputLength;
         }
 
         /// <summary>

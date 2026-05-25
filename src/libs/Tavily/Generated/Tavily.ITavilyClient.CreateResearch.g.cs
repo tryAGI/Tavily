@@ -67,6 +67,20 @@ namespace Tavily
         /// The format for citations in the research report.<br/>
         /// Default Value: numbered
         /// </param>
+        /// <param name="includeDomains">
+        /// Soft preference for sources. The research agent prioritizes these domains, but URLs from other domains can still appear in the final report. Matching is host-based and includes subdomains (e.g., `sec.gov` matches `sec.gov` and `data.sec.gov`). Maximum 20 entries.<br/>
+        /// Default Value: []<br/>
+        /// Example: [sec.gov, ec.europa.eu]
+        /// </param>
+        /// <param name="excludeDomains">
+        /// Hard blocklist. No URL from a listed domain or any of its subdomains appears in the response. Subdomain matching is downward only — blocking `medium.com` also blocks `blog.medium.com`, but blocking `blog.medium.com` leaves `medium.com` itself allowed. Maximum 20 entries.<br/>
+        /// Default Value: []<br/>
+        /// Example: [reddit.com, quora.com]
+        /// </param>
+        /// <param name="outputLength">
+        /// Typed control over response size. Ranges are targets, not hard caps — individual responses can fall outside when the question requires it.<br/>
+        /// Default Value: standard
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -76,6 +90,9 @@ namespace Tavily
             bool? stream = default,
             global::Tavily.CreateResearchRequestOutputSchema? outputSchema = default,
             global::Tavily.CreateResearchRequestCitationFormat? citationFormat = default,
+            global::System.Collections.Generic.IList<string>? includeDomains = default,
+            global::System.Collections.Generic.IList<string>? excludeDomains = default,
+            global::Tavily.CreateResearchRequestOutputLength? outputLength = default,
             global::Tavily.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

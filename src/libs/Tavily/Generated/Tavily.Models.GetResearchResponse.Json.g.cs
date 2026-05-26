@@ -2,7 +2,7 @@
 
 namespace Tavily
 {
-    public sealed partial class GetResearchResponse
+    public readonly partial struct GetResearchResponse
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -41,7 +41,7 @@ namespace Tavily
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
                 typeof(global::Tavily.GetResearchResponse),
-                jsonSerializerContext) as global::Tavily.GetResearchResponse;
+                jsonSerializerContext) as global::Tavily.GetResearchResponse?;
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Tavily
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
                 typeof(global::Tavily.GetResearchResponse),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Tavily.GetResearchResponse;
+                jsonSerializerContext).ConfigureAwait(false)) as global::Tavily.GetResearchResponse?;
         }
 
         /// <summary>

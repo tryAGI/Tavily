@@ -35,6 +35,17 @@
     },
     {
       "Order": 4,
+      "Title": "Get organization usage across all API keys",
+      "Slug": "get-organization-usage-across-all-api-keys",
+      "Description": "Retrieve usage (credits), pay-as-you-go USD cost, and request counts for **every API key under an organization you own**, mirroring the platform\u0027s Usage analytics page.\n\nIdentify the organization by **name** in the request body. Authenticate with the organization owner\u0027s **personal API key** \u2014 the key from the owner\u0027s own personal account, **not** an organization or enterprise API key. Supports date-range, project, and depth filtering.",
+      "Language": "http",
+      "Code": "### Get organization usage across all API keys\nPOST {{host}}/org-usage\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022organization_name\u0022: \u0022Acme Inc\u0022,\n  \u0022start_date\u0022: \u00222026-05-01\u0022,\n  \u0022end_date\u0022: \u00222026-05-27\u0022,\n  \u0022project_id\u0022: \u0022string\u0022,\n  \u0022depth\u0022: \u0022advanced\u0022\n}\n\n## Responses\n# 200\n# Description: Organization usage returned successfully\n# Content-Type: application/json\n# 400\n# Description: Invalid start_date; expected format YYYY-MM-DD.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized: missing or invalid API key.\n# Content-Type: application/json\n# 403\n# Description: Please authenticate with the organization owner\u0027s personal API key, not an organization API key.\n# Content-Type: application/json\n# 404\n# Description: Organization not found or access denied.\n# Content-Type: application/json\n# 422\n# Description: organization_name is required.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - Rate limit exceeded\n# Content-Type: application/json\n# 500\n# Description: Internal server error\n# Content-Type: application/json\n# 504\n# Description: Gateway timeout - the usage lookup took too long\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "createOrgUsage",
+      "Setup": null
+    },
+    {
+      "Order": 5,
       "Title": "Initiate a research task",
       "Slug": "initiate-a-research-task",
       "Description": "Tavily Research performs comprehensive research on a given topic by conducting multiple searches, analyzing sources, and generating a detailed research report.",
@@ -45,7 +56,7 @@
       "Setup": null
     },
     {
-      "Order": 5,
+      "Order": 6,
       "Title": "Search for data based on a query",
       "Slug": "search-for-data-based-on-a-query",
       "Description": "Execute a search query using Tavily Search.",
@@ -56,7 +67,7 @@
       "Setup": null
     },
     {
-      "Order": 6,
+      "Order": 7,
       "Title": "Get research task status and results",
       "Slug": "get-research-task-status-and-results",
       "Description": "Retrieve the status and results of a research task using its request ID.",
@@ -67,7 +78,7 @@
       "Setup": "This example assumes \u0060using Tavily;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 7,
+      "Order": 8,
       "Title": "Get API key and account usage details",
       "Slug": "get-api-key-and-account-usage-details",
       "Description": "Get API key and account usage details",

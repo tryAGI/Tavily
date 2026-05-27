@@ -7,7 +7,7 @@ namespace Tavily
     {
 
 
-        private static readonly global::Tavily.EndPointSecurityRequirement s_CreateExtractSecurityRequirement0 =
+        private static readonly global::Tavily.EndPointSecurityRequirement s_CreateOrgUsageSecurityRequirement0 =
             new global::Tavily.EndPointSecurityRequirement
             {
                 Authorizations = new global::Tavily.EndPointAuthorizationRequirement[]
@@ -21,47 +21,42 @@ namespace Tavily
                     },
                 },
             };
-        private static readonly global::Tavily.EndPointSecurityRequirement[] s_CreateExtractSecurityRequirements =
+        private static readonly global::Tavily.EndPointSecurityRequirement[] s_CreateOrgUsageSecurityRequirements =
             new global::Tavily.EndPointSecurityRequirement[]
-            {                s_CreateExtractSecurityRequirement0,
+            {                s_CreateOrgUsageSecurityRequirement0,
             };
-        partial void PrepareCreateExtractArguments(
+        partial void PrepareCreateOrgUsageArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Tavily.CreateExtractRequest request);
-        partial void PrepareCreateExtractRequest(
+            global::Tavily.CreateOrgUsageRequest request);
+        partial void PrepareCreateOrgUsageRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Tavily.CreateExtractRequest request);
-        partial void ProcessCreateExtractResponse(
+            global::Tavily.CreateOrgUsageRequest request);
+        partial void ProcessCreateOrgUsageResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreateExtractResponseContent(
+        partial void ProcessCreateOrgUsageResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Retrieve raw web content from specified URLs<br/>
-        /// Extract web page content from one or more specified URLs using Tavily Extract.
+        /// Get organization usage across all API keys<br/>
+        /// Retrieve usage (credits), pay-as-you-go USD cost, and request counts for **every API key under an organization you own**, mirroring the platform's Usage analytics page.<br/>
+        /// Identify the organization by **name** in the request body. Authenticate with the organization owner's **personal API key** — the key from the owner's own personal account, **not** an organization or enterprise API key. Supports date-range, project, and depth filtering.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Tavily.ApiException"></exception>
-        /// <remarks>
-        /// from tavily import TavilyClient<br/>
-        /// tavily_client = TavilyClient(api_key="tvly-YOUR_API_KEY")<br/>
-        /// response = tavily_client.extract("https://en.wikipedia.org/wiki/Artificial_intelligence")<br/>
-        /// print(response)
-        /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Tavily.CreateExtractResponse> CreateExtractAsync(
+        public async global::System.Threading.Tasks.Task<global::Tavily.CreateOrgUsageResponse> CreateOrgUsageAsync(
 
-            global::Tavily.CreateExtractRequest request,
+            global::Tavily.CreateOrgUsageRequest request,
             global::Tavily.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await CreateExtractAsResponseAsync(
+            var __response = await CreateOrgUsageAsResponseAsync(
 
                 request: request,
                 requestOptions: requestOptions,
@@ -71,22 +66,17 @@ namespace Tavily
             return __response.Body;
         }
         /// <summary>
-        /// Retrieve raw web content from specified URLs<br/>
-        /// Extract web page content from one or more specified URLs using Tavily Extract.
+        /// Get organization usage across all API keys<br/>
+        /// Retrieve usage (credits), pay-as-you-go USD cost, and request counts for **every API key under an organization you own**, mirroring the platform's Usage analytics page.<br/>
+        /// Identify the organization by **name** in the request body. Authenticate with the organization owner's **personal API key** — the key from the owner's own personal account, **not** an organization or enterprise API key. Supports date-range, project, and depth filtering.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Tavily.ApiException"></exception>
-        /// <remarks>
-        /// from tavily import TavilyClient<br/>
-        /// tavily_client = TavilyClient(api_key="tvly-YOUR_API_KEY")<br/>
-        /// response = tavily_client.extract("https://en.wikipedia.org/wiki/Artificial_intelligence")<br/>
-        /// print(response)
-        /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Tavily.AutoSDKHttpResponse<global::Tavily.CreateExtractResponse>> CreateExtractAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Tavily.AutoSDKHttpResponse<global::Tavily.CreateOrgUsageResponse>> CreateOrgUsageAsResponseAsync(
 
-            global::Tavily.CreateExtractRequest request,
+            global::Tavily.CreateOrgUsageRequest request,
             global::Tavily.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -94,15 +84,15 @@ namespace Tavily
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreateExtractArguments(
+            PrepareCreateOrgUsageArguments(
                 httpClient: HttpClient,
                 request: request);
 
 
             var __authorizations = global::Tavily.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreateExtractSecurityRequirements,
-                operationName: "CreateExtractAsync");
+                securityRequirements: s_CreateOrgUsageSecurityRequirements,
+                operationName: "CreateOrgUsageAsync");
 
             using var __timeoutCancellationTokenSource = global::Tavily.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -122,7 +112,7 @@ namespace Tavily
             {
 
                             var __pathBuilder = new global::Tavily.PathBuilder(
-                                path: "/extract",
+                                path: "/org-usage",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Tavily.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -167,7 +157,7 @@ namespace Tavily
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreateExtractRequest(
+                PrepareCreateOrgUsageRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     request: request);
@@ -187,9 +177,9 @@ namespace Tavily
                     await global::Tavily.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Tavily.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createExtract",
-                                methodName: "CreateExtractAsync",
-                                pathTemplate: "\"/extract\"",
+                                operationId: "createOrgUsage",
+                                methodName: "CreateOrgUsageAsync",
+                                pathTemplate: "\"/org-usage\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -221,9 +211,9 @@ namespace Tavily
                         await global::Tavily.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Tavily.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createExtract",
-                                methodName: "CreateExtractAsync",
-                                pathTemplate: "\"/extract\"",
+                                operationId: "createOrgUsage",
+                                methodName: "CreateOrgUsageAsync",
+                                pathTemplate: "\"/org-usage\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -262,9 +252,9 @@ namespace Tavily
                         await global::Tavily.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Tavily.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createExtract",
-                                methodName: "CreateExtractAsync",
-                                pathTemplate: "\"/extract\"",
+                                operationId: "createOrgUsage",
+                                methodName: "CreateOrgUsageAsync",
+                                pathTemplate: "\"/org-usage\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -302,7 +292,7 @@ namespace Tavily
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreateExtractResponse(
+                ProcessCreateOrgUsageResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -310,9 +300,9 @@ namespace Tavily
                     await global::Tavily.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Tavily.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createExtract",
-                                methodName: "CreateExtractAsync",
-                                pathTemplate: "\"/extract\"",
+                                operationId: "createOrgUsage",
+                                methodName: "CreateOrgUsageAsync",
+                                pathTemplate: "\"/org-usage\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -332,9 +322,9 @@ namespace Tavily
                     await global::Tavily.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Tavily.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createExtract",
-                                methodName: "CreateExtractAsync",
-                                pathTemplate: "\"/extract\"",
+                                operationId: "createOrgUsage",
+                                methodName: "CreateOrgUsageAsync",
+                                pathTemplate: "\"/org-usage\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -349,98 +339,24 @@ namespace Tavily
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Too many requests - Rate limit exceeded
-                            if ((int)__response.StatusCode == 429)
-                            {
-                                string? __content_429 = null;
-                                global::System.Exception? __exception_429 = null;
-                                global::Tavily.CreateExtractResponse2? __value_429 = null;
-                                try
-                                {
-                                    if (__effectiveReadResponseAsString)
-                                    {
-                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_429 = global::Tavily.CreateExtractResponse2.FromJson(__content_429, JsonSerializerContext);
-                                    }
-                                    else
-                                    {
-                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-
-                                        __value_429 = global::Tavily.CreateExtractResponse2.FromJson(__content_429, JsonSerializerContext);
-                                    }
-                                }
-                                catch (global::System.Exception __ex)
-                                {
-                                    __exception_429 = __ex;
-                                }
-
-
-                                throw global::Tavily.ApiException<global::Tavily.CreateExtractResponse2>.Create(
-                                    statusCode: __response.StatusCode,
-                                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_429,
-                                    responseBody: __content_429,
-                                    responseObject: __value_429,
-                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
-                                        __response.Headers,
-                                        h => h.Key,
-                                        h => h.Value));
-                            }
-                            // Unauthorized - Your API key is wrong or missing.
-                            if ((int)__response.StatusCode == 401)
-                            {
-                                string? __content_401 = null;
-                                global::System.Exception? __exception_401 = null;
-                                global::Tavily.CreateExtractResponse3? __value_401 = null;
-                                try
-                                {
-                                    if (__effectiveReadResponseAsString)
-                                    {
-                                        __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_401 = global::Tavily.CreateExtractResponse3.FromJson(__content_401, JsonSerializerContext);
-                                    }
-                                    else
-                                    {
-                                        __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-
-                                        __value_401 = global::Tavily.CreateExtractResponse3.FromJson(__content_401, JsonSerializerContext);
-                                    }
-                                }
-                                catch (global::System.Exception __ex)
-                                {
-                                    __exception_401 = __ex;
-                                }
-
-
-                                throw global::Tavily.ApiException<global::Tavily.CreateExtractResponse3>.Create(
-                                    statusCode: __response.StatusCode,
-                                    message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_401,
-                                    responseBody: __content_401,
-                                    responseObject: __value_401,
-                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
-                                        __response.Headers,
-                                        h => h.Key,
-                                        h => h.Value));
-                            }
-                            // Bad Request
+                            // Invalid start_date; expected format YYYY-MM-DD.
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
                                 global::System.Exception? __exception_400 = null;
-                                global::Tavily.CreateExtractResponse4? __value_400 = null;
+                                global::Tavily.CreateOrgUsageResponse2? __value_400 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_400 = global::Tavily.CreateExtractResponse4.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = global::Tavily.CreateOrgUsageResponse2.FromJson(__content_400, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_400 = global::Tavily.CreateExtractResponse4.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = global::Tavily.CreateOrgUsageResponse2.FromJson(__content_400, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -449,7 +365,7 @@ namespace Tavily
                                 }
 
 
-                                throw global::Tavily.ApiException<global::Tavily.CreateExtractResponse4>.Create(
+                                throw global::Tavily.ApiException<global::Tavily.CreateOrgUsageResponse2>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_400,
@@ -460,98 +376,209 @@ namespace Tavily
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Key limit or Plan Limit exceeded
-                            if ((int)__response.StatusCode == 432)
+                            // Unauthorized: missing or invalid API key.
+                            if ((int)__response.StatusCode == 401)
                             {
-                                string? __content_432 = null;
-                                global::System.Exception? __exception_432 = null;
-                                global::Tavily.CreateExtractResponse5? __value_432 = null;
+                                string? __content_401 = null;
+                                global::System.Exception? __exception_401 = null;
+                                global::Tavily.CreateOrgUsageResponse3? __value_401 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
-                                        __content_432 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_432 = global::Tavily.CreateExtractResponse5.FromJson(__content_432, JsonSerializerContext);
+                                        __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_401 = global::Tavily.CreateOrgUsageResponse3.FromJson(__content_401, JsonSerializerContext);
                                     }
                                     else
                                     {
-                                        __content_432 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_432 = global::Tavily.CreateExtractResponse5.FromJson(__content_432, JsonSerializerContext);
+                                        __value_401 = global::Tavily.CreateOrgUsageResponse3.FromJson(__content_401, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
                                 {
-                                    __exception_432 = __ex;
+                                    __exception_401 = __ex;
                                 }
 
 
-                                throw global::Tavily.ApiException<global::Tavily.CreateExtractResponse5>.Create(
+                                throw global::Tavily.ApiException<global::Tavily.CreateOrgUsageResponse3>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_432 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_432,
-                                    responseBody: __content_432,
-                                    responseObject: __value_432,
+                                    message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_401,
+                                    responseBody: __content_401,
+                                    responseObject: __value_401,
                                     responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // PayGo limit exceeded
-                            if ((int)__response.StatusCode == 433)
+                            // Please authenticate with the organization owner's personal API key, not an organization API key.
+                            if ((int)__response.StatusCode == 403)
                             {
-                                string? __content_433 = null;
-                                global::System.Exception? __exception_433 = null;
-                                global::Tavily.CreateExtractResponse6? __value_433 = null;
+                                string? __content_403 = null;
+                                global::System.Exception? __exception_403 = null;
+                                global::Tavily.CreateOrgUsageResponse4? __value_403 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
-                                        __content_433 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_433 = global::Tavily.CreateExtractResponse6.FromJson(__content_433, JsonSerializerContext);
+                                        __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_403 = global::Tavily.CreateOrgUsageResponse4.FromJson(__content_403, JsonSerializerContext);
                                     }
                                     else
                                     {
-                                        __content_433 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_433 = global::Tavily.CreateExtractResponse6.FromJson(__content_433, JsonSerializerContext);
+                                        __value_403 = global::Tavily.CreateOrgUsageResponse4.FromJson(__content_403, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
                                 {
-                                    __exception_433 = __ex;
+                                    __exception_403 = __ex;
                                 }
 
 
-                                throw global::Tavily.ApiException<global::Tavily.CreateExtractResponse6>.Create(
+                                throw global::Tavily.ApiException<global::Tavily.CreateOrgUsageResponse4>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_433 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_433,
-                                    responseBody: __content_433,
-                                    responseObject: __value_433,
+                                    message: __content_403 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_403,
+                                    responseBody: __content_403,
+                                    responseObject: __value_403,
                                     responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Internal Server Error - We had a problem with our server.
+                            // Organization not found or access denied.
+                            if ((int)__response.StatusCode == 404)
+                            {
+                                string? __content_404 = null;
+                                global::System.Exception? __exception_404 = null;
+                                global::Tavily.CreateOrgUsageResponse5? __value_404 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_404 = global::Tavily.CreateOrgUsageResponse5.FromJson(__content_404, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_404 = global::Tavily.CreateOrgUsageResponse5.FromJson(__content_404, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_404 = __ex;
+                                }
+
+
+                                throw global::Tavily.ApiException<global::Tavily.CreateOrgUsageResponse5>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_404,
+                                    responseBody: __content_404,
+                                    responseObject: __value_404,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // organization_name is required.
+                            if ((int)__response.StatusCode == 422)
+                            {
+                                string? __content_422 = null;
+                                global::System.Exception? __exception_422 = null;
+                                global::Tavily.CreateOrgUsageResponse6? __value_422 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_422 = global::Tavily.CreateOrgUsageResponse6.FromJson(__content_422, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_422 = global::Tavily.CreateOrgUsageResponse6.FromJson(__content_422, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_422 = __ex;
+                                }
+
+
+                                throw global::Tavily.ApiException<global::Tavily.CreateOrgUsageResponse6>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_422 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_422,
+                                    responseBody: __content_422,
+                                    responseObject: __value_422,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // Too many requests - Rate limit exceeded
+                            if ((int)__response.StatusCode == 429)
+                            {
+                                string? __content_429 = null;
+                                global::System.Exception? __exception_429 = null;
+                                global::Tavily.CreateOrgUsageResponse7? __value_429 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_429 = global::Tavily.CreateOrgUsageResponse7.FromJson(__content_429, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_429 = global::Tavily.CreateOrgUsageResponse7.FromJson(__content_429, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_429 = __ex;
+                                }
+
+
+                                throw global::Tavily.ApiException<global::Tavily.CreateOrgUsageResponse7>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_429,
+                                    responseBody: __content_429,
+                                    responseObject: __value_429,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // Internal server error
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;
                                 global::System.Exception? __exception_500 = null;
-                                global::Tavily.CreateExtractResponse7? __value_500 = null;
+                                global::Tavily.CreateOrgUsageResponse8? __value_500 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_500 = global::Tavily.CreateExtractResponse7.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::Tavily.CreateOrgUsageResponse8.FromJson(__content_500, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_500 = global::Tavily.CreateExtractResponse7.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::Tavily.CreateOrgUsageResponse8.FromJson(__content_500, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -560,12 +587,49 @@ namespace Tavily
                                 }
 
 
-                                throw global::Tavily.ApiException<global::Tavily.CreateExtractResponse7>.Create(
+                                throw global::Tavily.ApiException<global::Tavily.CreateOrgUsageResponse8>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_500,
                                     responseBody: __content_500,
                                     responseObject: __value_500,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // Gateway timeout - the usage lookup took too long
+                            if ((int)__response.StatusCode == 504)
+                            {
+                                string? __content_504 = null;
+                                global::System.Exception? __exception_504 = null;
+                                global::Tavily.CreateOrgUsageResponse9? __value_504 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_504 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_504 = global::Tavily.CreateOrgUsageResponse9.FromJson(__content_504, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_504 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_504 = global::Tavily.CreateOrgUsageResponse9.FromJson(__content_504, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_504 = __ex;
+                                }
+
+
+                                throw global::Tavily.ApiException<global::Tavily.CreateOrgUsageResponse9>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_504 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_504,
+                                    responseBody: __content_504,
+                                    responseObject: __value_504,
                                     responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
@@ -584,7 +648,7 @@ namespace Tavily
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreateExtractResponseContent(
+                                ProcessCreateOrgUsageResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -593,9 +657,9 @@ namespace Tavily
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Tavily.CreateExtractResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Tavily.CreateOrgUsageResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Tavily.AutoSDKHttpResponse<global::Tavily.CreateExtractResponse>(
+                                    return new global::Tavily.AutoSDKHttpResponse<global::Tavily.CreateOrgUsageResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Tavily.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -625,9 +689,9 @@ namespace Tavily
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Tavily.CreateExtractResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Tavily.CreateOrgUsageResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Tavily.AutoSDKHttpResponse<global::Tavily.CreateExtractResponse>(
+                                    return new global::Tavily.AutoSDKHttpResponse<global::Tavily.CreateOrgUsageResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Tavily.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -668,71 +732,51 @@ namespace Tavily
             }
         }
         /// <summary>
-        /// Retrieve raw web content from specified URLs<br/>
-        /// Extract web page content from one or more specified URLs using Tavily Extract.
+        /// Get organization usage across all API keys<br/>
+        /// Retrieve usage (credits), pay-as-you-go USD cost, and request counts for **every API key under an organization you own**, mirroring the platform's Usage analytics page.<br/>
+        /// Identify the organization by **name** in the request body. Authenticate with the organization owner's **personal API key** — the key from the owner's own personal account, **not** an organization or enterprise API key. Supports date-range, project, and depth filtering.
         /// </summary>
-        /// <param name="urls"></param>
-        /// <param name="query">
-        /// User intent for reranking extracted content chunks. When provided, chunks are reranked based on relevance to this query.
+        /// <param name="organizationName">
+        /// Exact organization name (case-sensitive). You must be the owner of this organization.<br/>
+        /// Example: Acme Inc
         /// </param>
-        /// <param name="chunksPerSource">
-        /// Chunks are short content snippets (maximum 500 characters each) pulled directly from the source. Use `chunks_per_source` to define the maximum number of relevant chunks returned per source and to control the `raw_content` length. Chunks will appear in the `raw_content` field as: `&lt;chunk 1&gt; [...] &lt;chunk 2&gt; [...] &lt;chunk 3&gt;`. Available only when `query` is provided. Must be between 1 and 5.<br/>
-        /// Default Value: 3
+        /// <param name="startDate">
+        /// Inclusive start of the usage window (YYYY-MM-DD). Defaults to the start of the current billing cycle.<br/>
+        /// Example: 2026-05-01
         /// </param>
-        /// <param name="extractDepth">
-        /// The depth of the extraction process. `advanced` extraction retrieves more data, including tables and embedded content, with higher success but may increase latency.`basic` extraction costs 1 credit per 5 successful URL extractions, while `advanced` extraction costs 2 credits per 5 successful URL extractions.<br/>
-        /// Default Value: basic
+        /// <param name="endDate">
+        /// Inclusive end of the usage window (YYYY-MM-DD). Defaults to today.<br/>
+        /// Example: 2026-05-27
         /// </param>
-        /// <param name="includeImages">
-        /// Include a list of images extracted from the URLs in the response. Default is false.<br/>
-        /// Default Value: false
+        /// <param name="projectId">
+        /// Scope usage to a single project.
         /// </param>
-        /// <param name="includeFavicon">
-        /// Whether to include the favicon URL for each result.<br/>
-        /// Default Value: false
-        /// </param>
-        /// <param name="format">
-        /// The format of the extracted web page content. `markdown` returns content in markdown format. `text` returns plain text and may increase latency.<br/>
-        /// Default Value: markdown
-        /// </param>
-        /// <param name="timeout">
-        /// Maximum time in seconds to wait for the URL extraction before timing out. Must be between 1.0 and 60.0 seconds. If not specified, default timeouts are applied based on extract_depth: 10 seconds for basic extraction and 30 seconds for advanced extraction.<br/>
-        /// Default Value: None
-        /// </param>
-        /// <param name="includeUsage">
-        /// Whether to include credit usage information in the response. `NOTE:`The value may be 0 if the total successful URL extractions has not yet reached 5 calls. See our [Credits &amp; Pricing documentation](https://docs.tavily.com/documentation/api-credits) for details.<br/>
-        /// Default Value: false
+        /// <param name="depth">
+        /// Scope usage to a single request depth.<br/>
+        /// Example: advanced
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Tavily.CreateExtractResponse> CreateExtractAsync(
-            global::Tavily.OneOf<string, global::System.Collections.Generic.IList<string>> urls,
-            string? query = default,
-            int? chunksPerSource = default,
-            global::Tavily.CreateExtractRequestExtractDepth? extractDepth = default,
-            bool? includeImages = default,
-            bool? includeFavicon = default,
-            global::Tavily.CreateExtractRequestFormat? format = default,
-            float? timeout = default,
-            bool? includeUsage = default,
+        public async global::System.Threading.Tasks.Task<global::Tavily.CreateOrgUsageResponse> CreateOrgUsageAsync(
+            string organizationName,
+            global::System.DateTime? startDate = default,
+            global::System.DateTime? endDate = default,
+            string? projectId = default,
+            global::Tavily.CreateOrgUsageRequestDepth? depth = default,
             global::Tavily.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Tavily.CreateExtractRequest
+            var __request = new global::Tavily.CreateOrgUsageRequest
             {
-                Urls = urls,
-                Query = query,
-                ChunksPerSource = chunksPerSource,
-                ExtractDepth = extractDepth,
-                IncludeImages = includeImages,
-                IncludeFavicon = includeFavicon,
-                Format = format,
-                Timeout = timeout,
-                IncludeUsage = includeUsage,
+                OrganizationName = organizationName,
+                StartDate = startDate,
+                EndDate = endDate,
+                ProjectId = projectId,
+                Depth = depth,
             };
 
-            return await CreateExtractAsync(
+            return await CreateOrgUsageAsync(
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);

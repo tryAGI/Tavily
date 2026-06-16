@@ -76,6 +76,16 @@ namespace Tavily
         public global::Tavily.CreateResearchRequestOutputLength? OutputLength { get; set; }
 
         /// <summary>
+        /// Attach files to the research request and the agent uses their contents as a source alongside the web. Each entry carries a filename and its base64-encoded contents. The agent reads the relevant parts of each file, grounds its answer in them, and cites any file it draws from.<br/>
+        /// Supported file types: `.txt`, `.md`, `.json`.<br/>
+        /// Limits: up to 5 files per request; max 80,000 words per text file; max 80,000 words combined across all files.<br/>
+        /// Example: [{"name":"q1-report.md","data":"\u003Cbase64-encoded file contents\u003E","type":"base64"}]
+        /// </summary>
+        /// <example>[{"name":"q1-report.md","data":"\u003Cbase64-encoded file contents\u003E","type":"base64"}]</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("files")]
+        public global::System.Collections.Generic.IList<global::Tavily.CreateResearchRequestFile>? Files { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -119,6 +129,12 @@ namespace Tavily
         /// Typed control over response size. Ranges are targets, not hard caps — individual responses can fall outside when the question requires it.<br/>
         /// Default Value: standard
         /// </param>
+        /// <param name="files">
+        /// Attach files to the research request and the agent uses their contents as a source alongside the web. Each entry carries a filename and its base64-encoded contents. The agent reads the relevant parts of each file, grounds its answer in them, and cites any file it draws from.<br/>
+        /// Supported file types: `.txt`, `.md`, `.json`.<br/>
+        /// Limits: up to 5 files per request; max 80,000 words per text file; max 80,000 words combined across all files.<br/>
+        /// Example: [{"name":"q1-report.md","data":"\u003Cbase64-encoded file contents\u003E","type":"base64"}]
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -130,7 +146,8 @@ namespace Tavily
             global::Tavily.CreateResearchRequestCitationFormat? citationFormat,
             global::System.Collections.Generic.IList<string>? includeDomains,
             global::System.Collections.Generic.IList<string>? excludeDomains,
-            global::Tavily.CreateResearchRequestOutputLength? outputLength)
+            global::Tavily.CreateResearchRequestOutputLength? outputLength,
+            global::System.Collections.Generic.IList<global::Tavily.CreateResearchRequestFile>? files)
         {
             this.Input = input ?? throw new global::System.ArgumentNullException(nameof(input));
             this.Model = model;
@@ -140,6 +157,7 @@ namespace Tavily
             this.IncludeDomains = includeDomains;
             this.ExcludeDomains = excludeDomains;
             this.OutputLength = outputLength;
+            this.Files = files;
         }
 
         /// <summary>

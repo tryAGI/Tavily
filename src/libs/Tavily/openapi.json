@@ -47,7 +47,7 @@
                   },
                   "search_depth": {
                     "type": "string",
-                    "description": "Controls the latency vs. relevance tradeoff and how `results[].content` is generated:\n- `advanced`: Highest relevance with increased latency. Best for detailed, high-precision queries. Returns multiple semantically relevant snippets per URL (configurable via `chunks_per_source`).\n- `basic`: A balanced option for relevance and latency. Ideal for general-purpose searches. Returns one NLP summary per URL.\n- `fast`: Prioritizes lower latency while maintaining good relevance. Returns multiple semantically relevant snippets per URL (configurable via `chunks_per_source`).\n- `ultra-fast`: Minimizes latency above all else. Best for time-critical use cases. Returns one NLP summary per URL.\n\n**Cost**:\n- `basic`, `fast`, `ultra-fast`: 1 API Credit\n- `advanced`: 2 API Credits\n\nSee [Search Best Practices](/documentation/best-practices/best-practices-search#search-depth) for guidance on choosing the right search depth.",
+                    "description": "Controls the latency vs. relevance tradeoff and how `results[].content` is generated:\n- `advanced`: Highest relevance with increased latency. Best for detailed, high-precision queries. Returns multiple semantically relevant snippets per URL (configurable via `chunks_per_source`).\n- `basic`: A balanced option for relevance and latency. Ideal for general-purpose searches. Returns multiple semantically relevant snippets per URL (configurable via `chunks_per_source`).\n- `fast`: Prioritizes lower latency while maintaining good relevance. Returns multiple semantically relevant snippets per URL (configurable via `chunks_per_source`).\n- `ultra-fast`: Minimizes latency above all else. Best for time-critical use cases. Returns one NLP summary per URL.\n\n**Cost**:\n- `basic`, `fast`, `ultra-fast`: 1 API Credit\n- `advanced`: 2 API Credits\n\nSee [Search Best Practices](/documentation/best-practices/best-practices-search#search-depth) for guidance on choosing the right search depth.",
                     "enum": [
                       "advanced",
                       "basic",
@@ -58,7 +58,7 @@
                   },
                   "chunks_per_source": {
                     "type": "integer",
-                    "description": "Chunks are short content snippets (maximum 500 characters each) pulled directly from the source. Use `chunks_per_source` to define the maximum number of relevant chunks returned per source and to control the `content` length. Chunks will appear in the `content` field as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`. Available only when `search_depth` is `advanced`.",
+                    "description": "Chunks are short content snippets (maximum 500 characters each) pulled directly from the source. Use `chunks_per_source` to define the maximum number of relevant chunks returned per source and to control the `content` length. Chunks will appear in the `content` field as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`. Available when `search_depth` is `advanced`, `basic` or `fast`.",
                     "default": 3,
                     "minimum": 1,
                     "maximum": 3
@@ -549,31 +549,6 @@
               }
             }
           },
-          "429": {
-            "description": "Too many requests - Rate limit exceeded",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                },
-                "example": {
-                  "detail": {
-                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
-                  }
-                }
-              }
-            }
-          },
           "432": {
             "description": "Key limit or Plan Limit exceeded",
             "content": {
@@ -619,6 +594,31 @@
                 "example": {
                   "detail": {
                     "error": "This request exceeds the pay-as-you-go limit. You can increase your limit on the Tavily dashboard."
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests - Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "detail": {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "detail": {
+                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
                   }
                 }
               }
@@ -745,8 +745,8 @@
                     "type": "number",
                     "format": "float",
                     "description": "Maximum time in seconds to wait for the URL extraction before timing out. Must be between 1.0 and 60.0 seconds. If not specified, default timeouts are applied based on extract_depth: 10 seconds for basic extraction and 30 seconds for advanced extraction.",
-                    "minimum": 1,
-                    "maximum": 60,
+                    "minimum": 1.0,
+                    "maximum": 60.0,
                     "default": "None"
                   },
                   "include_usage": {
@@ -843,8 +843,8 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request",
+          "429": {
+            "description": "Too many requests - Rate limit exceeded",
             "content": {
               "application/json": {
                 "schema": {
@@ -862,7 +862,7 @@
                 },
                 "example": {
                   "detail": {
-                    "error": "<400 Bad Request, (e.g Max 20 URLs are allowed.)>"
+                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
                   }
                 }
               }
@@ -893,8 +893,8 @@
               }
             }
           },
-          "429": {
-            "description": "Too many requests - Rate limit exceeded",
+          "400": {
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -912,7 +912,7 @@
                 },
                 "example": {
                   "detail": {
-                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
+                    "error": "<400 Bad Request, (e.g Max 20 URLs are allowed.)>"
                   }
                 }
               }
@@ -2212,30 +2212,6 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Research task is completed or failed.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/schemas/ResearchTaskCompleted"
-                    },
-                    {
-                      "$ref": "#/components/schemas/ResearchTaskFailed"
-                    }
-                  ],
-                  "discriminator": {
-                    "propertyName": "status",
-                    "mapping": {
-                      "completed": "#/components/schemas/ResearchTaskCompleted",
-                      "failed": "#/components/schemas/ResearchTaskFailed"
-                    }
-                  }
-                }
-              }
-            }
-          },
           "202": {
             "description": "Research task is not yet completed (pending or in_progress).",
             "content": {
@@ -2272,6 +2248,30 @@
                   "request_id": "123e4567-e89b-12d3-a456-426614174111",
                   "status": "in_progress",
                   "response_time": 1.23
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Research task is completed or failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ResearchTaskCompleted"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ResearchTaskFailed"
+                    }
+                  ],
+                  "discriminator": {
+                    "propertyName": "status",
+                    "mapping": {
+                      "completed": "#/components/schemas/ResearchTaskCompleted",
+                      "failed": "#/components/schemas/ResearchTaskFailed"
+                    }
+                  }
                 }
               }
             }

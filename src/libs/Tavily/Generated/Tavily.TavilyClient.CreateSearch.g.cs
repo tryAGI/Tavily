@@ -423,61 +423,24 @@ namespace Tavily
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Too many requests - Rate limit exceeded
-                            if ((int)__response.StatusCode == 429)
-                            {
-                                string? __content_429 = null;
-                                global::System.Exception? __exception_429 = null;
-                                global::Tavily.CreateSearchResponse4? __value_429 = null;
-                                try
-                                {
-                                    if (__effectiveReadResponseAsString)
-                                    {
-                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_429 = global::Tavily.CreateSearchResponse4.FromJson(__content_429, JsonSerializerContext);
-                                    }
-                                    else
-                                    {
-                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-
-                                        __value_429 = global::Tavily.CreateSearchResponse4.FromJson(__content_429, JsonSerializerContext);
-                                    }
-                                }
-                                catch (global::System.Exception __ex)
-                                {
-                                    __exception_429 = __ex;
-                                }
-
-
-                                throw global::Tavily.ApiException<global::Tavily.CreateSearchResponse4>.Create(
-                                    statusCode: __response.StatusCode,
-                                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_429,
-                                    responseBody: __content_429,
-                                    responseObject: __value_429,
-                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
-                                        __response.Headers,
-                                        h => h.Key,
-                                        h => h.Value));
-                            }
                             // Key limit or Plan Limit exceeded
                             if ((int)__response.StatusCode == 432)
                             {
                                 string? __content_432 = null;
                                 global::System.Exception? __exception_432 = null;
-                                global::Tavily.CreateSearchResponse5? __value_432 = null;
+                                global::Tavily.CreateSearchResponse4? __value_432 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_432 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_432 = global::Tavily.CreateSearchResponse5.FromJson(__content_432, JsonSerializerContext);
+                                        __value_432 = global::Tavily.CreateSearchResponse4.FromJson(__content_432, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_432 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_432 = global::Tavily.CreateSearchResponse5.FromJson(__content_432, JsonSerializerContext);
+                                        __value_432 = global::Tavily.CreateSearchResponse4.FromJson(__content_432, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -486,7 +449,7 @@ namespace Tavily
                                 }
 
 
-                                throw global::Tavily.ApiException<global::Tavily.CreateSearchResponse5>.Create(
+                                throw global::Tavily.ApiException<global::Tavily.CreateSearchResponse4>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_432 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_432,
@@ -502,19 +465,19 @@ namespace Tavily
                             {
                                 string? __content_433 = null;
                                 global::System.Exception? __exception_433 = null;
-                                global::Tavily.CreateSearchResponse6? __value_433 = null;
+                                global::Tavily.CreateSearchResponse5? __value_433 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_433 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_433 = global::Tavily.CreateSearchResponse6.FromJson(__content_433, JsonSerializerContext);
+                                        __value_433 = global::Tavily.CreateSearchResponse5.FromJson(__content_433, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_433 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_433 = global::Tavily.CreateSearchResponse6.FromJson(__content_433, JsonSerializerContext);
+                                        __value_433 = global::Tavily.CreateSearchResponse5.FromJson(__content_433, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -523,12 +486,49 @@ namespace Tavily
                                 }
 
 
-                                throw global::Tavily.ApiException<global::Tavily.CreateSearchResponse6>.Create(
+                                throw global::Tavily.ApiException<global::Tavily.CreateSearchResponse5>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_433 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_433,
                                     responseBody: __content_433,
                                     responseObject: __value_433,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // Too many requests - Rate limit exceeded
+                            if ((int)__response.StatusCode == 429)
+                            {
+                                string? __content_429 = null;
+                                global::System.Exception? __exception_429 = null;
+                                global::Tavily.CreateSearchResponse6? __value_429 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_429 = global::Tavily.CreateSearchResponse6.FromJson(__content_429, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_429 = global::Tavily.CreateSearchResponse6.FromJson(__content_429, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_429 = __ex;
+                                }
+
+
+                                throw global::Tavily.ApiException<global::Tavily.CreateSearchResponse6>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_429,
+                                    responseBody: __content_429,
+                                    responseObject: __value_429,
                                     responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
@@ -678,7 +678,7 @@ namespace Tavily
         /// <param name="searchDepth">
         /// Controls the latency vs. relevance tradeoff and how `results[].content` is generated:<br/>
         /// - `advanced`: Highest relevance with increased latency. Best for detailed, high-precision queries. Returns multiple semantically relevant snippets per URL (configurable via `chunks_per_source`).<br/>
-        /// - `basic`: A balanced option for relevance and latency. Ideal for general-purpose searches. Returns one NLP summary per URL.<br/>
+        /// - `basic`: A balanced option for relevance and latency. Ideal for general-purpose searches. Returns multiple semantically relevant snippets per URL (configurable via `chunks_per_source`).<br/>
         /// - `fast`: Prioritizes lower latency while maintaining good relevance. Returns multiple semantically relevant snippets per URL (configurable via `chunks_per_source`).<br/>
         /// - `ultra-fast`: Minimizes latency above all else. Best for time-critical use cases. Returns one NLP summary per URL.<br/>
         /// **Cost**:<br/>
@@ -688,7 +688,7 @@ namespace Tavily
         /// Default Value: basic
         /// </param>
         /// <param name="chunksPerSource">
-        /// Chunks are short content snippets (maximum 500 characters each) pulled directly from the source. Use `chunks_per_source` to define the maximum number of relevant chunks returned per source and to control the `content` length. Chunks will appear in the `content` field as: `&lt;chunk 1&gt; [...] &lt;chunk 2&gt; [...] &lt;chunk 3&gt;`. Available only when `search_depth` is `advanced`.<br/>
+        /// Chunks are short content snippets (maximum 500 characters each) pulled directly from the source. Use `chunks_per_source` to define the maximum number of relevant chunks returned per source and to control the `content` length. Chunks will appear in the `content` field as: `&lt;chunk 1&gt; [...] &lt;chunk 2&gt; [...] &lt;chunk 3&gt;`. Available when `search_depth` is `advanced`, `basic` or `fast`.<br/>
         /// Default Value: 3
         /// </param>
         /// <param name="maxResults">

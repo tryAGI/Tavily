@@ -6,7 +6,7 @@ namespace Tavily
     /// <summary>
     /// Controls the latency vs. relevance tradeoff and how `results[].content` is generated:<br/>
     /// - `advanced`: Highest relevance with increased latency. Best for detailed, high-precision queries. Returns multiple semantically relevant snippets per URL (configurable via `chunks_per_source`).<br/>
-    /// - `basic`: A balanced option for relevance and latency. Ideal for general-purpose searches. Returns one NLP summary per URL.<br/>
+    /// - `basic`: A balanced option for relevance and latency. Ideal for general-purpose searches. Returns multiple semantically relevant snippets per URL (configurable via `chunks_per_source`).<br/>
     /// - `fast`: Prioritizes lower latency while maintaining good relevance. Returns multiple semantically relevant snippets per URL (configurable via `chunks_per_source`).<br/>
     /// - `ultra-fast`: Minimizes latency above all else. Best for time-critical use cases. Returns one NLP summary per URL.<br/>
     /// **Cost**:<br/>
@@ -22,7 +22,7 @@ namespace Tavily
         /// </summary>
         Advanced,
         /// <summary>
-        /// A balanced option for relevance and latency. Ideal for general-purpose searches. Returns one NLP summary per URL.
+        /// A balanced option for relevance and latency. Ideal for general-purpose searches. Returns multiple semantically relevant snippets per URL (configurable via `chunks_per_source`).
         /// </summary>
         Basic,
         /// <summary>

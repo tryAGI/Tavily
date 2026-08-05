@@ -63,6 +63,14 @@ namespace Tavily
         public global::System.Collections.Generic.IList<global::Tavily.CreateSearchResponseResultImage>? Images { get; set; }
 
         /// <summary>
+        /// Unique identifier for this result<br/>
+        /// Example: a3f9c2-04
+        /// </summary>
+        /// <example>a3f9c2-04</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -98,6 +106,10 @@ namespace Tavily
         /// <param name="images">
         /// A list of images extracted from this search result. Only included when `include_images` is `true`. If `include_image_descriptions` is `true`, each item will have `url` and `description`.
         /// </param>
+        /// <param name="id">
+        /// Unique identifier for this result<br/>
+        /// Example: a3f9c2-04
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -108,7 +120,8 @@ namespace Tavily
             float? score,
             string? rawContent,
             string? favicon,
-            global::System.Collections.Generic.IList<global::Tavily.CreateSearchResponseResultImage>? images)
+            global::System.Collections.Generic.IList<global::Tavily.CreateSearchResponseResultImage>? images,
+            string? id)
         {
             this.Title = title;
             this.Url = url;
@@ -117,6 +130,7 @@ namespace Tavily
             this.RawContent = rawContent;
             this.Favicon = favicon;
             this.Images = images;
+            this.Id = id;
         }
 
         /// <summary>

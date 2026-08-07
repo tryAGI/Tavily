@@ -81,19 +81,27 @@ namespace Tavily
 
             typeof(global::Tavily.JsonConverters.CreateResearchRequestFileTypeNullableJsonConverter),
 
+            typeof(global::Tavily.JsonConverters.CreateLogsRequestEndpointJsonConverter),
+
+            typeof(global::Tavily.JsonConverters.CreateLogsRequestEndpointNullableJsonConverter),
+
             typeof(global::Tavily.JsonConverters.CreateOrgUsageRequestDepthJsonConverter),
 
             typeof(global::Tavily.JsonConverters.CreateOrgUsageRequestDepthNullableJsonConverter),
-
-            typeof(global::Tavily.JsonConverters.GetResearchResponseDiscriminatorStatusJsonConverter),
-
-            typeof(global::Tavily.JsonConverters.GetResearchResponseDiscriminatorStatusNullableJsonConverter),
 
             typeof(global::Tavily.JsonConverters.GetResearchResponseStatusJsonConverter),
 
             typeof(global::Tavily.JsonConverters.GetResearchResponseStatusNullableJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.GetResearchResponseJsonConverter),
+            typeof(global::Tavily.JsonConverters.GetResearchResponseDiscriminatorStatusJsonConverter),
+
+            typeof(global::Tavily.JsonConverters.GetResearchResponseDiscriminatorStatusNullableJsonConverter),
+
+            typeof(global::Tavily.JsonConverters.CreateLogsResponseLogEndpointJsonConverter),
+
+            typeof(global::Tavily.JsonConverters.CreateLogsResponseLogEndpointNullableJsonConverter),
+
+            typeof(global::Tavily.JsonConverters.GetResearchResponse2JsonConverter),
 
             typeof(global::Tavily.JsonConverters.OneOfJsonConverter<string, object>),
 
@@ -150,8 +158,11 @@ namespace Tavily
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.CreateResearchRequestFile>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchRequestFile))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchRequestFileType), TypeInfoPropertyName = "CreateResearchRequestFileType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.CreateLogsRequestEndpoint>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsRequestEndpoint), TypeInfoPropertyName = "CreateLogsRequestEndpoint2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageRequestDepth), TypeInfoPropertyName = "CreateOrgUsageRequestDepth2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.CreateSearchResponseImage>))]
@@ -234,11 +245,11 @@ namespace Tavily
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchResponseDetail5))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchResponse7))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchResponseDetail6))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponse), TypeInfoPropertyName = "GetResearchResponse2_3")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponseStatus), TypeInfoPropertyName = "GetResearchResponseStatus2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponse2), TypeInfoPropertyName = "GetResearchResponse22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponseDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponseDiscriminatorStatus), TypeInfoPropertyName = "GetResearchResponseDiscriminatorStatus2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponse2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponseStatus), TypeInfoPropertyName = "GetResearchResponseStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponse3))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponseDetail))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponse4))]
@@ -252,6 +263,20 @@ namespace Tavily
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetUsageResponseDetail))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetUsageResponse3))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetUsageResponseDetail2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.CreateLogsResponseLog>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponseLog))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponseLogEndpoint), TypeInfoPropertyName = "CreateLogsResponseLogEndpoint2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponse2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponseDetail))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponse3))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponseDetail2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponse4))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponseDetail3))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponse5))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponseDetail4))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponse6))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponseDetail5))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponseOrganization))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponseOrganizationFilters))]
@@ -278,12 +303,14 @@ namespace Tavily
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.OneOf<string, global::System.Collections.Generic.List<string>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateResearchRequestFile>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateLogsRequestEndpoint>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateSearchResponseImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateSearchResponseResult>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateSearchResponseResultImage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateExtractResponseResult>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateExtractResponseFailedResult>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateCrawlResponseResult>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateLogsResponseLog>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateOrgUsageResponseKey>))]
     public sealed partial class SourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext
     {

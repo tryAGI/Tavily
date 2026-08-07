@@ -24,6 +24,17 @@
     },
     {
       "Order": 3,
+      "Title": "Get usage logs for your API keys",
+      "Slug": "get-usage-logs-for-your-api-keys",
+      "Description": "Retrieve per-request usage logs for the API keys under your account or organization.",
+      "Language": "http",
+      "Code": "### Get usage logs for your API keys\nPOST {{host}}/logs\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022limit\u0022: 100,\n  \u0022start_date\u0022: \u00222026-08-01\u0022,\n  \u0022end_date\u0022: \u00222026-08-07\u0022,\n  \u0022endpoints\u0022: [\n    \u0022search\u0022,\n    \u0022research\u0022\n  ],\n  \u0022project_id\u0022: \u0022string\u0022,\n  \u0022filter_by_api_key\u0022: false\n}\n\n## Responses\n# 200\n# Description: Usage logs returned successfully\n# Content-Type: application/json\n# 400\n# Description: Bad Request \u2014 invalid endpoints value or date range.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - Your API key is wrong or missing.\n# Content-Type: application/json\n# 403\n# Description: Forbidden \u2014 usage logs are only available to paying customers.\n# Content-Type: application/json\n# 429\n# Description: Too Many Requests\n# Content-Type: application/json\n# 504\n# Description: Gateway Timeout \u2014 the logs query timed out.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "createLogs",
+      "Setup": null
+    },
+    {
+      "Order": 4,
       "Title": "Initiate a web mapping from a base URL",
       "Slug": "initiate-a-web-mapping-from-a-base-url",
       "Description": "Tavily Map traverses websites like a graph and can explore hundreds of paths in parallel with intelligent discovery to generate comprehensive site maps.",
@@ -34,7 +45,7 @@
       "Setup": null
     },
     {
-      "Order": 4,
+      "Order": 5,
       "Title": "Get organization usage across all API keys",
       "Slug": "get-organization-usage-across-all-api-keys",
       "Description": "Retrieve usage (credits), pay-as-you-go USD cost, and request counts for **every API key under an organization you own**, mirroring the platform\u0027s Usage analytics page.\n\nIdentify the organization by **name** in the request body. Authenticate with the organization owner\u0027s **personal API key** \u2014 the key from the owner\u0027s own personal account, **not** an organization or enterprise API key. Supports date-range, project, and depth filtering.",
@@ -45,7 +56,7 @@
       "Setup": null
     },
     {
-      "Order": 5,
+      "Order": 6,
       "Title": "Initiate a research task",
       "Slug": "initiate-a-research-task",
       "Description": "Tavily Research performs comprehensive research on a given topic by conducting multiple searches, analyzing sources, and generating a detailed research report.",
@@ -56,7 +67,7 @@
       "Setup": null
     },
     {
-      "Order": 6,
+      "Order": 7,
       "Title": "Search for data based on a query",
       "Slug": "search-for-data-based-on-a-query",
       "Description": "Execute a search query using Tavily Search.",
@@ -67,7 +78,7 @@
       "Setup": null
     },
     {
-      "Order": 7,
+      "Order": 8,
       "Title": "Get research task status and results",
       "Slug": "get-research-task-status-and-results",
       "Description": "Retrieve the status and results of a research task using its request ID.",
@@ -78,7 +89,7 @@
       "Setup": "This example assumes \u0060using Tavily;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 8,
+      "Order": 9,
       "Title": "Get API key and account usage details",
       "Slug": "get-api-key-and-account-usage-details",
       "Description": "Get API key and account usage details",

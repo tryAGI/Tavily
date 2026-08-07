@@ -554,31 +554,6 @@
               }
             }
           },
-          "429": {
-            "description": "Too many requests - Rate limit exceeded",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                },
-                "example": {
-                  "detail": {
-                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
-                  }
-                }
-              }
-            }
-          },
           "432": {
             "description": "Key limit or Plan Limit exceeded",
             "content": {
@@ -624,6 +599,31 @@
                 "example": {
                   "detail": {
                     "error": "This request exceeds the pay-as-you-go limit. You can increase your limit on the Tavily dashboard."
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests - Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "detail": {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "detail": {
+                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
                   }
                 }
               }
@@ -750,8 +750,8 @@
                     "type": "number",
                     "format": "float",
                     "description": "Maximum time in seconds to wait for the URL extraction before timing out. Must be between 1.0 and 60.0 seconds. If not specified, default timeouts are applied based on extract_depth: 10 seconds for basic extraction and 30 seconds for advanced extraction.",
-                    "minimum": 1,
-                    "maximum": 60,
+                    "minimum": 1.0,
+                    "maximum": 60.0,
                     "default": "None"
                   },
                   "include_usage": {
@@ -848,8 +848,8 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request",
+          "429": {
+            "description": "Too many requests - Rate limit exceeded",
             "content": {
               "application/json": {
                 "schema": {
@@ -867,7 +867,7 @@
                 },
                 "example": {
                   "detail": {
-                    "error": "<400 Bad Request, (e.g Max 20 URLs are allowed.)>"
+                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
                   }
                 }
               }
@@ -898,8 +898,8 @@
               }
             }
           },
-          "429": {
-            "description": "Too many requests - Rate limit exceeded",
+          "400": {
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -917,7 +917,7 @@
                 },
                 "example": {
                   "detail": {
-                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
+                    "error": "<400 Bad Request, (e.g Max 20 URLs are allowed.)>"
                   }
                 }
               }
@@ -2217,30 +2217,6 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Research task is completed or failed.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/schemas/ResearchTaskCompleted"
-                    },
-                    {
-                      "$ref": "#/components/schemas/ResearchTaskFailed"
-                    }
-                  ],
-                  "discriminator": {
-                    "propertyName": "status",
-                    "mapping": {
-                      "completed": "#/components/schemas/ResearchTaskCompleted",
-                      "failed": "#/components/schemas/ResearchTaskFailed"
-                    }
-                  }
-                }
-              }
-            }
-          },
           "202": {
             "description": "Research task is not yet completed (pending or in_progress).",
             "content": {
@@ -2277,6 +2253,30 @@
                   "request_id": "123e4567-e89b-12d3-a456-426614174111",
                   "status": "in_progress",
                   "response_time": 1.23
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Research task is completed or failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ResearchTaskCompleted"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ResearchTaskFailed"
+                    }
+                  ],
+                  "discriminator": {
+                    "propertyName": "status",
+                    "mapping": {
+                      "completed": "#/components/schemas/ResearchTaskCompleted",
+                      "failed": "#/components/schemas/ResearchTaskFailed"
+                    }
+                  }
                 }
               }
             }
@@ -2534,6 +2534,283 @@
                 "example": {
                   "detail": {
                     "error": "Your request has been blocked due to excessive requests. Please reduce the rate of requests"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/logs": {
+      "post": {
+        "summary": "Get usage logs for your API keys",
+        "description": "Retrieve per-request usage logs for the API keys under your account or organization.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-codeSamples": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "limit": {
+                    "type": "integer",
+                    "default": 10,
+                    "minimum": 1,
+                    "maximum": 10000,
+                    "description": "Maximum number of logs to return, most recent first.",
+                    "example": 100
+                  },
+                  "start_date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Inclusive start of the log window (YYYY-MM-DD).",
+                    "example": "2026-08-01"
+                  },
+                  "end_date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Inclusive end of the log window (YYYY-MM-DD).",
+                    "example": "2026-08-07"
+                  },
+                  "endpoints": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "search",
+                        "extract",
+                        "map",
+                        "crawl",
+                        "research"
+                      ]
+                    },
+                    "description": "Only return logs for these endpoints. By default, logs for all endpoints are returned.",
+                    "example": [
+                      "search",
+                      "research"
+                    ]
+                  },
+                  "project_id": {
+                    "type": "string",
+                    "description": "Only return logs for a single project."
+                  },
+                  "filter_by_api_key": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "When `true`, return only logs for the API key provided in the Authorization header. When `false` (default), logs for all API keys under your account or organization are returned."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Usage logs returned successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "logs": {
+                      "type": "array",
+                      "description": "Matching log entries, most recent first. Log entries never include the input or output of the original request.",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "timestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "When the request was made",
+                            "example": "2026-08-06T13:14:34.739037+00:00"
+                          },
+                          "endpoint": {
+                            "type": "string",
+                            "enum": [
+                              "search",
+                              "extract",
+                              "map",
+                              "crawl",
+                              "research"
+                            ],
+                            "description": "Which Tavily API was called",
+                            "example": "search"
+                          },
+                          "depth": {
+                            "type": "string",
+                            "description": "The request depth (e.g. `basic`, `advanced`). For `research` requests, the model tier.",
+                            "example": "advanced"
+                          },
+                          "response_time": {
+                            "type": "number",
+                            "description": "Server-side response time in seconds",
+                            "example": 1.52
+                          },
+                          "credits": {
+                            "type": "number",
+                            "description": "API credits the request consumed",
+                            "example": 2.0
+                          },
+                          "api_key": {
+                            "type": "string",
+                            "description": "The API key that made the request, masked to its last 4 characters",
+                            "example": "****abcd"
+                          },
+                          "request_id": {
+                            "type": "string",
+                            "description": "Unique identifier of the original request",
+                            "example": "8442d8d0-8b74-4fca-a89e-5b1b6dd33295"
+                          }
+                        }
+                      }
+                    },
+                    "count": {
+                      "type": "integer",
+                      "description": "Number of log entries returned",
+                      "example": 100
+                    },
+                    "response_time": {
+                      "type": "number",
+                      "description": "Response time of this logs request in seconds",
+                      "example": 1.33
+                    },
+                    "request_id": {
+                      "type": "string",
+                      "description": "Unique identifier of this logs request",
+                      "example": "d98eaaf1-cf41-4234-bf23-6f1780fbcf73"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request — invalid endpoints value or date range.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "detail": {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "detail": {
+                    "error": "Invalid endpoints: news. Valid endpoints are: search, extract, map, crawl, research"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Your API key is wrong or missing.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "detail": {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "detail": {
+                    "error": "Unauthorized: missing or invalid API key."
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden — usage logs are only available to paying customers.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "detail": {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "detail": {
+                    "error": "Access denied. Usage logs are only available to paying customers. Please upgrade your plan to access this feature."
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "detail": {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "detail": {
+                    "error": "Your request has been blocked due to excessive requests. Please reduce the rate of requests"
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Gateway Timeout — the logs query timed out.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "detail": {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "detail": {
+                    "error": "Request timed out while fetching usage logs. Please contact our team at support@tavily.com."
                   }
                 }
               }
@@ -3105,6 +3382,9 @@
     },
     {
       "name": "Usage"
+    },
+    {
+      "name": "Logs"
     }
   ]
 }

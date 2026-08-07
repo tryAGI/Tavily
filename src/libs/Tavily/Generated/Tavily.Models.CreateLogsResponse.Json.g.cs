@@ -2,7 +2,7 @@
 
 namespace Tavily
 {
-    public sealed partial class GetResearchResponse
+    public sealed partial class CreateLogsResponse
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -47,20 +47,20 @@ namespace Tavily
         /// <summary>
         /// Deserializes a JSON string using the provided JsonSerializerContext.
         /// </summary>
-        public static global::Tavily.GetResearchResponse? FromJson(
+        public static global::Tavily.CreateLogsResponse? FromJson(
             string json,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
-                typeof(global::Tavily.GetResearchResponse),
-                jsonSerializerContext) as global::Tavily.GetResearchResponse;
+                typeof(global::Tavily.CreateLogsResponse),
+                jsonSerializerContext) as global::Tavily.CreateLogsResponse;
         }
 
         /// <summary>
         /// Deserializes a JSON string using the generated default JsonSerializerContext.
         /// </summary>
-        public static global::Tavily.GetResearchResponse? FromJson(
+        public static global::Tavily.CreateLogsResponse? FromJson(
             string json)
         {
             return FromJson(
@@ -75,7 +75,7 @@ namespace Tavily
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::Tavily.GetResearchResponse? FromJson(
+        public static global::Tavily.CreateLogsResponse? FromJson(
             string json,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
@@ -86,7 +86,7 @@ namespace Tavily
                     global::Tavily.SourceGenerationContext.Default);
             }
 
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Tavily.GetResearchResponse>(
+            return global::System.Text.Json.JsonSerializer.Deserialize<global::Tavily.CreateLogsResponse>(
                 json,
                 jsonSerializerOptions);
         }
@@ -94,20 +94,20 @@ namespace Tavily
         /// <summary>
         /// Deserializes a JSON stream using the provided JsonSerializerContext.
         /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Tavily.GetResearchResponse?> FromJsonStreamAsync(
+        public static async global::System.Threading.Tasks.ValueTask<global::Tavily.CreateLogsResponse?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
-                typeof(global::Tavily.GetResearchResponse),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Tavily.GetResearchResponse;
+                typeof(global::Tavily.CreateLogsResponse),
+                jsonSerializerContext).ConfigureAwait(false)) as global::Tavily.CreateLogsResponse;
         }
 
         /// <summary>
         /// Deserializes a JSON stream using the generated default JsonSerializerContext.
         /// </summary>
-        public static global::System.Threading.Tasks.ValueTask<global::Tavily.GetResearchResponse?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::Tavily.CreateLogsResponse?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream)
         {
             return FromJsonStreamAsync(
@@ -122,7 +122,7 @@ namespace Tavily
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::System.Threading.Tasks.ValueTask<global::Tavily.GetResearchResponse?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::Tavily.CreateLogsResponse?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
@@ -133,7 +133,7 @@ namespace Tavily
                     global::Tavily.SourceGenerationContext.Default);
             }
 
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Tavily.GetResearchResponse?>(
+            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Tavily.CreateLogsResponse?>(
                 jsonStream,
                 jsonSerializerOptions);
         }

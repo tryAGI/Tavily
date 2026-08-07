@@ -7,7 +7,7 @@ namespace Tavily
     {
 
 
-        private static readonly global::Tavily.EndPointSecurityRequirement s_CreateExtractSecurityRequirement0 =
+        private static readonly global::Tavily.EndPointSecurityRequirement s_CreateLogsSecurityRequirement0 =
             new global::Tavily.EndPointSecurityRequirement
             {
                 Authorizations = new global::Tavily.EndPointAuthorizationRequirement[]
@@ -21,47 +21,41 @@ namespace Tavily
                     },
                 },
             };
-        private static readonly global::Tavily.EndPointSecurityRequirement[] s_CreateExtractSecurityRequirements =
+        private static readonly global::Tavily.EndPointSecurityRequirement[] s_CreateLogsSecurityRequirements =
             new global::Tavily.EndPointSecurityRequirement[]
-            {                s_CreateExtractSecurityRequirement0,
+            {                s_CreateLogsSecurityRequirement0,
             };
-        partial void PrepareCreateExtractArguments(
+        partial void PrepareCreateLogsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Tavily.CreateExtractRequest request);
-        partial void PrepareCreateExtractRequest(
+            global::Tavily.CreateLogsRequest request);
+        partial void PrepareCreateLogsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Tavily.CreateExtractRequest request);
-        partial void ProcessCreateExtractResponse(
+            global::Tavily.CreateLogsRequest request);
+        partial void ProcessCreateLogsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreateExtractResponseContent(
+        partial void ProcessCreateLogsResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Retrieve raw web content from specified URLs<br/>
-        /// Extract web page content from one or more specified URLs using Tavily Extract.
+        /// Get usage logs for your API keys<br/>
+        /// Retrieve per-request usage logs for the API keys under your account or organization.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Tavily.ApiException"></exception>
-        /// <remarks>
-        /// from tavily import TavilyClient<br/>
-        /// tavily_client = TavilyClient(api_key="tvly-YOUR_API_KEY")<br/>
-        /// response = tavily_client.extract("https://en.wikipedia.org/wiki/Artificial_intelligence")<br/>
-        /// print(response)
-        /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Tavily.CreateExtractResponse> CreateExtractAsync(
+        public async global::System.Threading.Tasks.Task<global::Tavily.CreateLogsResponse> CreateLogsAsync(
 
-            global::Tavily.CreateExtractRequest request,
+            global::Tavily.CreateLogsRequest request,
             global::Tavily.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await CreateExtractAsResponseAsync(
+            var __response = await CreateLogsAsResponseAsync(
 
                 request: request,
                 requestOptions: requestOptions,
@@ -71,22 +65,16 @@ namespace Tavily
             return __response.Body;
         }
         /// <summary>
-        /// Retrieve raw web content from specified URLs<br/>
-        /// Extract web page content from one or more specified URLs using Tavily Extract.
+        /// Get usage logs for your API keys<br/>
+        /// Retrieve per-request usage logs for the API keys under your account or organization.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Tavily.ApiException"></exception>
-        /// <remarks>
-        /// from tavily import TavilyClient<br/>
-        /// tavily_client = TavilyClient(api_key="tvly-YOUR_API_KEY")<br/>
-        /// response = tavily_client.extract("https://en.wikipedia.org/wiki/Artificial_intelligence")<br/>
-        /// print(response)
-        /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Tavily.AutoSDKHttpResponse<global::Tavily.CreateExtractResponse>> CreateExtractAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Tavily.AutoSDKHttpResponse<global::Tavily.CreateLogsResponse>> CreateLogsAsResponseAsync(
 
-            global::Tavily.CreateExtractRequest request,
+            global::Tavily.CreateLogsRequest request,
             global::Tavily.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -94,15 +82,15 @@ namespace Tavily
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreateExtractArguments(
+            PrepareCreateLogsArguments(
                 httpClient: HttpClient,
                 request: request);
 
 
             var __authorizations = global::Tavily.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreateExtractSecurityRequirements,
-                operationName: "CreateExtractAsync");
+                securityRequirements: s_CreateLogsSecurityRequirements,
+                operationName: "CreateLogsAsync");
 
             using var __timeoutCancellationTokenSource = global::Tavily.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -122,7 +110,7 @@ namespace Tavily
             {
 
                             var __pathBuilder = new global::Tavily.PathBuilder(
-                                path: "/extract",
+                                path: "/logs",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Tavily.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -167,7 +155,7 @@ namespace Tavily
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreateExtractRequest(
+                PrepareCreateLogsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     request: request);
@@ -187,9 +175,9 @@ namespace Tavily
                     await global::Tavily.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Tavily.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createExtract",
-                                methodName: "CreateExtractAsync",
-                                pathTemplate: "\"/extract\"",
+                                operationId: "createLogs",
+                                methodName: "CreateLogsAsync",
+                                pathTemplate: "\"/logs\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -221,9 +209,9 @@ namespace Tavily
                         await global::Tavily.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Tavily.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createExtract",
-                                methodName: "CreateExtractAsync",
-                                pathTemplate: "\"/extract\"",
+                                operationId: "createLogs",
+                                methodName: "CreateLogsAsync",
+                                pathTemplate: "\"/logs\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -262,9 +250,9 @@ namespace Tavily
                         await global::Tavily.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Tavily.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createExtract",
-                                methodName: "CreateExtractAsync",
-                                pathTemplate: "\"/extract\"",
+                                operationId: "createLogs",
+                                methodName: "CreateLogsAsync",
+                                pathTemplate: "\"/logs\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -302,7 +290,7 @@ namespace Tavily
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreateExtractResponse(
+                ProcessCreateLogsResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -310,9 +298,9 @@ namespace Tavily
                     await global::Tavily.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Tavily.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createExtract",
-                                methodName: "CreateExtractAsync",
-                                pathTemplate: "\"/extract\"",
+                                operationId: "createLogs",
+                                methodName: "CreateLogsAsync",
+                                pathTemplate: "\"/logs\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -332,9 +320,9 @@ namespace Tavily
                     await global::Tavily.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Tavily.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createExtract",
-                                methodName: "CreateExtractAsync",
-                                pathTemplate: "\"/extract\"",
+                                operationId: "createLogs",
+                                methodName: "CreateLogsAsync",
+                                pathTemplate: "\"/logs\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -349,98 +337,24 @@ namespace Tavily
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Too many requests - Rate limit exceeded
-                            if ((int)__response.StatusCode == 429)
-                            {
-                                string? __content_429 = null;
-                                global::System.Exception? __exception_429 = null;
-                                global::Tavily.CreateExtractResponse2? __value_429 = null;
-                                try
-                                {
-                                    if (__effectiveReadResponseAsString)
-                                    {
-                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_429 = global::Tavily.CreateExtractResponse2.FromJson(__content_429, JsonSerializerContext);
-                                    }
-                                    else
-                                    {
-                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-
-                                        __value_429 = global::Tavily.CreateExtractResponse2.FromJson(__content_429, JsonSerializerContext);
-                                    }
-                                }
-                                catch (global::System.Exception __ex)
-                                {
-                                    __exception_429 = __ex;
-                                }
-
-
-                                throw global::Tavily.ApiException<global::Tavily.CreateExtractResponse2>.Create(
-                                    statusCode: __response.StatusCode,
-                                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_429,
-                                    responseBody: __content_429,
-                                    responseObject: __value_429,
-                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
-                                        __response.Headers,
-                                        h => h.Key,
-                                        h => h.Value));
-                            }
-                            // Unauthorized - Your API key is wrong or missing.
-                            if ((int)__response.StatusCode == 401)
-                            {
-                                string? __content_401 = null;
-                                global::System.Exception? __exception_401 = null;
-                                global::Tavily.CreateExtractResponse3? __value_401 = null;
-                                try
-                                {
-                                    if (__effectiveReadResponseAsString)
-                                    {
-                                        __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_401 = global::Tavily.CreateExtractResponse3.FromJson(__content_401, JsonSerializerContext);
-                                    }
-                                    else
-                                    {
-                                        __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-
-                                        __value_401 = global::Tavily.CreateExtractResponse3.FromJson(__content_401, JsonSerializerContext);
-                                    }
-                                }
-                                catch (global::System.Exception __ex)
-                                {
-                                    __exception_401 = __ex;
-                                }
-
-
-                                throw global::Tavily.ApiException<global::Tavily.CreateExtractResponse3>.Create(
-                                    statusCode: __response.StatusCode,
-                                    message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_401,
-                                    responseBody: __content_401,
-                                    responseObject: __value_401,
-                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
-                                        __response.Headers,
-                                        h => h.Key,
-                                        h => h.Value));
-                            }
-                            // Bad Request
+                            // Bad Request — invalid endpoints value or date range.
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
                                 global::System.Exception? __exception_400 = null;
-                                global::Tavily.CreateExtractResponse4? __value_400 = null;
+                                global::Tavily.CreateLogsResponse2? __value_400 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_400 = global::Tavily.CreateExtractResponse4.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = global::Tavily.CreateLogsResponse2.FromJson(__content_400, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_400 = global::Tavily.CreateExtractResponse4.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = global::Tavily.CreateLogsResponse2.FromJson(__content_400, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -449,7 +363,7 @@ namespace Tavily
                                 }
 
 
-                                throw global::Tavily.ApiException<global::Tavily.CreateExtractResponse4>.Create(
+                                throw global::Tavily.ApiException<global::Tavily.CreateLogsResponse2>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_400,
@@ -460,112 +374,149 @@ namespace Tavily
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Key limit or Plan Limit exceeded
-                            if ((int)__response.StatusCode == 432)
+                            // Unauthorized - Your API key is wrong or missing.
+                            if ((int)__response.StatusCode == 401)
                             {
-                                string? __content_432 = null;
-                                global::System.Exception? __exception_432 = null;
-                                global::Tavily.CreateExtractResponse5? __value_432 = null;
+                                string? __content_401 = null;
+                                global::System.Exception? __exception_401 = null;
+                                global::Tavily.CreateLogsResponse3? __value_401 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
-                                        __content_432 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_432 = global::Tavily.CreateExtractResponse5.FromJson(__content_432, JsonSerializerContext);
+                                        __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_401 = global::Tavily.CreateLogsResponse3.FromJson(__content_401, JsonSerializerContext);
                                     }
                                     else
                                     {
-                                        __content_432 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_432 = global::Tavily.CreateExtractResponse5.FromJson(__content_432, JsonSerializerContext);
+                                        __value_401 = global::Tavily.CreateLogsResponse3.FromJson(__content_401, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
                                 {
-                                    __exception_432 = __ex;
+                                    __exception_401 = __ex;
                                 }
 
 
-                                throw global::Tavily.ApiException<global::Tavily.CreateExtractResponse5>.Create(
+                                throw global::Tavily.ApiException<global::Tavily.CreateLogsResponse3>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_432 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_432,
-                                    responseBody: __content_432,
-                                    responseObject: __value_432,
+                                    message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_401,
+                                    responseBody: __content_401,
+                                    responseObject: __value_401,
                                     responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // PayGo limit exceeded
-                            if ((int)__response.StatusCode == 433)
+                            // Forbidden — usage logs are only available to paying customers.
+                            if ((int)__response.StatusCode == 403)
                             {
-                                string? __content_433 = null;
-                                global::System.Exception? __exception_433 = null;
-                                global::Tavily.CreateExtractResponse6? __value_433 = null;
+                                string? __content_403 = null;
+                                global::System.Exception? __exception_403 = null;
+                                global::Tavily.CreateLogsResponse4? __value_403 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
-                                        __content_433 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_433 = global::Tavily.CreateExtractResponse6.FromJson(__content_433, JsonSerializerContext);
+                                        __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_403 = global::Tavily.CreateLogsResponse4.FromJson(__content_403, JsonSerializerContext);
                                     }
                                     else
                                     {
-                                        __content_433 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_433 = global::Tavily.CreateExtractResponse6.FromJson(__content_433, JsonSerializerContext);
+                                        __value_403 = global::Tavily.CreateLogsResponse4.FromJson(__content_403, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
                                 {
-                                    __exception_433 = __ex;
+                                    __exception_403 = __ex;
                                 }
 
 
-                                throw global::Tavily.ApiException<global::Tavily.CreateExtractResponse6>.Create(
+                                throw global::Tavily.ApiException<global::Tavily.CreateLogsResponse4>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_433 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_433,
-                                    responseBody: __content_433,
-                                    responseObject: __value_433,
+                                    message: __content_403 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_403,
+                                    responseBody: __content_403,
+                                    responseObject: __value_403,
                                     responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Internal Server Error - We had a problem with our server.
-                            if ((int)__response.StatusCode == 500)
+                            // Too Many Requests
+                            if ((int)__response.StatusCode == 429)
                             {
-                                string? __content_500 = null;
-                                global::System.Exception? __exception_500 = null;
-                                global::Tavily.CreateExtractResponse7? __value_500 = null;
+                                string? __content_429 = null;
+                                global::System.Exception? __exception_429 = null;
+                                global::Tavily.CreateLogsResponse5? __value_429 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
-                                        __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_500 = global::Tavily.CreateExtractResponse7.FromJson(__content_500, JsonSerializerContext);
+                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_429 = global::Tavily.CreateLogsResponse5.FromJson(__content_429, JsonSerializerContext);
                                     }
                                     else
                                     {
-                                        __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_500 = global::Tavily.CreateExtractResponse7.FromJson(__content_500, JsonSerializerContext);
+                                        __value_429 = global::Tavily.CreateLogsResponse5.FromJson(__content_429, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
                                 {
-                                    __exception_500 = __ex;
+                                    __exception_429 = __ex;
                                 }
 
 
-                                throw global::Tavily.ApiException<global::Tavily.CreateExtractResponse7>.Create(
+                                throw global::Tavily.ApiException<global::Tavily.CreateLogsResponse5>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_500,
-                                    responseBody: __content_500,
-                                    responseObject: __value_500,
+                                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_429,
+                                    responseBody: __content_429,
+                                    responseObject: __value_429,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // Gateway Timeout — the logs query timed out.
+                            if ((int)__response.StatusCode == 504)
+                            {
+                                string? __content_504 = null;
+                                global::System.Exception? __exception_504 = null;
+                                global::Tavily.CreateLogsResponse6? __value_504 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_504 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_504 = global::Tavily.CreateLogsResponse6.FromJson(__content_504, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_504 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_504 = global::Tavily.CreateLogsResponse6.FromJson(__content_504, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_504 = __ex;
+                                }
+
+
+                                throw global::Tavily.ApiException<global::Tavily.CreateLogsResponse6>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_504 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_504,
+                                    responseBody: __content_504,
+                                    responseObject: __value_504,
                                     responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
@@ -584,7 +535,7 @@ namespace Tavily
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreateExtractResponseContent(
+                                ProcessCreateLogsResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -593,9 +544,9 @@ namespace Tavily
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Tavily.CreateExtractResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Tavily.CreateLogsResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Tavily.AutoSDKHttpResponse<global::Tavily.CreateExtractResponse>(
+                                    return new global::Tavily.AutoSDKHttpResponse<global::Tavily.CreateLogsResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Tavily.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -625,9 +576,9 @@ namespace Tavily
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Tavily.CreateExtractResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Tavily.CreateLogsResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Tavily.AutoSDKHttpResponse<global::Tavily.CreateExtractResponse>(
+                                    return new global::Tavily.AutoSDKHttpResponse<global::Tavily.CreateLogsResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Tavily.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -668,71 +619,57 @@ namespace Tavily
             }
         }
         /// <summary>
-        /// Retrieve raw web content from specified URLs<br/>
-        /// Extract web page content from one or more specified URLs using Tavily Extract.
+        /// Get usage logs for your API keys<br/>
+        /// Retrieve per-request usage logs for the API keys under your account or organization.
         /// </summary>
-        /// <param name="urls"></param>
-        /// <param name="query">
-        /// User intent for reranking extracted content chunks. When provided, chunks are reranked based on relevance to this query.
+        /// <param name="limit">
+        /// Maximum number of logs to return, most recent first.<br/>
+        /// Default Value: 10<br/>
+        /// Example: 100
         /// </param>
-        /// <param name="chunksPerSource">
-        /// Chunks are short content snippets (maximum 500 characters each) pulled directly from the source. Use `chunks_per_source` to define the maximum number of relevant chunks returned per source and to control the `raw_content` length. Chunks will appear in the `raw_content` field as: `&lt;chunk 1&gt; [...] &lt;chunk 2&gt; [...] &lt;chunk 3&gt;`. Available only when `query` is provided. Must be between 1 and 5.<br/>
-        /// Default Value: 3
+        /// <param name="startDate">
+        /// Inclusive start of the log window (YYYY-MM-DD).<br/>
+        /// Example: 2026-08-01
         /// </param>
-        /// <param name="extractDepth">
-        /// The depth of the extraction process. `advanced` extraction retrieves more data, including tables and embedded content, with higher success but may increase latency.`basic` extraction costs 1 credit per 5 successful URL extractions, while `advanced` extraction costs 2 credits per 5 successful URL extractions.<br/>
-        /// Default Value: basic
+        /// <param name="endDate">
+        /// Inclusive end of the log window (YYYY-MM-DD).<br/>
+        /// Example: 2026-08-07
         /// </param>
-        /// <param name="includeImages">
-        /// Include a list of images extracted from the URLs in the response. Default is false.<br/>
-        /// Default Value: false
+        /// <param name="endpoints">
+        /// Only return logs for these endpoints. By default, logs for all endpoints are returned.<br/>
+        /// Example: [search, research]
         /// </param>
-        /// <param name="includeFavicon">
-        /// Whether to include the favicon URL for each result.<br/>
-        /// Default Value: false
+        /// <param name="projectId">
+        /// Only return logs for a single project.
         /// </param>
-        /// <param name="format">
-        /// The format of the extracted web page content. `markdown` returns content in markdown format. `text` returns plain text and may increase latency.<br/>
-        /// Default Value: markdown
-        /// </param>
-        /// <param name="timeout">
-        /// Maximum time in seconds to wait for the URL extraction before timing out. Must be between 1.0 and 60.0 seconds. If not specified, default timeouts are applied based on extract_depth: 10 seconds for basic extraction and 30 seconds for advanced extraction.<br/>
-        /// Default Value: None
-        /// </param>
-        /// <param name="includeUsage">
-        /// Whether to include credit usage information in the response. `NOTE:`The value may be 0 if the total successful URL extractions has not yet reached 5 calls. See our [Credits &amp; Pricing documentation](https://docs.tavily.com/documentation/api-credits) for details.<br/>
+        /// <param name="filterByApiKey">
+        /// When `true`, return only logs for the API key provided in the Authorization header. When `false` (default), logs for all API keys under your account or organization are returned.<br/>
         /// Default Value: false
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Tavily.CreateExtractResponse> CreateExtractAsync(
-            global::Tavily.OneOf<string, global::System.Collections.Generic.IList<string>> urls,
-            string? query = default,
-            int? chunksPerSource = default,
-            global::Tavily.CreateExtractRequestExtractDepth? extractDepth = default,
-            bool? includeImages = default,
-            bool? includeFavicon = default,
-            global::Tavily.CreateExtractRequestFormat? format = default,
-            float? timeout = default,
-            bool? includeUsage = default,
+        public async global::System.Threading.Tasks.Task<global::Tavily.CreateLogsResponse> CreateLogsAsync(
+            int? limit = default,
+            global::System.DateTime? startDate = default,
+            global::System.DateTime? endDate = default,
+            global::System.Collections.Generic.IList<global::Tavily.CreateLogsRequestEndpoint>? endpoints = default,
+            string? projectId = default,
+            bool? filterByApiKey = default,
             global::Tavily.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Tavily.CreateExtractRequest
+            var __request = new global::Tavily.CreateLogsRequest
             {
-                Urls = urls,
-                Query = query,
-                ChunksPerSource = chunksPerSource,
-                ExtractDepth = extractDepth,
-                IncludeImages = includeImages,
-                IncludeFavicon = includeFavicon,
-                Format = format,
-                Timeout = timeout,
-                IncludeUsage = includeUsage,
+                Limit = limit,
+                StartDate = startDate,
+                EndDate = endDate,
+                Endpoints = endpoints,
+                ProjectId = projectId,
+                FilterByApiKey = filterByApiKey,
             };
 
-            return await CreateExtractAsync(
+            return await CreateLogsAsync(
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);

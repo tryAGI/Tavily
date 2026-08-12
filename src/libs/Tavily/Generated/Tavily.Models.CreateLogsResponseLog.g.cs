@@ -43,9 +43,9 @@ namespace Tavily
 
         /// <summary>
         /// API credits the request consumed<br/>
-        /// Example: 2F
+        /// Example: 2
         /// </summary>
-        /// <example>2F</example>
+        /// <example>2</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("credits")]
         public double? Credits { get; set; }
 
@@ -92,7 +92,7 @@ namespace Tavily
         /// </param>
         /// <param name="credits">
         /// API credits the request consumed<br/>
-        /// Example: 2F
+        /// Example: 2
         /// </param>
         /// <param name="apiKey">
         /// The API key that made the request, masked to its last 4 characters<br/>

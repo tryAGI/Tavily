@@ -556,19 +556,19 @@ namespace Tavily
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.GetResearchResponseDiscriminator? Type132 { get; set; }
+        public global::Tavily.GetResearchResponseStatus? Type132 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.GetResearchResponseDiscriminatorStatus? Type133 { get; set; }
+        public global::Tavily.GetResearchResponse2? Type133 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.GetResearchResponse2? Type134 { get; set; }
+        public global::Tavily.GetResearchResponseDiscriminator? Type134 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Tavily.GetResearchResponseStatus? Type135 { get; set; }
+        public global::Tavily.GetResearchResponseDiscriminatorStatus? Type135 { get; set; }
         /// <summary>
         /// 
         /// </summary>

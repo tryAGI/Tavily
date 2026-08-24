@@ -143,6 +143,22 @@ namespace Tavily
         public global::Tavily.CreateSearchRequestCountry? Country { get; set; }
 
         /// <summary>
+        /// Boost search results in a specific language. Accepts an ISO 639-1 code (e.g. `en`, `fr`, `zh-cn`) or an English language name (e.g. `english`, `french`). By default this only boosts matching-language results in ranking; pass `filter_by_language: true` to strictly filter out non-matching results instead. For best results, write your `query` in the same language you set here.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464<br/>
+        /// Example: en
+        /// </summary>
+        /// <example>en</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("language")]
+        public string? Language { get; set; }
+
+        /// <summary>
+        /// Strictly filter out search results that don't match the `language` parameter, instead of only boosting them in ranking. Requires `language` to be set; returns a 400 error otherwise.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("filter_by_language")]
+        public bool? FilterByLanguage { get; set; }
+
+        /// <summary>
         /// When `auto_parameters` is enabled, Tavily automatically configures search parameters based on your query's content and intent. You can still set other parameters manually, and your explicit values will override the automatic ones. The parameters `include_answer`, `include_raw_content`, and `max_results` must always be set manually, as they directly affect response size. Note: `search_depth` may be automatically set to advanced when it's likely to improve results. This uses 2 API credits per request. To avoid the extra cost, you can explicitly set `search_depth` to `basic`.<br/>
         /// Default Value: false
         /// </summary>
@@ -255,6 +271,15 @@ namespace Tavily
         /// Boost search results from a specific country. This will prioritize content from the selected country in the search results. Available only if topic is `general`.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="language">
+        /// Boost search results in a specific language. Accepts an ISO 639-1 code (e.g. `en`, `fr`, `zh-cn`) or an English language name (e.g. `english`, `french`). By default this only boosts matching-language results in ranking; pass `filter_by_language: true` to strictly filter out non-matching results instead. For best results, write your `query` in the same language you set here.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464<br/>
+        /// Example: en
+        /// </param>
+        /// <param name="filterByLanguage">
+        /// Strictly filter out search results that don't match the `language` parameter, instead of only boosting them in ranking. Requires `language` to be set; returns a 400 error otherwise.<br/>
+        /// Default Value: false
+        /// </param>
         /// <param name="autoParameters">
         /// When `auto_parameters` is enabled, Tavily automatically configures search parameters based on your query's content and intent. You can still set other parameters manually, and your explicit values will override the automatic ones. The parameters `include_answer`, `include_raw_content`, and `max_results` must always be set manually, as they directly affect response size. Note: `search_depth` may be automatically set to advanced when it's likely to improve results. This uses 2 API credits per request. To avoid the extra cost, you can explicitly set `search_depth` to `basic`.<br/>
         /// Default Value: false
@@ -292,6 +317,8 @@ namespace Tavily
             global::System.Collections.Generic.IList<string>? includeDomains,
             global::System.Collections.Generic.IList<string>? excludeDomains,
             global::Tavily.CreateSearchRequestCountry? country,
+            string? language,
+            bool? filterByLanguage,
             bool? autoParameters,
             bool? exactMatch,
             bool? includeUsage,
@@ -313,6 +340,8 @@ namespace Tavily
             this.IncludeDomains = includeDomains;
             this.ExcludeDomains = excludeDomains;
             this.Country = country;
+            this.Language = language;
+            this.FilterByLanguage = filterByLanguage;
             this.AutoParameters = autoParameters;
             this.ExactMatch = exactMatch;
             this.IncludeUsage = includeUsage;

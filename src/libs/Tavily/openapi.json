@@ -344,6 +344,17 @@
                     ],
                     "default": null
                   },
+                  "language": {
+                    "type": "string",
+                    "description": "Boost search results in a specific language. Accepts an ISO 639-1 code (e.g. `en`, `fr`, `zh-cn`) or an English language name (e.g. `english`, `french`). By default this only boosts matching-language results in ranking; pass `filter_by_language: true` to strictly filter out non-matching results instead. For best results, write your `query` in the same language you set here.",
+                    "example": "en",
+                    "default": null
+                  },
+                  "filter_by_language": {
+                    "type": "boolean",
+                    "description": "Strictly filter out search results that don't match the `language` parameter, instead of only boosting them in ranking. Requires `language` to be set; returns a 400 error otherwise.",
+                    "default": false
+                  },
                   "auto_parameters": {
                     "type": "boolean",
                     "description": "When `auto_parameters` is enabled, Tavily automatically configures search parameters based on your query's content and intent. You can still set other parameters manually, and your explicit values will override the automatic ones. The parameters `include_answer`, `include_raw_content`, and `max_results` must always be set manually, as they directly affect response size. Note: `search_depth` may be automatically set to advanced when it's likely to improve results. This uses 2 API credits per request. To avoid the extra cost, you can explicitly set `search_depth` to `basic`.",

@@ -10,15 +10,15 @@ namespace Tavily
     public enum CreateResearchRequestOutputLength
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Long,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Short,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Standard,
     }

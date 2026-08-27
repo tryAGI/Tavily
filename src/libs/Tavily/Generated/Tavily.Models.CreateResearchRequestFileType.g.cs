@@ -10,7 +10,7 @@ namespace Tavily
     public enum CreateResearchRequestFileType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Base64,
     }

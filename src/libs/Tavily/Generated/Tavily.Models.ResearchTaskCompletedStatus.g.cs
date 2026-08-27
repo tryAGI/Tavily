@@ -9,7 +9,7 @@ namespace Tavily
     public enum ResearchTaskCompletedStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Completed,
     }

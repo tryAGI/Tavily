@@ -10,15 +10,15 @@ namespace Tavily
     public enum CreateResearchRequestModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Auto,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mini,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pro,
     }

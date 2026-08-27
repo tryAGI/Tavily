@@ -146,7 +146,7 @@ namespace Tavily
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
                 global::Tavily.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,

@@ -10,11 +10,11 @@ namespace Tavily
     public enum CreateExtractRequestExtractDepth
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Advanced,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Basic,
     }

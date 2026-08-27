@@ -4,28 +4,28 @@
 namespace Tavily
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateLogsRequestEndpoint
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Crawl,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Extract,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Map,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Research,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Search,
     }

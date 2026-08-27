@@ -4,12 +4,12 @@
 namespace Tavily
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateOrgUsageResponse
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("organization")]
         public global::Tavily.CreateOrgUsageResponseOrganization? Organization { get; set; }
@@ -21,7 +21,7 @@ namespace Tavily
         public global::Tavily.CreateOrgUsageResponseTotals? Totals { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("keys")]
         public global::System.Collections.Generic.IList<global::Tavily.CreateOrgUsageResponseKey>? Keys { get; set; }

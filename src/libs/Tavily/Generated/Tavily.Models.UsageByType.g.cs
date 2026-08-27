@@ -9,31 +9,31 @@ namespace Tavily
     public sealed partial class UsageByType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("search")]
         public global::Tavily.UsageMetrics? Search { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("crawl")]
         public global::Tavily.UsageMetrics? Crawl { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("extract")]
         public global::Tavily.UsageMetrics? Extract { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("map")]
         public global::Tavily.UsageMetrics? Map { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("research")]
         public global::Tavily.UsageMetrics? Research { get; set; }

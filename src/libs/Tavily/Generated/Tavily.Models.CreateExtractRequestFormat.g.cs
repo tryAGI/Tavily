@@ -10,11 +10,11 @@ namespace Tavily
     public enum CreateExtractRequestFormat
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Markdown,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Text,
     }

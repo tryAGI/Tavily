@@ -10,11 +10,11 @@ namespace Tavily
     public enum CreateCrawlRequestFormat
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Markdown,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Text,
     }

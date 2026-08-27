@@ -9,11 +9,11 @@ namespace Tavily
     public enum GetResearchResponseStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InProgress,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pending,
     }

@@ -4,7 +4,7 @@
 namespace Tavily
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateResearchRequestOutputSchemaProperties2
     {

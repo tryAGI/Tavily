@@ -10,667 +10,667 @@ namespace Tavily
     public enum CreateSearchRequestCountry
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Afghanistan,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Albania,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Algeria,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Andorra,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Angola,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Argentina,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Armenia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Australia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Austria,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Azerbaijan,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Bahamas,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Bahrain,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Bangladesh,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Barbados,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Belarus,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Belgium,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Belize,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Benin,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Bhutan,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Bolivia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BosniaAndHerzegovina,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Botswana,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Brazil,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Brunei,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Bulgaria,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BurkinaFaso,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Burundi,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cambodia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cameroon,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Canada,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CapeVerde,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CentralAfricanRepublic,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Chad,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Chile,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         China,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Colombia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Comoros,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Congo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CostaRica,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Croatia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cuba,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cyprus,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CzechRepublic,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Denmark,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Djibouti,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DominicanRepublic,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ecuador,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Egypt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElSalvador,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EquatorialGuinea,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Eritrea,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Estonia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ethiopia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Fiji,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Finland,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         France,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gabon,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gambia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Georgia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Germany,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ghana,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Greece,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Guatemala,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Guinea,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Haiti,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Honduras,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Hungary,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Iceland,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         India,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Indonesia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Iran,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Iraq,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ireland,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Israel,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Italy,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Jamaica,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Japan,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Jordan,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Kazakhstan,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Kenya,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Kuwait,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Kyrgyzstan,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Latvia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Lebanon,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Lesotho,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Liberia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Libya,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Liechtenstein,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Lithuania,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Luxembourg,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Madagascar,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Malawi,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Malaysia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Maldives,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mali,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Malta,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mauritania,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mauritius,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mexico,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Moldova,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Monaco,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mongolia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Montenegro,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Morocco,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mozambique,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Myanmar,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Namibia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Nepal,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Netherlands,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NewZealand,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Nicaragua,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Niger,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Nigeria,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NorthKorea,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NorthMacedonia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Norway,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Oman,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pakistan,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Panama,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PapuaNewGuinea,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Paraguay,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Peru,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Philippines,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Poland,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Portugal,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Qatar,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Romania,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Russia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Rwanda,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SaudiArabia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Senegal,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Serbia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Singapore,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Slovakia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Slovenia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Somalia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SouthAfrica,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SouthKorea,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SouthSudan,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Spain,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SriLanka,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sudan,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sweden,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Switzerland,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Syria,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Taiwan,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Tajikistan,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Tanzania,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Thailand,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Togo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TrinidadAndTobago,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Tunisia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Turkey,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Turkmenistan,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Uganda,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ukraine,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UnitedArabEmirates,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UnitedKingdom,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UnitedStates,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Uruguay,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Uzbekistan,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Venezuela,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Vietnam,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Yemen,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Zambia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Zimbabwe,
     }

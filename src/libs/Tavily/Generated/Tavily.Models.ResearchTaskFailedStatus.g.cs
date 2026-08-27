@@ -9,7 +9,7 @@ namespace Tavily
     public enum ResearchTaskFailedStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Failed,
     }

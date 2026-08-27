@@ -10,35 +10,35 @@ namespace Tavily
     public enum CreateSearchRequestTimeRange
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         D,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Day,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         M,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Month,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         W,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Week,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Y,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Year,
     }

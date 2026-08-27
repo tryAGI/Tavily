@@ -4,16 +4,16 @@
 namespace Tavily
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum GetResearchResponseDiscriminatorStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Completed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Failed,
     }

@@ -20,7 +20,7 @@ namespace Tavily.JsonConverters
                     {
                         return global::Tavily.CreateSearchRequestCountryExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

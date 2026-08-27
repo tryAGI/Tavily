@@ -4,12 +4,12 @@
 namespace Tavily
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateCrawlResponse7
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("detail")]
         public global::Tavily.CreateCrawlResponseDetail6? Detail { get; set; }

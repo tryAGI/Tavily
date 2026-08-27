@@ -10,19 +10,19 @@ namespace Tavily
     public enum CreateResearchRequestCitationFormat
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Apa,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Chicago,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mla,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Numbered,
     }

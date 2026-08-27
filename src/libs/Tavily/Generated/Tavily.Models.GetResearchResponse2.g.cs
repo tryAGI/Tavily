@@ -5,12 +5,12 @@
 namespace Tavily
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct GetResearchResponse2 : global::System.IEquatable<GetResearchResponse2>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Tavily.GetResearchResponseDiscriminatorStatus? Status { get; }
 
@@ -24,7 +24,7 @@ namespace Tavily
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Completed))]
@@ -32,7 +32,7 @@ namespace Tavily
         public bool IsCompleted => Completed != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCompleted(
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Tavily
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Tavily.ResearchTaskCompleted PickCompleted() => IsCompleted
             ? Completed!
@@ -61,7 +61,7 @@ namespace Tavily
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Failed))]
@@ -69,7 +69,7 @@ namespace Tavily
         public bool IsFailed => Failed != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFailed(
 #if NET6_0_OR_GREATER
@@ -82,23 +82,23 @@ namespace Tavily
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Tavily.ResearchTaskFailed PickFailed() => IsFailed
             ? Failed!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Failed' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetResearchResponse2(global::Tavily.ResearchTaskCompleted value) => new GetResearchResponse2((global::Tavily.ResearchTaskCompleted?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Tavily.ResearchTaskCompleted?(GetResearchResponse2 @this) => @this.Completed;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetResearchResponse2(global::Tavily.ResearchTaskCompleted? value)
         {
@@ -106,22 +106,22 @@ namespace Tavily
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetResearchResponse2 FromCompleted(global::Tavily.ResearchTaskCompleted? value) => new GetResearchResponse2(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator GetResearchResponse2(global::Tavily.ResearchTaskFailed value) => new GetResearchResponse2((global::Tavily.ResearchTaskFailed?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Tavily.ResearchTaskFailed?(GetResearchResponse2 @this) => @this.Failed;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetResearchResponse2(global::Tavily.ResearchTaskFailed? value)
         {
@@ -129,12 +129,12 @@ namespace Tavily
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static GetResearchResponse2 FromFailed(global::Tavily.ResearchTaskFailed? value) => new GetResearchResponse2(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public GetResearchResponse2(
             global::Tavily.GetResearchResponseDiscriminatorStatus? status,
@@ -149,23 +149,23 @@ namespace Tavily
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Failed as object ??
-            Completed as object 
+            Completed as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Completed?.ToString() ??
-            Failed?.ToString() 
+            Failed?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -173,7 +173,7 @@ namespace Tavily
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Tavily.ResearchTaskCompleted, TResult>? completed = null,
@@ -198,7 +198,7 @@ namespace Tavily
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Tavily.ResearchTaskCompleted>? completed = null,
@@ -222,7 +222,7 @@ namespace Tavily
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Tavily.ResearchTaskCompleted>? completed = null,
@@ -245,7 +245,7 @@ namespace Tavily
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -266,18 +266,18 @@ namespace Tavily
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(GetResearchResponse2 other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Tavily.ResearchTaskCompleted?>.Default.Equals(Completed, other.Completed) &&
-                global::System.Collections.Generic.EqualityComparer<global::Tavily.ResearchTaskFailed?>.Default.Equals(Failed, other.Failed) 
+                global::System.Collections.Generic.EqualityComparer<global::Tavily.ResearchTaskFailed?>.Default.Equals(Failed, other.Failed)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(GetResearchResponse2 obj1, GetResearchResponse2 obj2)
         {
@@ -285,7 +285,7 @@ namespace Tavily
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(GetResearchResponse2 obj1, GetResearchResponse2 obj2)
         {
@@ -293,7 +293,7 @@ namespace Tavily
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

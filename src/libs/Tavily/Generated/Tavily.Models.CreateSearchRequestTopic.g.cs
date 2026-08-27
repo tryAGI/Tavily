@@ -10,15 +10,15 @@ namespace Tavily
     public enum CreateSearchRequestTopic
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Finance,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         General,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         News,
     }

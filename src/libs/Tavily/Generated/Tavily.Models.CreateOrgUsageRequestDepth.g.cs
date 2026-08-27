@@ -10,31 +10,31 @@ namespace Tavily
     public enum CreateOrgUsageRequestDepth
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Advanced,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Auto,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Basic,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Fast,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mini,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pro,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UltraFast,
     }

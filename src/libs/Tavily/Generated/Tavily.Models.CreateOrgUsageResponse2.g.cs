@@ -4,12 +4,12 @@
 namespace Tavily
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateOrgUsageResponse2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("detail")]
         public global::Tavily.CreateOrgUsageResponseDetail? Detail { get; set; }

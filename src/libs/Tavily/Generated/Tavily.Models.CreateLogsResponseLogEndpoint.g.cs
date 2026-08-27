@@ -10,23 +10,23 @@ namespace Tavily
     public enum CreateLogsResponseLogEndpoint
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Crawl,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Extract,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Map,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Research,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Search,
     }

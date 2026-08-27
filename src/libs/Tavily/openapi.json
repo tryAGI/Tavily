@@ -372,7 +372,7 @@
                   },
                   "safe_search": {
                     "type": "boolean",
-                    "description": "🔒 Enterprise only. \n whether to filter out adult or unsafe content from results. Not supported for `fast` or `ultra-fast` search depths.",
+                    "description": "Whether to filter out adult or unsafe content from results. Not supported for `fast` or `ultra-fast` search depths.",
                     "default": false
                   }
                 },

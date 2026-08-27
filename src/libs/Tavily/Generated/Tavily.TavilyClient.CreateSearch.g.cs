@@ -768,8 +768,7 @@ namespace Tavily
         /// Default Value: false
         /// </param>
         /// <param name="safeSearch">
-        /// 🔒 Enterprise only. <br/>
-        ///  whether to filter out adult or unsafe content from results. Not supported for `fast` or `ultra-fast` search depths.<br/>
+        /// Whether to filter out adult or unsafe content from results. Not supported for `fast` or `ultra-fast` search depths.<br/>
         /// Default Value: false
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

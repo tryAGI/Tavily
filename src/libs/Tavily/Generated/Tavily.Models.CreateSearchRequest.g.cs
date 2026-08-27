@@ -180,8 +180,7 @@ namespace Tavily
         public bool? IncludeUsage { get; set; }
 
         /// <summary>
-        /// 🔒 Enterprise only. <br/>
-        ///  whether to filter out adult or unsafe content from results. Not supported for `fast` or `ultra-fast` search depths.<br/>
+        /// Whether to filter out adult or unsafe content from results. Not supported for `fast` or `ultra-fast` search depths.<br/>
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("safe_search")]
@@ -293,8 +292,7 @@ namespace Tavily
         /// Default Value: false
         /// </param>
         /// <param name="safeSearch">
-        /// 🔒 Enterprise only. <br/>
-        ///  whether to filter out adult or unsafe content from results. Not supported for `fast` or `ultra-fast` search depths.<br/>
+        /// Whether to filter out adult or unsafe content from results. Not supported for `fast` or `ultra-fast` search depths.<br/>
         /// Default Value: false
         /// </param>
 #if NET7_0_OR_GREATER

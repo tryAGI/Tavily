@@ -68,7 +68,7 @@ namespace Tavily
         /// </param>
         /// <param name="maxResults">
         /// The maximum number of search results to return.<br/>
-        /// Default Value: 5<br/>
+        /// Default Value: 10<br/>
         /// Example: 1
         /// </param>
         /// <param name="topic">

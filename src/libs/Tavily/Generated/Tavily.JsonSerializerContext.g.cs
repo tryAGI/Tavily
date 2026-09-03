@@ -41,6 +41,10 @@ namespace Tavily
 
             typeof(global::Tavily.JsonConverters.CreateSearchRequestIncludeRawContentNullableJsonConverter),
 
+            typeof(global::Tavily.JsonConverters.CreateSearchRequestIncludeDomainsModeJsonConverter),
+
+            typeof(global::Tavily.JsonConverters.CreateSearchRequestIncludeDomainsModeNullableJsonConverter),
+
             typeof(global::Tavily.JsonConverters.CreateSearchRequestCountryJsonConverter),
 
             typeof(global::Tavily.JsonConverters.CreateSearchRequestCountryNullableJsonConverter),
@@ -138,6 +142,7 @@ namespace Tavily
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.OneOf<bool?, global::Tavily.CreateSearchRequestIncludeRawContent?>), TypeInfoPropertyName = "OneOfBooleanCreateSearchRequestIncludeRawContent2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchRequestIncludeRawContent), TypeInfoPropertyName = "CreateSearchRequestIncludeRawContent2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchRequestIncludeDomainsMode), TypeInfoPropertyName = "CreateSearchRequestIncludeDomainsMode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchRequestCountry), TypeInfoPropertyName = "CreateSearchRequestCountry2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateExtractRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.OneOf<string, global::System.Collections.Generic.IList<string>>), TypeInfoPropertyName = "OneOfStringIListString2")]

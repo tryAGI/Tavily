@@ -742,6 +742,10 @@ namespace Tavily
         /// A list of domains to specifically exclude from the search results. Maximum 150 domains.<br/>
         /// Default Value: []
         /// </param>
+        /// <param name="includeDomainsMode">
+        /// Controls how `include_domains` is applied. `filter` restricts results to only the listed domains. `boost` also searches the rest of the web, so results outside `include_domains` can still surface, rather than excluding them. Requires `include_domains` to be set; returns a 400 error otherwise.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="country">
         /// Boost search results from a specific country. This will prioritize content from the selected country in the search results. Available only if topic is `general`.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -790,6 +794,7 @@ namespace Tavily
             bool? includeFavicon = default,
             global::System.Collections.Generic.IList<string>? includeDomains = default,
             global::System.Collections.Generic.IList<string>? excludeDomains = default,
+            global::Tavily.CreateSearchRequestIncludeDomainsMode? includeDomainsMode = default,
             global::Tavily.CreateSearchRequestCountry? country = default,
             string? language = default,
             bool? filterByLanguage = default,
@@ -817,6 +822,7 @@ namespace Tavily
                 IncludeFavicon = includeFavicon,
                 IncludeDomains = includeDomains,
                 ExcludeDomains = excludeDomains,
+                IncludeDomainsMode = includeDomainsMode,
                 Country = country,
                 Language = language,
                 FilterByLanguage = filterByLanguage,

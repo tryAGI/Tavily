@@ -135,6 +135,14 @@ namespace Tavily
         public global::System.Collections.Generic.IList<string>? ExcludeDomains { get; set; }
 
         /// <summary>
+        /// Controls how `include_domains` is applied. `filter` restricts results to only the listed domains. `boost` also searches the rest of the web, so results outside `include_domains` can still surface, rather than excluding them. Requires `include_domains` to be set; returns a 400 error otherwise.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("include_domains_mode")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Tavily.JsonConverters.CreateSearchRequestIncludeDomainsModeJsonConverter))]
+        public global::Tavily.CreateSearchRequestIncludeDomainsMode? IncludeDomainsMode { get; set; }
+
+        /// <summary>
         /// Boost search results from a specific country. This will prioritize content from the selected country in the search results. Available only if topic is `general`.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
@@ -266,6 +274,10 @@ namespace Tavily
         /// A list of domains to specifically exclude from the search results. Maximum 150 domains.<br/>
         /// Default Value: []
         /// </param>
+        /// <param name="includeDomainsMode">
+        /// Controls how `include_domains` is applied. `filter` restricts results to only the listed domains. `boost` also searches the rest of the web, so results outside `include_domains` can still surface, rather than excluding them. Requires `include_domains` to be set; returns a 400 error otherwise.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
+        /// </param>
         /// <param name="country">
         /// Boost search results from a specific country. This will prioritize content from the selected country in the search results. Available only if topic is `general`.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
@@ -314,6 +326,7 @@ namespace Tavily
             bool? includeFavicon,
             global::System.Collections.Generic.IList<string>? includeDomains,
             global::System.Collections.Generic.IList<string>? excludeDomains,
+            global::Tavily.CreateSearchRequestIncludeDomainsMode? includeDomainsMode,
             global::Tavily.CreateSearchRequestCountry? country,
             string? language,
             bool? filterByLanguage,
@@ -337,6 +350,7 @@ namespace Tavily
             this.IncludeFavicon = includeFavicon;
             this.IncludeDomains = includeDomains;
             this.ExcludeDomains = excludeDomains;
+            this.IncludeDomainsMode = includeDomainsMode;
             this.Country = country;
             this.Language = language;
             this.FilterByLanguage = filterByLanguage;

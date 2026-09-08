@@ -58,6 +58,14 @@ namespace Tavily
         public required int ResponseTime { get; set; }
 
         /// <summary>
+        /// Credit usage details for the request.<br/>
+        /// Example: {"credits":16}
+        /// </summary>
+        /// <example>{"credits":16}</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
+        public object? Usage { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -87,6 +95,10 @@ namespace Tavily
         /// <param name="status">
         /// The current status of the research task.
         /// </param>
+        /// <param name="usage">
+        /// Credit usage details for the request.<br/>
+        /// Example: {"credits":16}
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -96,7 +108,8 @@ namespace Tavily
             global::Tavily.OneOf<string, object> content,
             global::System.Collections.Generic.IList<global::Tavily.ResearchTaskCompletedSource> sources,
             int responseTime,
-            global::Tavily.ResearchTaskCompletedStatus status)
+            global::Tavily.ResearchTaskCompletedStatus status,
+            object? usage)
         {
             this.RequestId = requestId ?? throw new global::System.ArgumentNullException(nameof(requestId));
             this.CreatedAt = createdAt ?? throw new global::System.ArgumentNullException(nameof(createdAt));
@@ -104,6 +117,7 @@ namespace Tavily
             this.Content = content;
             this.Sources = sources ?? throw new global::System.ArgumentNullException(nameof(sources));
             this.ResponseTime = responseTime;
+            this.Usage = usage;
         }
 
         /// <summary>

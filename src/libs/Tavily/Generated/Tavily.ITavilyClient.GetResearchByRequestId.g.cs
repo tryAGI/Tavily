@@ -9,6 +9,9 @@ namespace Tavily
         /// Retrieve the status and results of a research task using its request ID.
         /// </summary>
         /// <param name="requestId"></param>
+        /// <param name="includeUsage">
+        /// Default Value: false
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Tavily.ApiException"></exception>
@@ -20,6 +23,7 @@ namespace Tavily
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Tavily.GetResearchResponse> GetResearchByRequestIdAsync(
             string requestId,
+            bool? includeUsage = default,
             global::Tavily.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -27,6 +31,9 @@ namespace Tavily
         /// Retrieve the status and results of a research task using its request ID.
         /// </summary>
         /// <param name="requestId"></param>
+        /// <param name="includeUsage">
+        /// Default Value: false
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Tavily.ApiException"></exception>
@@ -38,6 +45,7 @@ namespace Tavily
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Tavily.AutoSDKHttpResponse<global::Tavily.GetResearchResponse>> GetResearchByRequestIdAsResponseAsync(
             string requestId,
+            bool? includeUsage = default,
             global::Tavily.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

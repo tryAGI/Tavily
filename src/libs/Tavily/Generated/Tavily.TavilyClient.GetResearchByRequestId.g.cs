@@ -27,11 +27,13 @@ namespace Tavily
             };
         partial void PrepareGetResearchByRequestIdArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string requestId);
+            ref string requestId,
+            ref bool? includeUsage);
         partial void PrepareGetResearchByRequestIdRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string requestId);
+            string requestId,
+            bool? includeUsage);
         partial void ProcessGetResearchByRequestIdResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -46,6 +48,9 @@ namespace Tavily
         /// Retrieve the status and results of a research task using its request ID.
         /// </summary>
         /// <param name="requestId"></param>
+        /// <param name="includeUsage">
+        /// Default Value: false
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Tavily.ApiException"></exception>
@@ -57,11 +62,13 @@ namespace Tavily
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Tavily.GetResearchResponse> GetResearchByRequestIdAsync(
             string requestId,
+            bool? includeUsage = default,
             global::Tavily.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetResearchByRequestIdAsResponseAsync(
                 requestId: requestId,
+                includeUsage: includeUsage,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -73,6 +80,9 @@ namespace Tavily
         /// Retrieve the status and results of a research task using its request ID.
         /// </summary>
         /// <param name="requestId"></param>
+        /// <param name="includeUsage">
+        /// Default Value: false
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Tavily.ApiException"></exception>
@@ -84,6 +94,7 @@ namespace Tavily
         /// </remarks>
         public async global::System.Threading.Tasks.Task<global::Tavily.AutoSDKHttpResponse<global::Tavily.GetResearchResponse>> GetResearchByRequestIdAsResponseAsync(
             string requestId,
+            bool? includeUsage = default,
             global::Tavily.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -91,7 +102,8 @@ namespace Tavily
                 client: HttpClient);
             PrepareGetResearchByRequestIdArguments(
                 httpClient: HttpClient,
-                requestId: ref requestId);
+                requestId: ref requestId,
+                includeUsage: ref includeUsage);
 
 
             var __authorizations = global::Tavily.EndPointSecurityResolver.ResolveAuthorizations(
@@ -119,6 +131,9 @@ namespace Tavily
                             var __pathBuilder = new global::Tavily.PathBuilder(
                                 path: $"/research/{requestId}",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("include_usage", includeUsage?.ToString().ToLowerInvariant())
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Tavily.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -159,7 +174,8 @@ namespace Tavily
                 PrepareGetResearchByRequestIdRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    requestId: requestId!);
+                    requestId: requestId!,
+                    includeUsage: includeUsage);
 
                 return __httpRequest;
             }

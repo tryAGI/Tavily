@@ -4,7 +4,7 @@
 namespace Tavily
 {
     /// <summary>
-    /// Example: {"request_id":"123e4567-e89b-12d3-a456-426614174111","status":"failed"}
+    /// Example: {"request_id":"123e4567-e89b-12d3-a456-426614174111","status":"failed","usage":{"credits":0}}
     /// </summary>
     public sealed partial class ResearchTaskFailed
     {

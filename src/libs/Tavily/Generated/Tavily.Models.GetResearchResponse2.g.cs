@@ -15,7 +15,7 @@ namespace Tavily
         public global::Tavily.GetResearchResponseDiscriminatorStatus? Status { get; }
 
         /// <summary>
-        /// Example: {"request_id":"123e4567-e89b-12d3-a456-426614174111","created_at":"2025-01-15T10:30:00Z","status":"completed","content":"Research Report: Latest Developments in AI\n\n## Executive Summary\n\nArtificial Intelligence has seen significant advancements in recent months, with major breakthroughs in large language models, multimodal AI systems, and real-world applications...","sources":[{"title":"Latest AI Developments","url":"https://example.com/ai-news","favicon":"https://example.com/favicon.ico"},{"title":"AI Research Breakthroughs","url":"https://example.com/ai-research","favicon":"https://example.com/favicon.ico"}],"response_time":1.23}
+        /// Example: {"request_id":"123e4567-e89b-12d3-a456-426614174111","created_at":"2025-01-15T10:30:00Z","status":"completed","content":"Research Report: Latest Developments in AI\n\n## Executive Summary\n\nArtificial Intelligence has seen significant advancements in recent months, with major breakthroughs in large language models, multimodal AI systems, and real-world applications...","sources":[{"title":"Latest AI Developments","url":"https://example.com/ai-news","favicon":"https://example.com/favicon.ico"},{"title":"AI Research Breakthroughs","url":"https://example.com/ai-research","favicon":"https://example.com/favicon.ico"}],"response_time":1.23,"usage":{"credits":16}}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Tavily.ResearchTaskCompleted? Completed { get; init; }
@@ -52,7 +52,7 @@ namespace Tavily
             : throw new global::System.InvalidOperationException($"Expected union variant 'Completed' but the value was {ToString()}.");
 
         /// <summary>
-        /// Example: {"request_id":"123e4567-e89b-12d3-a456-426614174111","status":"failed"}
+        /// Example: {"request_id":"123e4567-e89b-12d3-a456-426614174111","status":"failed","usage":{"credits":0}}
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Tavily.ResearchTaskFailed? Failed { get; init; }

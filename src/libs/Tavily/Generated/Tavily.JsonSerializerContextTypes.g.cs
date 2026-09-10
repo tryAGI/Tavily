@@ -101,11 +101,11 @@ namespace Tavily
         /// <summary>
         ///
         /// </summary>
-        public global::Tavily.OneOf<bool?, global::Tavily.CreateSearchRequestIncludeAnswer?>? Type17 { get; set; }
+        public bool? Type17 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public bool? Type18 { get; set; }
+        public global::Tavily.OneOf<bool?, global::Tavily.CreateSearchRequestIncludeAnswer?>? Type18 { get; set; }
         /// <summary>
         ///
         /// </summary>

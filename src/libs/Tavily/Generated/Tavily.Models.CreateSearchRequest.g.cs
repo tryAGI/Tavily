@@ -58,7 +58,7 @@ namespace Tavily
         public global::Tavily.CreateSearchRequestTopic? Topic { get; set; }
 
         /// <summary>
-        /// The time range back from the current date to filter results based on publish date or last updated date. Useful when looking for sources that have published or updated data.<br/>
+        /// The time range back from the current date to filter results based on publish date or last updated date. Useful when looking for sources that have published or updated data. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("time_range")]
@@ -66,7 +66,7 @@ namespace Tavily
         public global::Tavily.CreateSearchRequestTimeRange? TimeRange { get; set; }
 
         /// <summary>
-        /// Will return all results after the specified start date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD<br/>
+        /// Will return all results after the specified start date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464<br/>
         /// Example: 2025-02-09
         /// </summary>
@@ -75,13 +75,29 @@ namespace Tavily
         public string? StartDate { get; set; }
 
         /// <summary>
-        /// Will return all results before the specified end date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD<br/>
+        /// Will return all results before the specified end date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464<br/>
         /// Example: 2025-12-29
         /// </summary>
         /// <example>2025-12-29</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("end_date")]
         public string? EndDate { get; set; }
+
+        /// <summary>
+        /// Include a `published_date` field in each result. The date is Tavily's best estimate of when the source was published or last updated, so it can be later than the original publish date. Results with no detectable date return `null`. Automatically enabled when `topic` is `news`.<br/>
+        /// **Note**: this feature is currently in beta.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("include_published_date")]
+        public bool? IncludePublishedDate { get; set; }
+
+        /// <summary>
+        /// Remove results whose published date falls outside the `time_range`, `start_date`, or `end_date` window. Results with no detectable published date are also removed. Setting this to `true` also enables `include_published_date`.<br/>
+        /// If you want date-window filtering but don't want to lose sources without a detectable date, leave this `false` and set `include_published_date: true` together with a date range instead.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("filter_by_published_date")]
+        public bool? FilterByPublishedDate { get; set; }
 
         /// <summary>
         /// Include an LLM-generated answer to the provided query. `basic` or `true` returns a quick answer. `advanced` returns a more detailed answer.<br/>
@@ -233,18 +249,28 @@ namespace Tavily
         /// Default Value: general
         /// </param>
         /// <param name="timeRange">
-        /// The time range back from the current date to filter results based on publish date or last updated date. Useful when looking for sources that have published or updated data.<br/>
+        /// The time range back from the current date to filter results based on publish date or last updated date. Useful when looking for sources that have published or updated data. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="startDate">
-        /// Will return all results after the specified start date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD<br/>
+        /// Will return all results after the specified start date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464<br/>
         /// Example: 2025-02-09
         /// </param>
         /// <param name="endDate">
-        /// Will return all results before the specified end date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD<br/>
+        /// Will return all results before the specified end date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464<br/>
         /// Example: 2025-12-29
+        /// </param>
+        /// <param name="includePublishedDate">
+        /// Include a `published_date` field in each result. The date is Tavily's best estimate of when the source was published or last updated, so it can be later than the original publish date. Results with no detectable date return `null`. Automatically enabled when `topic` is `news`.<br/>
+        /// **Note**: this feature is currently in beta.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="filterByPublishedDate">
+        /// Remove results whose published date falls outside the `time_range`, `start_date`, or `end_date` window. Results with no detectable published date are also removed. Setting this to `true` also enables `include_published_date`.<br/>
+        /// If you want date-window filtering but don't want to lose sources without a detectable date, leave this `false` and set `include_published_date: true` together with a date range instead.<br/>
+        /// Default Value: false
         /// </param>
         /// <param name="includeAnswer">
         /// Include an LLM-generated answer to the provided query. `basic` or `true` returns a quick answer. `advanced` returns a more detailed answer.<br/>
@@ -319,6 +345,8 @@ namespace Tavily
             global::Tavily.CreateSearchRequestTimeRange? timeRange,
             string? startDate,
             string? endDate,
+            bool? includePublishedDate,
+            bool? filterByPublishedDate,
             global::Tavily.OneOf<bool?, global::Tavily.CreateSearchRequestIncludeAnswer?>? includeAnswer,
             global::Tavily.OneOf<bool?, global::Tavily.CreateSearchRequestIncludeRawContent?>? includeRawContent,
             bool? includeImages,
@@ -343,6 +371,8 @@ namespace Tavily
             this.TimeRange = timeRange;
             this.StartDate = startDate;
             this.EndDate = endDate;
+            this.IncludePublishedDate = includePublishedDate;
+            this.FilterByPublishedDate = filterByPublishedDate;
             this.IncludeAnswer = includeAnswer;
             this.IncludeRawContent = includeRawContent;
             this.IncludeImages = includeImages;

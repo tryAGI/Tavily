@@ -83,7 +83,7 @@
                   },
                   "time_range": {
                     "type": "string",
-                    "description": "The time range back from the current date to filter results based on publish date or last updated date. Useful when looking for sources that have published or updated data.",
+                    "description": "The time range back from the current date to filter results based on publish date or last updated date. Useful when looking for sources that have published or updated data. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.",
                     "enum": [
                       "day",
                       "week",
@@ -98,15 +98,25 @@
                   },
                   "start_date": {
                     "type": "string",
-                    "description": "Will return all results after the specified start date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD",
+                    "description": "Will return all results after the specified start date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.",
                     "example": "2025-02-09",
                     "default": null
                   },
                   "end_date": {
                     "type": "string",
-                    "description": "Will return all results before the specified end date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD",
+                    "description": "Will return all results before the specified end date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.",
                     "example": "2025-12-29",
                     "default": null
+                  },
+                  "include_published_date": {
+                    "type": "boolean",
+                    "description": "Include a `published_date` field in each result. The date is Tavily's best estimate of when the source was published or last updated, so it can be later than the original publish date. Results with no detectable date return `null`. Automatically enabled when `topic` is `news`.\n\n**Note**: this feature is currently in beta.",
+                    "default": false
+                  },
+                  "filter_by_published_date": {
+                    "type": "boolean",
+                    "description": "Remove results whose published date falls outside the `time_range`, `start_date`, or `end_date` window. Results with no detectable published date are also removed. Setting this to `true` also enables `include_published_date`.\n\nIf you want date-window filtering but don't want to lose sources without a detectable date, leave this `false` and set `include_published_date: true` together with a date range instead.",
+                    "default": false
                   },
                   "include_answer": {
                     "oneOf": [
@@ -457,6 +467,11 @@
                             "type": "string",
                             "description": "The cleaned and parsed HTML content of the search result. Only if `include_raw_content` is true.",
                             "example": null
+                          },
+                          "published_date": {
+                            "type": "string",
+                            "description": "Tavily's best estimate of when the source was published or last updated. Can be later than the original publish date. `null` if no date could be detected. Only returned when `include_published_date` is `true` (automatically enabled when `topic` is `news`).",
+                            "example": "Tue, 11 Mar 2025 17:00:00 GMT"
                           },
                           "favicon": {
                             "type": "string",

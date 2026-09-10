@@ -49,6 +49,14 @@ namespace Tavily
         public string? RawContent { get; set; }
 
         /// <summary>
+        /// Tavily's best estimate of when the source was published or last updated. Can be later than the original publish date. `null` if no date could be detected. Only returned when `include_published_date` is `true` (automatically enabled when `topic` is `news`).<br/>
+        /// Example: Tue, 11 Mar 2025 17:00:00 GMT
+        /// </summary>
+        /// <example>Tue, 11 Mar 2025 17:00:00 GMT</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("published_date")]
+        public string? PublishedDate { get; set; }
+
+        /// <summary>
         /// The favicon URL for the result.<br/>
         /// Example: https://britannica.com/favicon.png
         /// </summary>
@@ -99,6 +107,10 @@ namespace Tavily
         /// The cleaned and parsed HTML content of the search result. Only if `include_raw_content` is true.<br/>
         /// Example: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
+        /// <param name="publishedDate">
+        /// Tavily's best estimate of when the source was published or last updated. Can be later than the original publish date. `null` if no date could be detected. Only returned when `include_published_date` is `true` (automatically enabled when `topic` is `news`).<br/>
+        /// Example: Tue, 11 Mar 2025 17:00:00 GMT
+        /// </param>
         /// <param name="favicon">
         /// The favicon URL for the result.<br/>
         /// Example: https://britannica.com/favicon.png
@@ -119,6 +131,7 @@ namespace Tavily
             string? content,
             float? score,
             string? rawContent,
+            string? publishedDate,
             string? favicon,
             global::System.Collections.Generic.IList<global::Tavily.CreateSearchResponseResultImage>? images,
             string? id)
@@ -128,6 +141,7 @@ namespace Tavily
             this.Content = content;
             this.Score = score;
             this.RawContent = rawContent;
+            this.PublishedDate = publishedDate;
             this.Favicon = favicon;
             this.Images = images;
             this.Id = id;

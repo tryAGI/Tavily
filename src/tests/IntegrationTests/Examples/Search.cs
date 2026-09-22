@@ -17,7 +17,7 @@ public partial class Tests
 
         using var client = new TavilyClient(apiKey);
 
-        CreateSearchResponse searchResponse = await client.CreateSearchAsync(
+        SearchResponse searchResponse = await client.SearchAsync(
             query: "Who is Leo Messi?");
         
         foreach (var result in searchResponse.Results)

@@ -3,27 +3,93 @@
     {
       "Order": 1,
       "Title": "Initiate a web crawl from a base URL",
-      "Slug": "initiate-a-web-crawl-from-a-base-url",
+      "Slug": "crawl",
       "Description": "Tavily Crawl is a graph-based website traversal tool that can explore hundreds of paths in parallel with built-in extraction and intelligent discovery.",
       "Language": "http",
-      "Code": "### Initiate a web crawl from a base URL\nPOST {{host}}/crawl\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022url\u0022: \u0022docs.tavily.com\u0022,\n  \u0022instructions\u0022: \u0022Find all pages about the Python SDK\u0022,\n  \u0022chunks_per_source\u0022: 3,\n  \u0022max_depth\u0022: 1,\n  \u0022max_breadth\u0022: 20,\n  \u0022limit\u0022: 50,\n  \u0022select_paths\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022select_domains\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022exclude_paths\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022exclude_domains\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022allow_external\u0022: true,\n  \u0022include_images\u0022: false,\n  \u0022extract_depth\u0022: \u0022basic\u0022,\n  \u0022format\u0022: \u0022markdown\u0022,\n  \u0022include_favicon\u0022: false,\n  \u0022timeout\u0022: 150,\n  \u0022include_usage\u0022: false\n}\n\n## Responses\n# 200\n# Description: Crawl results returned successfully\n# Content-Type: application/json\n# 400\n# Description: Bad Request - Your request is invalid.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - Your API key is wrong or missing.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - URL is not supported.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - Rate limit exceeded\n# Content-Type: application/json\n# 432\n# Description: Key limit or Plan Limit exceeded\n# Content-Type: application/json\n# 433\n# Description: PayGo limit exceeded\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error - We had a problem with our server.\n# Content-Type: application/json",
+      "Code": "### Initiate a web crawl from a base URL\n# @name crawl\nPOST {{host}}/crawl\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022url\u0022: \u0022docs.tavily.com\u0022,\n  \u0022instructions\u0022: \u0022Find all pages about the Python SDK\u0022,\n  \u0022chunks_per_source\u0022: 3,\n  \u0022max_depth\u0022: 1,\n  \u0022max_breadth\u0022: 20,\n  \u0022limit\u0022: 50,\n  \u0022select_paths\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022select_domains\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022exclude_paths\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022exclude_domains\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022allow_external\u0022: true,\n  \u0022include_images\u0022: false,\n  \u0022extract_depth\u0022: \u0022basic\u0022,\n  \u0022format\u0022: \u0022markdown\u0022,\n  \u0022include_favicon\u0022: false,\n  \u0022timeout\u0022: 150,\n  \u0022include_usage\u0022: false\n}\n\n## Responses\n# 200\n# Description: Crawl results returned successfully\n# Content-Type: application/json\n# 400\n# Description: Bad Request - Your request is invalid.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - Your API key is wrong or missing.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - URL is not supported.\n# Content-Type: application/json\n# 429\n# Description: Too Many Requests. Error messages and retry delays can vary by rate-limit rule.\n# Content-Type: application/json\n# 432\n# Description: Key limit or Plan Limit exceeded\n# Content-Type: application/json\n# 433\n# Description: PayGo limit exceeded\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error - We had a problem with our server.\n# Content-Type: application/json",
       "Format": "http",
-      "OperationId": "createCrawl",
+      "OperationId": "crawl",
       "Setup": null
     },
     {
       "Order": 2,
-      "Title": "Retrieve raw web content from specified URLs",
-      "Slug": "retrieve-raw-web-content-from-specified-urls",
-      "Description": "Extract web page content from one or more specified URLs using Tavily Extract.",
+      "Title": "Initiate a research task",
+      "Slug": "createresearch",
+      "Description": "Tavily Research performs comprehensive research on a given topic by conducting multiple searches, analyzing sources, and generating a detailed research report.",
       "Language": "http",
-      "Code": "### Retrieve raw web content from specified URLs\nPOST {{host}}/extract\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022urls\u0022: \u0022https://en.wikipedia.org/wiki/Artificial_intelligence\u0022,\n  \u0022query\u0022: \u0022string\u0022,\n  \u0022chunks_per_source\u0022: 3,\n  \u0022extract_depth\u0022: \u0022basic\u0022,\n  \u0022include_images\u0022: false,\n  \u0022include_favicon\u0022: false,\n  \u0022format\u0022: \u0022markdown\u0022,\n  \u0022timeout\u0022: \u0022None\u0022,\n  \u0022include_usage\u0022: false\n}\n\n## Responses\n# 200\n# Description: Extraction results returned successfully\n# Content-Type: application/json\n# 400\n# Description: Bad Request\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - Your API key is wrong or missing.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - Rate limit exceeded\n# Content-Type: application/json\n# 432\n# Description: Key limit or Plan Limit exceeded\n# Content-Type: application/json\n# 433\n# Description: PayGo limit exceeded\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error - We had a problem with our server.\n# Content-Type: application/json",
+      "Code": "### Initiate a research task\n# @name createResearch\nPOST {{host}}/research\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022input\u0022: \u0022What are the latest developments in AI?\u0022,\n  \u0022model\u0022: \u0022auto\u0022,\n  \u0022stream\u0022: false,\n  \u0022output_schema\u0022: {\n    \u0022properties\u0022: {\n      \u0022company\u0022: {\n        \u0022type\u0022: \u0022string\u0022,\n        \u0022description\u0022: \u0022The name of the company\u0022\n      },\n      \u0022key_metrics\u0022: {\n        \u0022type\u0022: \u0022array\u0022,\n        \u0022description\u0022: \u0022List of key performance metrics\u0022,\n        \u0022items\u0022: {\n          \u0022type\u0022: \u0022string\u0022\n        }\n      },\n      \u0022financial_details\u0022: {\n        \u0022type\u0022: \u0022object\u0022,\n        \u0022description\u0022: \u0022Detailed financial breakdown\u0022,\n        \u0022properties\u0022: {\n          \u0022operating_income\u0022: {\n            \u0022type\u0022: \u0022number\u0022,\n            \u0022description\u0022: \u0022Operating income for the period\u0022\n          }\n        }\n      }\n    },\n    \u0022required\u0022: [\n      \u0022company\u0022\n    ]\n  },\n  \u0022citation_format\u0022: \u0022numbered\u0022,\n  \u0022include_domains\u0022: [\n    \u0022sec.gov\u0022,\n    \u0022ec.europa.eu\u0022\n  ],\n  \u0022exclude_domains\u0022: [\n    \u0022reddit.com\u0022,\n    \u0022quora.com\u0022\n  ],\n  \u0022output_length\u0022: \u0022standard\u0022,\n  \u0022files\u0022: [\n    {\n      \u0022name\u0022: \u0022q1-report.md\u0022,\n      \u0022data\u0022: \u0022\\u003Cbase64-encoded file contents\\u003E\u0022,\n      \u0022type\u0022: \u0022base64\u0022\n    }\n  ]\n}\n\n## Responses\n# 201\n# Description: Research task queued successfully (when not streaming)\n# Content-Type: application/json\n# 400\n# Description: Bad Request - Your request is invalid.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - Your API key is wrong or missing.\n# Content-Type: application/json\n# 429\n# Description: Too Many Requests. Error messages and retry delays can vary by rate-limit rule.\n# Content-Type: application/json\n# 432\n# Description: Key limit or Plan Limit exceeded\n# Content-Type: application/json\n# 433\n# Description: PayGo limit exceeded\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error - We had a problem with our server.\n# Content-Type: application/json",
       "Format": "http",
-      "OperationId": "createExtract",
+      "OperationId": "createResearch",
       "Setup": null
     },
     {
       "Order": 3,
+      "Title": "Retrieve raw web content from specified URLs",
+      "Slug": "extract",
+      "Description": "Extract content from one URL or batch up to 20 URLs in one request. Successful URLs appear in results; per-URL failures appear in failed_results. Check both arrays even when the response is HTTP 200. Request options apply to every URL in the batch.",
+      "Language": "http",
+      "Code": "### Retrieve raw web content from specified URLs\n# @name extract\nPOST {{host}}/extract\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022urls\u0022: \u0022https://en.wikipedia.org/wiki/Artificial_intelligence\u0022,\n  \u0022query\u0022: \u0022string\u0022,\n  \u0022chunks_per_source\u0022: 3,\n  \u0022extract_depth\u0022: \u0022basic\u0022,\n  \u0022include_images\u0022: false,\n  \u0022include_favicon\u0022: false,\n  \u0022format\u0022: \u0022markdown\u0022,\n  \u0022timeout\u0022: \u0022None\u0022,\n  \u0022include_usage\u0022: false\n}\n\n## Responses\n# 200\n# Description: Extraction completed. Check results and failed_results for each URL. HTTP 200 can have an empty results array when all valid URLs fail during extraction; output order is not guaranteed.\n# Content-Type: application/json\n# 400\n# Description: Bad Request. More than 20 URLs, an empty URL list, or no URLs passing validation are rejected. When all URLs fail validation, detail.failed_results describes the individual failures.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - Your API key is wrong or missing.\n# Content-Type: application/json\n# 429\n# Description: Too Many Requests. Error messages and retry delays can vary by rate-limit rule.\n# Content-Type: application/json\n# 432\n# Description: Key limit or Plan Limit exceeded\n# Content-Type: application/json\n# 433\n# Description: PayGo limit exceeded\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error - We had a problem with our server.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "extract",
+      "Setup": null
+    },
+    {
+      "Order": 4,
+      "Title": "Get research task status and results",
+      "Slug": "getresearch",
+      "Description": "Retrieve the status and results of a research task using its request ID.",
+      "Language": "csharp",
+      "Code": "using var client = new TavilyClient(apiKey);\n\nvar response = await client.GetResearchAsync(\n    requestId: \u0022123e4567-e89b-12d3-a456-426614174111\u0022\n);\n\n// Example response:\n// {\n//   \u0022request_id\u0022: \u0022123e4567-e89b-12d3-a456-426614174111\u0022,\n//   \u0022status\u0022: \u0022in_progress\u0022,\n//   \u0022response_time\u0022: 1.23\n// }",
+      "Format": "sdk",
+      "OperationId": "getResearch",
+      "Setup": "This example assumes \u0060using Tavily;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+    },
+    {
+      "Order": 5,
+      "Title": "Get API key and account usage details",
+      "Slug": "getusage",
+      "Description": "Get API key and account usage details",
+      "Language": "csharp",
+      "Code": "using var client = new TavilyClient(apiKey);\nvar response = await client.GetUsageAsync();",
+      "Format": "sdk",
+      "OperationId": "getUsage",
+      "Setup": "This example assumes \u0060using Tavily;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+    },
+    {
+      "Order": 6,
+      "Title": "Initiate a web mapping from a base URL",
+      "Slug": "map",
+      "Description": "Tavily Map traverses websites like a graph and can explore hundreds of paths in parallel with intelligent discovery to generate comprehensive site maps.",
+      "Language": "http",
+      "Code": "### Initiate a web mapping from a base URL\n# @name map\nPOST {{host}}/map\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022url\u0022: \u0022docs.tavily.com\u0022,\n  \u0022instructions\u0022: \u0022Find all pages about the Python SDK\u0022,\n  \u0022max_depth\u0022: 1,\n  \u0022max_breadth\u0022: 20,\n  \u0022limit\u0022: 50,\n  \u0022select_paths\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022select_domains\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022exclude_paths\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022exclude_domains\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022allow_external\u0022: true,\n  \u0022timeout\u0022: 150,\n  \u0022include_usage\u0022: false\n}\n\n## Responses\n# 200\n# Description: Map results returned successfully\n# Content-Type: application/json\n# 400\n# Description: Bad Request - Your request is invalid.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - Your API key is wrong or missing.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - URL is not supported.\n# Content-Type: application/json\n# 429\n# Description: Too Many Requests. Error messages and retry delays can vary by rate-limit rule.\n# Content-Type: application/json\n# 432\n# Description: Key limit or Plan Limit exceeded\n# Content-Type: application/json\n# 433\n# Description: PayGo limit exceeded\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error - We had a problem with our server.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "map",
+      "Setup": null
+    },
+    {
+      "Order": 7,
+      "Title": "Search for data based on a query",
+      "Slug": "search",
+      "Description": "Execute a search query using Tavily Search.",
+      "Language": "http",
+      "Code": "### Search for data based on a query\n# @name search\nPOST {{host}}/search\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022query\u0022: \u0022who is Leo Messi?\u0022,\n  \u0022search_depth\u0022: \u0022basic\u0022,\n  \u0022chunks_per_source\u0022: 3,\n  \u0022max_results\u0022: 1,\n  \u0022topic\u0022: \u0022general\u0022,\n  \u0022time_range\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022start_date\u0022: \u00222025-02-09\u0022,\n  \u0022end_date\u0022: \u00222025-12-29\u0022,\n  \u0022include_published_date\u0022: false,\n  \u0022filter_by_published_date\u0022: false,\n  \u0022include_answer\u0022: false,\n  \u0022include_raw_content\u0022: false,\n  \u0022include_images\u0022: false,\n  \u0022include_image_descriptions\u0022: false,\n  \u0022include_favicon\u0022: false,\n  \u0022include_domains\u0022: [],\n  \u0022exclude_domains\u0022: [],\n  \u0022include_domains_mode\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022country\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022language\u0022: \u0022en\u0022,\n  \u0022filter_by_language\u0022: false,\n  \u0022auto_parameters\u0022: false,\n  \u0022exact_match\u0022: false,\n  \u0022include_usage\u0022: false,\n  \u0022safe_search\u0022: false\n}\n\n## Responses\n# 200\n# Description: Search results returned successfully\n# Content-Type: application/json\n# 400\n# Description: Bad Request - Your request is invalid.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - Your API key is wrong or missing.\n# Content-Type: application/json\n# 422\n# Description: Request validation failed. The detail array identifies invalid fields.\n# Content-Type: application/json\n# 429\n# Description: Too Many Requests. Error messages and retry delays can vary by rate-limit rule.\n# Content-Type: application/json\n# 432\n# Description: Key limit or Plan Limit exceeded\n# Content-Type: application/json\n# 433\n# Description: PayGo limit exceeded\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error - We had a problem with our server.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "search",
+      "Setup": null
+    },
+    {
+      "Order": 8,
+      "Title": "Submit feedback on a search request or session",
+      "Slug": "submit-feedback-on-a-search-request-or-session",
+      "Description": "Submit feedback on how relevant and useful Tavily\u0027s results were for your task.",
+      "Language": "http",
+      "Code": "### Submit feedback on a search request or session\nPOST {{host}}/feedback\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022request_id\u0022: \u00228442d8d0-8b74-4fca-a89e-5b1b6dd33295\u0022,\n  \u0022session_id\u0022: \u00225874812a-2e9b-43ea-8978-6cc9225b587b\u0022,\n  \u0022agent_score\u0022: 1,\n  \u0022human_score\u0022: 1,\n  \u0022extra_scores\u0022: [\n    {\n      \u0022label\u0022: \u0022freshness\u0022,\n      \u0022value\u0022: 0.4\n    },\n    {\n      \u0022label\u0022: \u0022authority\u0022,\n      \u0022value\u0022: 0.9\n    }\n  ],\n  \u0022comment\u0022: \u0022Results were authoritative but several were more than a year old.\u0022,\n  \u0022response_delivered\u0022: \u0022Lionel Messi is an Argentine footballer born in 1987...\u0022,\n  \u0022used_ids\u0022: [\n    \u0022a3f9c2-04\u0022,\n    \u0022a3f9c2-07\u0022\n  ],\n  \u0022used_urls\u0022: [\n    \u0022https://www.britannica.com/facts/Lionel-Messi\u0022\n  ],\n  \u0022used_citations\u0022: [\n    \u0022Messi is known for his exceptional dribbling skills, vision, and goal-scoring ability.\u0022\n  ],\n  \u0022urls_scores\u0022: [\n    {\n      \u0022id\u0022: \u0022a3f9c2-04\u0022,\n      \u0022agent_score\u0022: 1,\n      \u0022comment\u0022: \u0022Directly answered the question.\u0022\n    },\n    {\n      \u0022url\u0022: \u0022https://example.com/stale-page\u0022,\n      \u0022agent_score\u0022: -1,\n      \u0022scores\u0022: [\n        {\n          \u0022label\u0022: \u0022freshness\u0022,\n          \u0022value\u0022: 0.1\n        }\n      ]\n    }\n  ]\n}\n\n## Responses\n# 200\n# Description: Feedback accepted\n# Content-Type: application/json\n# 400\n# Description: Bad Request \u2014 neither \u0060session_id\u0060 nor \u0060request_id\u0060 was provided, or a \u0060urls_scores\u0060 item is missing both \u0060id\u0060 and \u0060url\u0060.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - Your API key is wrong or missing.\n# Content-Type: application/json\n# 413\n# Description: Payload Too Large \u2014 the request body exceeds 256 KB.\n# Content-Type: application/json\n# 422\n# Description: Unprocessable Entity \u2014 a field failed validation (e.g. a list or string exceeds its maximum length).\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "createFeedback",
+      "Setup": null
+    },
+    {
+      "Order": 9,
       "Title": "Get usage logs for your API keys",
       "Slug": "get-usage-logs-for-your-api-keys",
       "Description": "Retrieve per-request usage logs for the API keys under your account or organization.",
@@ -34,18 +100,7 @@
       "Setup": null
     },
     {
-      "Order": 4,
-      "Title": "Initiate a web mapping from a base URL",
-      "Slug": "initiate-a-web-mapping-from-a-base-url",
-      "Description": "Tavily Map traverses websites like a graph and can explore hundreds of paths in parallel with intelligent discovery to generate comprehensive site maps.",
-      "Language": "http",
-      "Code": "### Initiate a web mapping from a base URL\nPOST {{host}}/map\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022url\u0022: \u0022docs.tavily.com\u0022,\n  \u0022instructions\u0022: \u0022Find all pages about the Python SDK\u0022,\n  \u0022max_depth\u0022: 1,\n  \u0022max_breadth\u0022: 20,\n  \u0022limit\u0022: 50,\n  \u0022select_paths\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022select_domains\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022exclude_paths\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022exclude_domains\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022allow_external\u0022: true,\n  \u0022timeout\u0022: 150,\n  \u0022include_usage\u0022: false\n}\n\n## Responses\n# 200\n# Description: Map results returned successfully\n# Content-Type: application/json\n# 400\n# Description: Bad Request - Your request is invalid.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - Your API key is wrong or missing.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - URL is not supported.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - Rate limit exceeded\n# Content-Type: application/json\n# 432\n# Description: Key limit or Plan Limit exceeded\n# Content-Type: application/json\n# 433\n# Description: PayGo limit exceeded\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error - We had a problem with our server.\n# Content-Type: application/json",
-      "Format": "http",
-      "OperationId": "createMap",
-      "Setup": null
-    },
-    {
-      "Order": 5,
+      "Order": 10,
       "Title": "Get organization usage across all API keys",
       "Slug": "get-organization-usage-across-all-api-keys",
       "Description": "Retrieve usage (credits), pay-as-you-go USD cost, and request counts for **every API key under an organization you own**, mirroring the platform\u0027s Usage analytics page.\n\nIdentify the organization by **name** in the request body. Authenticate with the organization owner\u0027s **personal API key** \u2014 the key from the owner\u0027s own personal account, **not** an organization or enterprise API key. Supports date-range, project, and depth filtering.",
@@ -54,50 +109,6 @@
       "Format": "http",
       "OperationId": "createOrgUsage",
       "Setup": null
-    },
-    {
-      "Order": 6,
-      "Title": "Initiate a research task",
-      "Slug": "initiate-a-research-task",
-      "Description": "Tavily Research performs comprehensive research on a given topic by conducting multiple searches, analyzing sources, and generating a detailed research report.",
-      "Language": "http",
-      "Code": "### Initiate a research task\nPOST {{host}}/research\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022input\u0022: \u0022What are the latest developments in AI?\u0022,\n  \u0022model\u0022: \u0022auto\u0022,\n  \u0022stream\u0022: false,\n  \u0022output_schema\u0022: {\n    \u0022properties\u0022: {\n      \u0022company\u0022: {\n        \u0022type\u0022: \u0022string\u0022,\n        \u0022description\u0022: \u0022The name of the company\u0022\n      },\n      \u0022key_metrics\u0022: {\n        \u0022type\u0022: \u0022array\u0022,\n        \u0022description\u0022: \u0022List of key performance metrics\u0022,\n        \u0022items\u0022: {\n          \u0022type\u0022: \u0022string\u0022\n        }\n      },\n      \u0022financial_details\u0022: {\n        \u0022type\u0022: \u0022object\u0022,\n        \u0022description\u0022: \u0022Detailed financial breakdown\u0022,\n        \u0022properties\u0022: {\n          \u0022operating_income\u0022: {\n            \u0022type\u0022: \u0022number\u0022,\n            \u0022description\u0022: \u0022Operating income for the period\u0022\n          }\n        }\n      }\n    },\n    \u0022required\u0022: [\n      \u0022company\u0022\n    ]\n  },\n  \u0022citation_format\u0022: \u0022numbered\u0022,\n  \u0022include_domains\u0022: [\n    \u0022sec.gov\u0022,\n    \u0022ec.europa.eu\u0022\n  ],\n  \u0022exclude_domains\u0022: [\n    \u0022reddit.com\u0022,\n    \u0022quora.com\u0022\n  ],\n  \u0022output_length\u0022: \u0022standard\u0022,\n  \u0022files\u0022: [\n    {\n      \u0022name\u0022: \u0022q1-report.md\u0022,\n      \u0022data\u0022: \u0022\\u003Cbase64-encoded file contents\\u003E\u0022,\n      \u0022type\u0022: \u0022base64\u0022\n    }\n  ]\n}\n\n## Responses\n# 201\n# Description: Research task queued successfully (when not streaming)\n# Content-Type: application/json\n# 400\n# Description: Bad Request - Your request is invalid.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - Your API key is wrong or missing.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - Rate limit exceeded\n# Content-Type: application/json\n# 432\n# Description: Key limit or Plan Limit exceeded\n# Content-Type: application/json\n# 433\n# Description: PayGo limit exceeded\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error - We had a problem with our server.\n# Content-Type: application/json",
-      "Format": "http",
-      "OperationId": "createResearch",
-      "Setup": null
-    },
-    {
-      "Order": 7,
-      "Title": "Search for data based on a query",
-      "Slug": "search-for-data-based-on-a-query",
-      "Description": "Execute a search query using Tavily Search.",
-      "Language": "http",
-      "Code": "### Search for data based on a query\nPOST {{host}}/search\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022query\u0022: \u0022who is Leo Messi?\u0022,\n  \u0022search_depth\u0022: \u0022basic\u0022,\n  \u0022chunks_per_source\u0022: 3,\n  \u0022max_results\u0022: 1,\n  \u0022topic\u0022: \u0022general\u0022,\n  \u0022time_range\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022start_date\u0022: \u00222025-02-09\u0022,\n  \u0022end_date\u0022: \u00222025-12-29\u0022,\n  \u0022include_published_date\u0022: false,\n  \u0022filter_by_published_date\u0022: false,\n  \u0022include_answer\u0022: false,\n  \u0022include_raw_content\u0022: false,\n  \u0022include_images\u0022: false,\n  \u0022include_image_descriptions\u0022: false,\n  \u0022include_favicon\u0022: false,\n  \u0022include_domains\u0022: [],\n  \u0022exclude_domains\u0022: [],\n  \u0022include_domains_mode\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022country\u0022: \u0022openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464\u0022,\n  \u0022language\u0022: \u0022en\u0022,\n  \u0022filter_by_language\u0022: false,\n  \u0022auto_parameters\u0022: false,\n  \u0022exact_match\u0022: false,\n  \u0022include_usage\u0022: false,\n  \u0022safe_search\u0022: false\n}\n\n## Responses\n# 200\n# Description: Search results returned successfully\n# Content-Type: application/json\n# 400\n# Description: Bad Request - Your request is invalid.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - Your API key is wrong or missing.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - Rate limit exceeded\n# Content-Type: application/json\n# 432\n# Description: Key limit or Plan Limit exceeded\n# Content-Type: application/json\n# 433\n# Description: PayGo limit exceeded\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error - We had a problem with our server.\n# Content-Type: application/json",
-      "Format": "http",
-      "OperationId": "createSearch",
-      "Setup": null
-    },
-    {
-      "Order": 8,
-      "Title": "Get research task status and results",
-      "Slug": "get-research-task-status-and-results",
-      "Description": "Retrieve the status and results of a research task using its request ID.",
-      "Language": "csharp",
-      "Code": "using var client = new TavilyClient(apiKey);\n\nvar response = await client.GetResearchByRequestIdAsync(\n    requestId: \u0022123e4567-e89b-12d3-a456-426614174111\u0022\n);\n\n// Example response:\n// {\n//   \u0022request_id\u0022: \u0022123e4567-e89b-12d3-a456-426614174111\u0022,\n//   \u0022status\u0022: \u0022in_progress\u0022,\n//   \u0022response_time\u0022: 1.23\n// }",
-      "Format": "sdk",
-      "OperationId": "getResearchByRequestId",
-      "Setup": "This example assumes \u0060using Tavily;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
-    },
-    {
-      "Order": 9,
-      "Title": "Get API key and account usage details",
-      "Slug": "get-api-key-and-account-usage-details",
-      "Description": "Get API key and account usage details",
-      "Language": "csharp",
-      "Code": "using var client = new TavilyClient(apiKey);\nvar response = await client.GetUsageAsync();",
-      "Format": "sdk",
-      "OperationId": "getUsage",
-      "Setup": "This example assumes \u0060using Tavily;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     }
   ]
 }

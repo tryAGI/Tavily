@@ -187,7 +187,7 @@ namespace Tavily
                     await global::Tavily.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Tavily.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createResearch",
+                                operationId: "CreateResearch",
                                 methodName: "CreateResearchAsync",
                                 pathTemplate: "\"/research\"",
                                 httpMethod: "POST",
@@ -221,7 +221,7 @@ namespace Tavily
                         await global::Tavily.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Tavily.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createResearch",
+                                operationId: "CreateResearch",
                                 methodName: "CreateResearchAsync",
                                 pathTemplate: "\"/research\"",
                                 httpMethod: "POST",
@@ -262,7 +262,7 @@ namespace Tavily
                         await global::Tavily.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Tavily.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createResearch",
+                                operationId: "CreateResearch",
                                 methodName: "CreateResearchAsync",
                                 pathTemplate: "\"/research\"",
                                 httpMethod: "POST",
@@ -310,7 +310,7 @@ namespace Tavily
                     await global::Tavily.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Tavily.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createResearch",
+                                operationId: "CreateResearch",
                                 methodName: "CreateResearchAsync",
                                 pathTemplate: "\"/research\"",
                                 httpMethod: "POST",
@@ -332,7 +332,7 @@ namespace Tavily
                     await global::Tavily.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Tavily.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "createResearch",
+                                operationId: "CreateResearch",
                                 methodName: "CreateResearchAsync",
                                 pathTemplate: "\"/research\"",
                                 httpMethod: "POST",
@@ -354,19 +354,19 @@ namespace Tavily
                             {
                                 string? __content_400 = null;
                                 global::System.Exception? __exception_400 = null;
-                                global::Tavily.CreateResearchResponse2? __value_400 = null;
+                                global::Tavily.ApiError? __value_400 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_400 = global::Tavily.CreateResearchResponse2.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = global::Tavily.ApiError.FromJson(__content_400, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_400 = global::Tavily.CreateResearchResponse2.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = global::Tavily.ApiError.FromJson(__content_400, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -375,7 +375,7 @@ namespace Tavily
                                 }
 
 
-                                throw global::Tavily.ApiException<global::Tavily.CreateResearchResponse2>.Create(
+                                throw global::Tavily.ApiException<global::Tavily.ApiError>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_400,
@@ -391,19 +391,19 @@ namespace Tavily
                             {
                                 string? __content_401 = null;
                                 global::System.Exception? __exception_401 = null;
-                                global::Tavily.CreateResearchResponse3? __value_401 = null;
+                                global::Tavily.ApiError? __value_401 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_401 = global::Tavily.CreateResearchResponse3.FromJson(__content_401, JsonSerializerContext);
+                                        __value_401 = global::Tavily.ApiError.FromJson(__content_401, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_401 = global::Tavily.CreateResearchResponse3.FromJson(__content_401, JsonSerializerContext);
+                                        __value_401 = global::Tavily.ApiError.FromJson(__content_401, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -412,7 +412,7 @@ namespace Tavily
                                 }
 
 
-                                throw global::Tavily.ApiException<global::Tavily.CreateResearchResponse3>.Create(
+                                throw global::Tavily.ApiException<global::Tavily.ApiError>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_401,
@@ -423,24 +423,24 @@ namespace Tavily
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Too many requests - Rate limit exceeded
+                            // Too Many Requests. Error messages and retry delays can vary by rate-limit rule.
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
                                 global::System.Exception? __exception_429 = null;
-                                global::Tavily.CreateResearchResponse4? __value_429 = null;
+                                global::Tavily.ApiError? __value_429 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_429 = global::Tavily.CreateResearchResponse4.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = global::Tavily.ApiError.FromJson(__content_429, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_429 = global::Tavily.CreateResearchResponse4.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = global::Tavily.ApiError.FromJson(__content_429, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -449,7 +449,7 @@ namespace Tavily
                                 }
 
 
-                                throw global::Tavily.ApiException<global::Tavily.CreateResearchResponse4>.Create(
+                                throw global::Tavily.ApiException<global::Tavily.ApiError>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_429,
@@ -465,19 +465,19 @@ namespace Tavily
                             {
                                 string? __content_432 = null;
                                 global::System.Exception? __exception_432 = null;
-                                global::Tavily.CreateResearchResponse5? __value_432 = null;
+                                global::Tavily.ApiError? __value_432 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_432 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_432 = global::Tavily.CreateResearchResponse5.FromJson(__content_432, JsonSerializerContext);
+                                        __value_432 = global::Tavily.ApiError.FromJson(__content_432, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_432 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_432 = global::Tavily.CreateResearchResponse5.FromJson(__content_432, JsonSerializerContext);
+                                        __value_432 = global::Tavily.ApiError.FromJson(__content_432, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -486,7 +486,7 @@ namespace Tavily
                                 }
 
 
-                                throw global::Tavily.ApiException<global::Tavily.CreateResearchResponse5>.Create(
+                                throw global::Tavily.ApiException<global::Tavily.ApiError>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_432 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_432,
@@ -502,19 +502,19 @@ namespace Tavily
                             {
                                 string? __content_433 = null;
                                 global::System.Exception? __exception_433 = null;
-                                global::Tavily.CreateResearchResponse6? __value_433 = null;
+                                global::Tavily.ApiError? __value_433 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_433 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_433 = global::Tavily.CreateResearchResponse6.FromJson(__content_433, JsonSerializerContext);
+                                        __value_433 = global::Tavily.ApiError.FromJson(__content_433, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_433 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_433 = global::Tavily.CreateResearchResponse6.FromJson(__content_433, JsonSerializerContext);
+                                        __value_433 = global::Tavily.ApiError.FromJson(__content_433, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -523,7 +523,7 @@ namespace Tavily
                                 }
 
 
-                                throw global::Tavily.ApiException<global::Tavily.CreateResearchResponse6>.Create(
+                                throw global::Tavily.ApiException<global::Tavily.ApiError>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_433 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_433,
@@ -539,19 +539,19 @@ namespace Tavily
                             {
                                 string? __content_500 = null;
                                 global::System.Exception? __exception_500 = null;
-                                global::Tavily.CreateResearchResponse7? __value_500 = null;
+                                global::Tavily.ApiError? __value_500 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_500 = global::Tavily.CreateResearchResponse7.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::Tavily.ApiError.FromJson(__content_500, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_500 = global::Tavily.CreateResearchResponse7.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::Tavily.ApiError.FromJson(__content_500, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -560,7 +560,7 @@ namespace Tavily
                                 }
 
 
-                                throw global::Tavily.ApiException<global::Tavily.CreateResearchResponse7>.Create(
+                                throw global::Tavily.ApiException<global::Tavily.ApiError>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_500,

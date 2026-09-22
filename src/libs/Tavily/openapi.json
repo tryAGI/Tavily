@@ -183,10 +183,10 @@
                   },
                   "include_domains_mode": {
                     "type": "string",
-                    "description": "Controls how `include_domains` is applied. `filter` restricts results to only the listed domains. `boost` also searches the rest of the web, so results outside `include_domains` can still surface, rather than excluding them. Requires `include_domains` to be set; returns a 400 error otherwise.",
+                    "description": "Controls how `include_domains` is applied. `restrict` limits results to only the listed domains. `prefer` also searches the rest of the web, so results outside `include_domains` can still surface, rather than excluding them. Requires `include_domains` to be set; returns a 400 error otherwise.",
                     "enum": [
-                      "filter",
-                      "boost"
+                      "restrict",
+                      "prefer"
                     ],
                     "default": null
                   },
@@ -544,17 +544,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -569,17 +559,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -594,17 +574,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -619,17 +589,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -640,27 +600,22 @@
             }
           },
           "429": {
-            "description": "Too many requests - Rate limit exceeded",
+            "description": "Too Many Requests. Error messages and retry delays can vary by rate-limit rule.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
-                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
+                    "error": "Your request has been blocked due to excessive requests. Please reduce the rate of requests."
                   }
                 }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "$ref": "#/components/headers/RetryAfter"
               }
             }
           },
@@ -669,17 +624,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -688,14 +633,38 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Request validation failed. The detail array identifies invalid fields.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationError"
+                },
+                "example": {
+                  "detail": [
+                    {
+                      "type": "string_type",
+                      "loc": [
+                        "body",
+                        "query"
+                      ],
+                      "msg": "Input should be a valid string",
+                      "input": []
+                    }
+                  ]
+                }
+              }
+            }
           }
-        }
+        },
+        "operationId": "search"
       }
     },
     "/extract": {
       "post": {
         "summary": "Retrieve raw web content from specified URLs",
-        "description": "Extract web page content from one or more specified URLs using Tavily Extract.",
+        "description": "Extract content from one URL or batch up to 20 URLs in one request. Successful URLs appear in results; per-URL failures appear in failed_results. Check both arrays even when the response is HTTP 200. Request options apply to every URL in the batch.",
         "security": [
           {
             "bearerAuth": []
@@ -733,12 +702,14 @@
                         "items": {
                           "type": "string"
                         },
-                        "description": "A list of URLs to extract content from.",
+                        "description": "A list of 1\u201320 URLs to extract in one request.",
                         "example": [
                           "https://en.wikipedia.org/wiki/Artificial_intelligence",
                           "https://en.wikipedia.org/wiki/Machine_learning",
                           "https://en.wikipedia.org/wiki/Data_science"
-                        ]
+                        ],
+                        "minItems": 1,
+                        "maxItems": 20
                       }
                     ]
                   },
@@ -804,7 +775,7 @@
         },
         "responses": {
           "200": {
-            "description": "Extraction results returned successfully",
+            "description": "Extraction completed. Check results and failed_results for each URL. HTTP 200 can have an empty results array when all valid URLs fail during extraction; output order is not guaranteed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -879,32 +850,49 @@
                       "example": "123e4567-e89b-12d3-a456-426614174111"
                     }
                   }
+                },
+                "examples": {
+                  "partialSuccess": {
+                    "summary": "One URL succeeds and another fails",
+                    "value": {
+                      "results": [
+                        {
+                          "url": "https://example.com/article",
+                          "raw_content": "Example extracted article content.",
+                          "images": []
+                        }
+                      ],
+                      "failed_results": [
+                        {
+                          "url": "https://example.com/unavailable",
+                          "error": "Failed to retrieve content"
+                        }
+                      ],
+                      "response_time": 0.5,
+                      "request_id": "123e4567-e89b-12d3-a456-426614174111"
+                    }
+                  }
                 }
               }
             }
           },
           "429": {
-            "description": "Too many requests - Rate limit exceeded",
+            "description": "Too Many Requests. Error messages and retry delays can vary by rate-limit rule.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
-                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
+                    "error": "Your request has been blocked due to excessive requests. Please reduce the rate of requests."
                   }
                 }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "$ref": "#/components/headers/RetryAfter"
               }
             }
           },
@@ -913,17 +901,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -934,25 +912,65 @@
             }
           },
           "400": {
-            "description": "Bad Request",
+            "description": "Bad Request. More than 20 URLs, an empty URL list, or no URLs passing validation are rejected. When all URLs fail validation, detail.failed_results describes the individual failures.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ApiError"
+                    },
+                    {
                       "type": "object",
                       "properties": {
-                        "error": {
-                          "type": "string"
+                        "detail": {
+                          "type": "object",
+                          "properties": {
+                            "failed_results": {
+                              "type": "array",
+                              "description": "A list of URLs that could not be processed.",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "url": {
+                                    "type": "string",
+                                    "description": "The URL that failed to be processed."
+                                  },
+                                  "error": {
+                                    "type": "string",
+                                    "description": "An error message describing why the URL couldn't be processed."
+                                  }
+                                }
+                              }
+                            }
+                          }
                         }
                       }
                     }
-                  }
+                  ]
                 },
-                "example": {
-                  "detail": {
-                    "error": "<400 Bad Request, (e.g Max 20 URLs are allowed.)>"
+                "examples": {
+                  "tooManyUrls": {
+                    "summary": "More than 20 URLs",
+                    "value": {
+                      "detail": {
+                        "error": "Max 20 URLs are allowed."
+                      }
+                    }
+                  },
+                  "allInvalidUrls": {
+                    "summary": "No URL passes validation",
+                    "value": {
+                      "detail": {
+                        "error": "All URLs failed validation.",
+                        "failed_results": [
+                          {
+                            "url": "not-a-url",
+                            "error": "Validation Error: Invalid URL format"
+                          }
+                        ]
+                      }
+                    }
                   }
                 }
               }
@@ -963,17 +981,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -988,17 +996,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -1013,17 +1011,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -1033,7 +1021,8 @@
               }
             }
           }
-        }
+        },
+        "operationId": "extract"
       }
     },
     "/crawl": {
@@ -1231,7 +1220,7 @@
                         },
                         {
                           "url": "https://docs.tavily.com/documentation/api-credits",
-                          "raw_content": "Credits & Pricing - Tavily Docs\n\n[Tavily Docs home page![light logo](https://mintlify.s3.us-west-1.amazonaws.com/tavilyai/logo/light.svg)![dark logo](https://mintlify.s3.us-west-1.amazonaws.com/tavilyai/logo/dark.svg)](https://tavily.com/)\n\nSearch or ask...\n\nCtrl K\n\n- [Support](mailto:support@tavily.com)\n- [Get an API key](https://app.tavily.com)\n- [Get an API key](https://app.tavily.com)\n\nSearch...\n\nNavigation\n\nOverview\n\nCredits & Pricing\n\n[Home](/welcome)[Documentation](/documentation/about)[SDKs](/sdk/python/quick-start)[Examples](/examples/use-cases/data-enrichment)[FAQ](/faq/faq)\n\n- [API Playground](https://app.tavily.com/playground)\n- [Community](https://community.tavily.com)\n- [Blog](https://blog.tavily.com)\n\n##### Overview\n\n- [About](/documentation/about)\n- [Quickstart](/documentation/quickstart)\n- [Credits & Pricing](/documentation/api-credits)\n- [Rate Limits](/documentation/rate-limits)\n\n##### API Reference\n\n- [Introduction](/documentation/api-reference/introduction)\n- [POST\n\n  Tavily Search](/documentation/api-reference/endpoint/search)\n- [POST\n\n  Tavily Extract](/documentation/api-reference/endpoint/extract)\n- [POST\n\n  Tavily Crawl](/documentation/api-reference/endpoint/crawl)\n- [POST\n\n  Tavily Map](/documentation/api-reference/endpoint/map)\n\n##### Best Practices\n\n- [Best Practices for Search](/documentation/best-practices/best-practices-search)\n- [Best Practices for Extract](/documentation/best-practices/best-practices-extract)\n\n##### Tavily MCP Server\n\n- [Tavily MCP Server](/documentation/mcp)\n\n##### Integrations\n\n- [LangChain](/documentation/integrations/langchain)\n- [LlamaIndex](/documentation/integrations/llamaindex)\n- [Zapier](/documentation/integrations/zapier)\n- [Dify](/documentation/integrations/dify)\n- [Composio](/documentation/integrations/composio)\n- [Make](/documentation/integrations/make)\n- [Agno](/documentation/integrations/agno)\n- [Pydantic AI](/documentation/integrations/pydantic-ai)\n- [FlowiseAI](/documentation/integrations/flowise)\n\n##### Legal\n\n- [Security & Compliance](https://trust.tavily.com)\n- [Privacy Policy](https://tavily.com/privacy)\n\n##### Help\n\n- [Help Center](https://help.tavily.com)\n\n##### Tavily Search Crawler\n\n- [Tavily Search Crawler](/documentation/search-crawler)\n\nOverview\n\n# Credits & Pricing\n\nLearn how to get and manage your Tavily API Credits.\n\n## [​](#free-api-credits) Free API Credits\n\n[## Get your free API key\n\nYou get 1,000 free API Credits every month.\n**No credit card required.**](https://app.tavily.com)\n\n## [​](#pricing-overview) Pricing Overview\n\nTavily operates on a simple, credit-based model:\n\n- **Free**: 1,000 credits/month\n- **Pay-as-you-go**: $0.008 per credit (allows you to be charged per credit once your plan's credit limit is reached).\n- **Monthly plans**: $0.0075 - $0.005 per credit\n- **Enterprise**: Custom pricing and volume\n\n| **Plan** | **Credits per month** | **Monthly price** | **Price per credit** |\n| --- | --- | --- | --- |\n| **Researcher** | 1,000 | Free | - |\n| **Project** | 4,000 | $30 | $0.0075 |\n| **Bootstrap** | 15,000 | $100 | $0.0067 |\n| **Startup** | 38,000 | $220 | $0.0058 |\n| **Growth** | 100,000 | $500 | $0.005 |\n| **Pay as you go** | Per usage | $0.008 / Credit | $0.008 |\n| **Enterprise** | Custom | Custom | Custom |\n\nHead to [my plan](https://app.tavily.com/account/plan) to explore our different options and manage your plan.\n\n## [​](#api-credits-costs) API Credits Costs\n\n### [​](#tavily-search) Tavily Search\n\nYour [search depth](/api-reference/endpoint/search#body-search-depth) determines the cost of your request.\n\n- **Basic Search (`basic`):**\n  Each request costs **1 API credit**.\n- **Advanced Search (`advanced`):**\n  Each request costs **2 API credits**.\n\n### [​](#tavily-extract) Tavily Extract\n\nThe number of successful URL extractions and your [extraction depth](/api-reference/endpoint/extract#body-extract-depth) determines the cost of your request. You never get charged if a URL extraction fails.\n\n- **Basic Extract (`basic`):**\n  Every 5 successful URL extractions cost **1 API credit**\n- **Advanced Extract (`advanced`):**\n  Every 5 successful URL extractions cost **2 API credits**\n\n[Quickstart](/documentation/quickstart)[Rate Limits](/documentation/rate-limits)\n\n[x](https://x.com/tavilyai)[github](https://github.com/tavily-ai)[linkedin](https://linkedin.com/company/tavily)[website](https://tavily.com)\n\n[Powered by Mintlify](https://mintlify.com/preview-request?utm_campaign=poweredBy&utm_medium=docs&utm_source=docs.tavily.com)\n\nOn this page\n\n- [Free API Credits](#free-api-credits)\n- [Pricing Overview](#pricing-overview)\n- [API Credits Costs](#api-credits-costs)\n- [Tavily Search](#tavily-search)\n- [Tavily Extract](#tavily-extract)",
+                          "raw_content": "Credits & Pricing - Tavily Docs\n\n[Tavily Docs home page![light logo](https://mintlify.s3.us-west-1.amazonaws.com/tavilyai/logo/light.svg)![dark logo](https://mintlify.s3.us-west-1.amazonaws.com/tavilyai/logo/dark.svg)](https://tavily.com/)\n\nSearch or ask...\n\nCtrl K\n\n- [Support](mailto:support@tavily.com)\n- [Get an API key](https://app.tavily.com)\n- [Get an API key](https://app.tavily.com)\n\nSearch...\n\nNavigation\n\nOverview\n\nCredits & Pricing\n\n[Home](/welcome)[Documentation](/documentation/about)[SDKs](/sdk/python/quick-start)[Examples](/examples/use-cases/data-enrichment)[FAQ](/faq/faq)\n\n- [API Playground](https://app.tavily.com/playground)\n- [Community](https://community.tavily.com)\n- [Blog](https://blog.tavily.com)\n\n##### Overview\n\n- [About](/documentation/about)\n- [Quickstart](/documentation/quickstart)\n- [Credits & Pricing](/documentation/api-credits)\n- [Rate Limits](/documentation/rate-limits)\n\n##### API Reference\n\n- [Introduction](/documentation/api-reference/introduction)\n- [POST\n\n  Tavily Search](/documentation/api-reference/endpoint/search)\n- [POST\n\n  Tavily Extract](/documentation/api-reference/endpoint/extract)\n- [POST\n\n  Tavily Crawl](/documentation/api-reference/endpoint/crawl)\n- [POST\n\n  Tavily Map](/documentation/api-reference/endpoint/map)\n\n##### Best Practices\n\n- [Best Practices for Search](/documentation/best-practices/best-practices-search)\n- [Best Practices for Extract](/documentation/best-practices/best-practices-extract)\n\n##### Tavily MCP Server\n\n- [Tavily MCP Server](/documentation/mcp)\n\n##### Integrations\n\n- [LangChain](/documentation/integrations/langchain)\n- [LlamaIndex](/documentation/integrations/llamaindex)\n- [Zapier](/documentation/integrations/zapier)\n- [Dify](/documentation/integrations/dify)\n- [Composio](/documentation/integrations/composio)\n- [Make](/documentation/integrations/make)\n- [Agno](/documentation/integrations/agno)\n- [Pydantic AI](/documentation/integrations/pydantic-ai)\n- [FlowiseAI](/documentation/integrations/flowise)\n\n##### Legal\n\n- [Security & Compliance](https://trust.tavily.com)\n- [Privacy Policy](https://tavily.com/privacy)\n\n##### Help\n\n- [Help Center](https://help.tavily.com)\n\n##### Tavily Search Crawler\n\n- [Tavily Search Crawler](/documentation/search-crawler)\n\nOverview\n\n# Credits & Pricing\n\nLearn how to get and manage your Tavily API Credits.\n\n## [\u200b](#free-api-credits) Free API Credits\n\n[## Get your free API key\n\nYou get 1,000 free API Credits every month.\n**No credit card required.**](https://app.tavily.com)\n\n## [\u200b](#pricing-overview) Pricing Overview\n\nTavily operates on a simple, credit-based model:\n\n- **Free**: 1,000 credits/month\n- **Pay-as-you-go**: $0.008 per credit (allows you to be charged per credit once your plan's credit limit is reached).\n- **Monthly plans**: $0.0075 - $0.005 per credit\n- **Enterprise**: Custom pricing and volume\n\n| **Plan** | **Credits per month** | **Monthly price** | **Price per credit** |\n| --- | --- | --- | --- |\n| **Researcher** | 1,000 | Free | - |\n| **Project** | 4,000 | $30 | $0.0075 |\n| **Bootstrap** | 15,000 | $100 | $0.0067 |\n| **Startup** | 38,000 | $220 | $0.0058 |\n| **Growth** | 100,000 | $500 | $0.005 |\n| **Pay as you go** | Per usage | $0.008 / Credit | $0.008 |\n| **Enterprise** | Custom | Custom | Custom |\n\nHead to [my plan](https://app.tavily.com/account/plan) to explore our different options and manage your plan.\n\n## [\u200b](#api-credits-costs) API Credits Costs\n\n### [\u200b](#tavily-search) Tavily Search\n\nYour [search depth](/api-reference/endpoint/search#body-search-depth) determines the cost of your request.\n\n- **Basic Search (`basic`):**\n  Each request costs **1 API credit**.\n- **Advanced Search (`advanced`):**\n  Each request costs **2 API credits**.\n\n### [\u200b](#tavily-extract) Tavily Extract\n\nThe number of successful URL extractions and your [extraction depth](/api-reference/endpoint/extract#body-extract-depth) determines the cost of your request. You never get charged if a URL extraction fails.\n\n- **Basic Extract (`basic`):**\n  Every 5 successful URL extractions cost **1 API credit**\n- **Advanced Extract (`advanced`):**\n  Every 5 successful URL extractions cost **2 API credits**\n\n[Quickstart](/documentation/quickstart)[Rate Limits](/documentation/rate-limits)\n\n[x](https://x.com/tavilyai)[github](https://github.com/tavily-ai)[linkedin](https://linkedin.com/company/tavily)[website](https://tavily.com)\n\n[Powered by Mintlify](https://mintlify.com/preview-request?utm_campaign=poweredBy&utm_medium=docs&utm_source=docs.tavily.com)\n\nOn this page\n\n- [Free API Credits](#free-api-credits)\n- [Pricing Overview](#pricing-overview)\n- [API Credits Costs](#api-credits-costs)\n- [Tavily Search](#tavily-search)\n- [Tavily Extract](#tavily-extract)",
                           "favicon": "https://mintlify.s3-us-west-1.amazonaws.com/tavilyai/_generated/favicon/apple-touch-icon.png?v=3"
                         },
                         {
@@ -1269,17 +1258,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -1294,17 +1273,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -1319,17 +1288,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -1340,27 +1299,22 @@
             }
           },
           "429": {
-            "description": "Too many requests - Rate limit exceeded",
+            "description": "Too Many Requests. Error messages and retry delays can vary by rate-limit rule.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
-                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
+                    "error": "Your request has been blocked due to excessive requests. Please reduce the rate of requests."
                   }
                 }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "$ref": "#/components/headers/RetryAfter"
               }
             }
           },
@@ -1369,17 +1323,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -1394,17 +1338,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -1419,17 +1353,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -1439,7 +1363,8 @@
               }
             }
           }
-        }
+        },
+        "operationId": "crawl"
       }
     },
     "/map": {
@@ -1614,17 +1539,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -1639,17 +1554,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -1664,17 +1569,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -1685,27 +1580,22 @@
             }
           },
           "429": {
-            "description": "Too many requests - Rate limit exceeded",
+            "description": "Too Many Requests. Error messages and retry delays can vary by rate-limit rule.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
-                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
+                    "error": "Your request has been blocked due to excessive requests. Please reduce the rate of requests."
                   }
                 }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "$ref": "#/components/headers/RetryAfter"
               }
             }
           },
@@ -1714,17 +1604,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -1739,17 +1619,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -1764,17 +1634,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -1784,7 +1644,8 @@
               }
             }
           }
-        }
+        },
+        "operationId": "map"
       }
     },
     "/research": {
@@ -1944,7 +1805,7 @@
                       "type": "string"
                     },
                     "maxItems": 20,
-                    "description": "Hard blocklist. No URL from a listed domain or any of its subdomains appears in the response. Subdomain matching is downward only — blocking `medium.com` also blocks `blog.medium.com`, but blocking `blog.medium.com` leaves `medium.com` itself allowed. Maximum 20 entries.",
+                    "description": "Hard blocklist. No URL from a listed domain or any of its subdomains appears in the response. Subdomain matching is downward only \u2014 blocking `medium.com` also blocks `blog.medium.com`, but blocking `blog.medium.com` leaves `medium.com` itself allowed. Maximum 20 entries.",
                     "default": [],
                     "example": [
                       "reddit.com",
@@ -1953,7 +1814,7 @@
                   },
                   "output_length": {
                     "type": "string",
-                    "description": "Typed control over response size. Ranges are targets, not hard caps — individual responses can fall outside when the question requires it.",
+                    "description": "Typed control over response size. Ranges are targets, not hard caps \u2014 individual responses can fall outside when the question requires it.",
                     "enum": [
                       "short",
                       "standard",
@@ -2070,17 +1931,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -2095,17 +1946,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -2116,27 +1957,22 @@
             }
           },
           "429": {
-            "description": "Too many requests - Rate limit exceeded",
+            "description": "Too Many Requests. Error messages and retry delays can vary by rate-limit rule.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
-                    "error": "Your request has been blocked due to excessive requests. Please reduce rate of requests."
+                    "error": "Your request has been blocked due to excessive requests. Please reduce the rate of requests."
                   }
                 }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "$ref": "#/components/headers/RetryAfter"
               }
             }
           },
@@ -2145,17 +1981,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -2170,17 +1996,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -2195,17 +2011,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -2215,7 +2021,8 @@
               }
             }
           }
-        }
+        },
+        "operationId": "createResearch"
       }
     },
     "/research/{request_id}": {
@@ -2331,6 +2138,367 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                },
+                "example": {
+                  "detail": {
+                    "error": "Unauthorized: missing or invalid API key."
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Research task not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                },
+                "example": {
+                  "detail": {
+                    "error": "Research task not found"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error - We had a problem with our server.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                },
+                "example": {
+                  "detail": {
+                    "error": "Error getting research status"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "getResearch"
+      }
+    },
+    "/feedback": {
+      "post": {
+        "summary": "Submit feedback on a search request or session",
+        "description": "Submit feedback on how relevant and useful Tavily's results were for your task.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "python",
+            "label": "Python SDK",
+            "source": "from tavily import TavilyClient\n\ntavily_client = TavilyClient(api_key=\"tvly-YOUR_API_KEY\")\nresponse = tavily_client.feedback(\n    request_id=\"8442d8d0-8b74-4fca-a89e-5b1b6dd33295\",\n    agent_score=1,\n    comment=\"The top results answered the question directly.\",\n    used_ids=[\"a3f9c2-04\"],\n)\n\nprint(response)"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript SDK",
+            "source": "const { tavily } = require(\"@tavily/core\");\n\nconst tvly = tavily({ apiKey: \"tvly-YOUR_API_KEY\" });\nconst response = await tvly.feedback({\n  requestId: \"8442d8d0-8b74-4fca-a89e-5b1b6dd33295\",\n  agentScore: 1,\n  comment: \"The top results answered the question directly.\",\n  usedIds: [\"a3f9c2-04\"],\n});\n\nconsole.log(response);"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "request_id": {
+                    "type": "string",
+                    "maxLength": 200,
+                    "description": "The search request to give feedback on, as returned in the `request_id` field of the search response. When provided, the feedback applies to this request.",
+                    "example": "8442d8d0-8b74-4fca-a89e-5b1b6dd33295"
+                  },
+                  "session_id": {
+                    "type": "string",
+                    "maxLength": 200,
+                    "description": "The session to give feedback on — the value you sent in the `X-Session-Id` header. When `request_id` is omitted, the feedback applies to the whole session. Optional if `request_id` is provided.",
+                    "example": "5874812a-2e9b-43ea-8978-6cc9225b587b"
+                  },
+                  "agent_score": {
+                    "oneOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "string",
+                        "maxLength": 64
+                      }
+                    ],
+                    "description": "Overall score for how relevant and useful the results were for your task.",
+                    "example": 1
+                  },
+                  "human_score": {
+                    "oneOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "string",
+                        "maxLength": 64
+                      }
+                    ],
+                    "description": "Feedback from your end user, if you collect it.",
+                    "example": 1
+                  },
+                  "extra_scores": {
+                    "type": "array",
+                    "maxItems": 50,
+                    "description": "Additional labeled scores for the dimensions you care about.",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "label",
+                        "value"
+                      ],
+                      "properties": {
+                        "label": {
+                          "type": "string",
+                          "maxLength": 64,
+                          "description": "Name of the dimension being scored.",
+                          "example": "freshness"
+                        },
+                        "value": {
+                          "oneOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "string",
+                              "maxLength": 64
+                            }
+                          ],
+                          "description": "A numeric score, or a short string label (max 64 characters).",
+                          "example": 0.8
+                        }
+                      }
+                    },
+                    "example": [
+                      {
+                        "label": "freshness",
+                        "value": 0.4
+                      },
+                      {
+                        "label": "authority",
+                        "value": 0.9
+                      }
+                    ]
+                  },
+                  "comment": {
+                    "type": "string",
+                    "maxLength": 10000,
+                    "description": "Free-text explanation of the feedback.",
+                    "example": "Results were authoritative but several were more than a year old."
+                  },
+                  "response_delivered": {
+                    "type": "string",
+                    "maxLength": 50000,
+                    "description": "The final answer you produced using the results.",
+                    "example": "Lionel Messi is an Argentine footballer born in 1987..."
+                  },
+                  "used_ids": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "items": {
+                      "type": "string",
+                      "maxLength": 200
+                    },
+                    "description": "IDs of the results you actually used in your answer. Alternative to `used_urls`.",
+                    "example": [
+                      "a3f9c2-04",
+                      "a3f9c2-07"
+                    ]
+                  },
+                  "used_urls": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "items": {
+                      "type": "string",
+                      "maxLength": 2000
+                    },
+                    "description": "URLs of the results you actually used in your answer. Alternative to `used_ids`.",
+                    "example": [
+                      "https://www.britannica.com/facts/Lionel-Messi"
+                    ]
+                  },
+                  "used_citations": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "items": {
+                      "type": "string",
+                      "maxLength": 2000
+                    },
+                    "description": "The specific content snippets you quoted from the results.",
+                    "example": [
+                      "Messi is known for his exceptional dribbling skills, vision, and goal-scoring ability."
+                    ]
+                  },
+                  "urls_scores": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "description": "Per-result feedback. Identify each result by `id` or `url`.",
+                    "items": {
+                      "type": "object",
+                      "description": "Feedback on a single result. Each item must include `id` or `url`.",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "maxLength": 200,
+                          "description": "The `id` of the result, as returned in the search response.",
+                          "example": "a3f9c2-04"
+                        },
+                        "url": {
+                          "type": "string",
+                          "maxLength": 2000,
+                          "description": "The URL of the result. Use instead of `id` when you don't have the result ID.",
+                          "example": "https://www.britannica.com/facts/Lionel-Messi"
+                        },
+                        "agent_score": {
+                          "oneOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "string",
+                              "maxLength": 64
+                            }
+                          ],
+                          "description": "Score for this specific result.",
+                          "example": 1
+                        },
+                        "scores": {
+                          "type": "array",
+                          "maxItems": 20,
+                          "description": "Additional labeled scores for this result.",
+                          "items": {
+                            "type": "object",
+                            "required": [
+                              "label",
+                              "value"
+                            ],
+                            "properties": {
+                              "label": {
+                                "type": "string",
+                                "maxLength": 64,
+                                "description": "Name of the dimension being scored.",
+                                "example": "freshness"
+                              },
+                              "value": {
+                                "oneOf": [
+                                  {
+                                    "type": "number"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "maxLength": 64
+                                  }
+                                ],
+                                "description": "A numeric score, or a short string label (max 64 characters).",
+                                "example": 0.8
+                              }
+                            }
+                          }
+                        },
+                        "comment": {
+                          "type": "string",
+                          "maxLength": 2000,
+                          "description": "Free-text explanation of the feedback on this result."
+                        }
+                      }
+                    },
+                    "example": [
+                      {
+                        "id": "a3f9c2-04",
+                        "agent_score": 1,
+                        "comment": "Directly answered the question."
+                      },
+                      {
+                        "url": "https://example.com/stale-page",
+                        "agent_score": -1,
+                        "scores": [
+                          {
+                            "label": "freshness",
+                            "value": 0.1
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Feedback accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Whether the feedback was accepted.",
+                      "example": true
+                    },
+                    "feedback_id": {
+                      "type": "string",
+                      "description": "Unique identifier of this feedback submission.",
+                      "example": "f1c0f0a5-0f9b-4a62-9e0e-1b6b2f0a6d31"
+                    },
+                    "response_time": {
+                      "type": "number",
+                      "description": "Response time of this feedback request in seconds.",
+                      "example": 0.05
+                    }
+                  }
+                },
+                "example": {
+                  "success": true,
+                  "feedback_id": "f1c0f0a5-0f9b-4a62-9e0e-1b6b2f0a6d31",
+                  "response_time": 0.05
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request — neither `session_id` nor `request_id` was provided, or a `urls_scores` item is missing both `id` and `url`.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "detail": {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "detail": {
+                    "error": "Either session_id or request_id is required."
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Your API key is wrong or missing.",
+            "content": {
+              "application/json": {
+                "schema": {
                   "type": "object",
                   "properties": {
                     "detail": {
@@ -2351,8 +2519,8 @@
               }
             }
           },
-          "404": {
-            "description": "Research task not found",
+          "413": {
+            "description": "Payload Too Large — the request body exceeds 256 KB.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2370,14 +2538,39 @@
                 },
                 "example": {
                   "detail": {
-                    "error": "Research task not found"
+                    "error": "Request body exceeds 262144 bytes."
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity — a field failed validation (e.g. a list or string exceeds its maximum length).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "detail": {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "detail": {
+                    "error": "Validation error in request body."
                   }
                 }
               }
             }
           },
           "500": {
-            "description": "Internal Server Error - We had a problem with our server.",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -2395,7 +2588,7 @@
                 },
                 "example": {
                   "detail": {
-                    "error": "Error getting research status"
+                    "error": "Error when processing feedback"
                   }
                 }
               }
@@ -2539,17 +2732,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -2560,31 +2743,27 @@
             }
           },
           "429": {
-            "description": "Too Many Requests",
+            "description": "Too Many Requests. Error messages and retry delays can vary by rate-limit rule.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
-                    "error": "Your request has been blocked due to excessive requests. Please reduce the rate of requests"
+                    "error": "Your request has been blocked due to excessive requests. Please reduce the rate of requests."
                   }
                 }
               }
+            },
+            "headers": {
+              "Retry-After": {
+                "$ref": "#/components/headers/RetryAfter"
+              }
             }
           }
-        }
+        },
+        "operationId": "getUsage"
       }
     },
     "/logs": {
@@ -2737,21 +2916,11 @@
             }
           },
           "400": {
-            "description": "Bad Request — invalid endpoints value or date range.",
+            "description": "Bad Request \u2014 invalid endpoints value or date range.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -2766,17 +2935,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -2787,21 +2946,11 @@
             }
           },
           "403": {
-            "description": "Forbidden — usage logs are only available to paying customers.",
+            "description": "Forbidden \u2014 usage logs are only available to paying customers.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -2816,17 +2965,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -2837,21 +2976,11 @@
             }
           },
           "504": {
-            "description": "Gateway Timeout — the logs query timed out.",
+            "description": "Gateway Timeout \u2014 the logs query timed out.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -2867,7 +2996,7 @@
     "/org-usage": {
       "post": {
         "summary": "Get organization usage across all API keys",
-        "description": "Retrieve usage (credits), pay-as-you-go USD cost, and request counts for **every API key under an organization you own**, mirroring the platform's Usage analytics page.\n\nIdentify the organization by **name** in the request body. Authenticate with the organization owner's **personal API key** — the key from the owner's own personal account, **not** an organization or enterprise API key. Supports date-range, project, and depth filtering.",
+        "description": "Retrieve usage (credits), pay-as-you-go USD cost, and request counts for **every API key under an organization you own**, mirroring the platform's Usage analytics page.\n\nIdentify the organization by **name** in the request body. Authenticate with the organization owner's **personal API key** \u2014 the key from the owner's own personal account, **not** an organization or enterprise API key. Supports date-range, project, and depth filtering.",
         "security": [
           {
             "ownerBearerAuth": []
@@ -3027,17 +3156,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -3052,17 +3171,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -3077,17 +3186,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -3102,17 +3201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -3127,17 +3216,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -3152,17 +3231,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -3177,17 +3246,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -3202,17 +3261,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "object",
-                      "properties": {
-                        "error": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ApiError"
                 },
                 "example": {
                   "detail": {
@@ -3426,6 +3475,65 @@
             "$ref": "#/components/schemas/UsageMetrics"
           }
         }
+      },
+      "ApiError": {
+        "type": "object",
+        "properties": {
+          "detail": {
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "ValidationError": {
+        "type": "object",
+        "properties": {
+          "detail": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "loc": {
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "integer"
+                      }
+                    ]
+                  }
+                },
+                "msg": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "input": {},
+                "ctx": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "headers": {
+      "RetryAfter": {
+        "description": "When present, the number of seconds to wait before retrying. Read the returned value; the delay can vary.",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "example": 60
       }
     }
   },
@@ -3444,6 +3552,9 @@
     },
     {
       "name": "Research"
+    },
+    {
+      "name": "Feedback"
     },
     {
       "name": "Usage"

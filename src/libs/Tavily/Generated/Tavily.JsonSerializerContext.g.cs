@@ -21,49 +21,49 @@ namespace Tavily
 
             typeof(global::Tavily.JsonConverters.ResearchTaskFailedStatusNullableJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateSearchRequestSearchDepthJsonConverter),
+            typeof(global::Tavily.JsonConverters.SearchRequestSearchDepthJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateSearchRequestSearchDepthNullableJsonConverter),
+            typeof(global::Tavily.JsonConverters.SearchRequestSearchDepthNullableJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateSearchRequestTopicJsonConverter),
+            typeof(global::Tavily.JsonConverters.SearchRequestTopicJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateSearchRequestTopicNullableJsonConverter),
+            typeof(global::Tavily.JsonConverters.SearchRequestTopicNullableJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateSearchRequestTimeRangeJsonConverter),
+            typeof(global::Tavily.JsonConverters.SearchRequestTimeRangeJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateSearchRequestTimeRangeNullableJsonConverter),
+            typeof(global::Tavily.JsonConverters.SearchRequestTimeRangeNullableJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateSearchRequestIncludeAnswerJsonConverter),
+            typeof(global::Tavily.JsonConverters.SearchRequestIncludeAnswerJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateSearchRequestIncludeAnswerNullableJsonConverter),
+            typeof(global::Tavily.JsonConverters.SearchRequestIncludeAnswerNullableJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateSearchRequestIncludeRawContentJsonConverter),
+            typeof(global::Tavily.JsonConverters.SearchRequestIncludeRawContentJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateSearchRequestIncludeRawContentNullableJsonConverter),
+            typeof(global::Tavily.JsonConverters.SearchRequestIncludeRawContentNullableJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateSearchRequestIncludeDomainsModeJsonConverter),
+            typeof(global::Tavily.JsonConverters.SearchRequestIncludeDomainsModeJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateSearchRequestIncludeDomainsModeNullableJsonConverter),
+            typeof(global::Tavily.JsonConverters.SearchRequestIncludeDomainsModeNullableJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateSearchRequestCountryJsonConverter),
+            typeof(global::Tavily.JsonConverters.SearchRequestCountryJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateSearchRequestCountryNullableJsonConverter),
+            typeof(global::Tavily.JsonConverters.SearchRequestCountryNullableJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateExtractRequestExtractDepthJsonConverter),
+            typeof(global::Tavily.JsonConverters.ExtractRequestExtractDepthJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateExtractRequestExtractDepthNullableJsonConverter),
+            typeof(global::Tavily.JsonConverters.ExtractRequestExtractDepthNullableJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateExtractRequestFormatJsonConverter),
+            typeof(global::Tavily.JsonConverters.ExtractRequestFormatJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateExtractRequestFormatNullableJsonConverter),
+            typeof(global::Tavily.JsonConverters.ExtractRequestFormatNullableJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateCrawlRequestExtractDepthJsonConverter),
+            typeof(global::Tavily.JsonConverters.CrawlRequestExtractDepthJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateCrawlRequestExtractDepthNullableJsonConverter),
+            typeof(global::Tavily.JsonConverters.CrawlRequestExtractDepthNullableJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateCrawlRequestFormatJsonConverter),
+            typeof(global::Tavily.JsonConverters.CrawlRequestFormatJsonConverter),
 
-            typeof(global::Tavily.JsonConverters.CreateCrawlRequestFormatNullableJsonConverter),
+            typeof(global::Tavily.JsonConverters.CrawlRequestFormatNullableJsonConverter),
 
             typeof(global::Tavily.JsonConverters.CreateResearchRequestModelJsonConverter),
 
@@ -109,11 +109,25 @@ namespace Tavily
 
             typeof(global::Tavily.JsonConverters.OneOfJsonConverter<string, object>),
 
-            typeof(global::Tavily.JsonConverters.OneOfJsonConverter<bool?, global::Tavily.CreateSearchRequestIncludeAnswer?>),
+            typeof(global::Tavily.JsonConverters.OneOfJsonConverter<string, int?>),
 
-            typeof(global::Tavily.JsonConverters.OneOfJsonConverter<bool?, global::Tavily.CreateSearchRequestIncludeRawContent?>),
+            typeof(global::Tavily.JsonConverters.OneOfJsonConverter<bool?, global::Tavily.SearchRequestIncludeAnswer?>),
+
+            typeof(global::Tavily.JsonConverters.OneOfJsonConverter<bool?, global::Tavily.SearchRequestIncludeRawContent?>),
 
             typeof(global::Tavily.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>),
+
+            typeof(global::Tavily.JsonConverters.OneOfJsonConverter<double?, string>),
+
+            typeof(global::Tavily.JsonConverters.OneOfJsonConverter<double?, string>),
+
+            typeof(global::Tavily.JsonConverters.OneOfJsonConverter<double?, string>),
+
+            typeof(global::Tavily.JsonConverters.OneOfJsonConverter<double?, string>),
+
+            typeof(global::Tavily.JsonConverters.OneOfJsonConverter<double?, string>),
+
+            typeof(global::Tavily.JsonConverters.AllOfJsonConverter<global::Tavily.ApiError, global::Tavily.ExtractResponse3>),
 
             typeof(global::Tavily.JsonConverters.UnixTimestampJsonConverter),
         })]
@@ -132,27 +146,34 @@ namespace Tavily
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.UsageMetrics))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.UsageByType))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchRequestSearchDepth), TypeInfoPropertyName = "CreateSearchRequestSearchDepth2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchRequestTopic), TypeInfoPropertyName = "CreateSearchRequestTopic2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchRequestTimeRange), TypeInfoPropertyName = "CreateSearchRequestTimeRange2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.ApiError))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.ApiErrorDetail))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.ValidationError))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.ValidationErrorDetailItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.ValidationErrorDetailItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.OneOf<string, int?>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.OneOf<string, int?>), TypeInfoPropertyName = "OneOfStringInt322")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.SearchRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.SearchRequestSearchDepth), TypeInfoPropertyName = "SearchRequestSearchDepth2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.SearchRequestTopic), TypeInfoPropertyName = "SearchRequestTopic2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.SearchRequestTimeRange), TypeInfoPropertyName = "SearchRequestTimeRange2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.OneOf<bool?, global::Tavily.CreateSearchRequestIncludeAnswer?>), TypeInfoPropertyName = "OneOfBooleanCreateSearchRequestIncludeAnswer2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchRequestIncludeAnswer), TypeInfoPropertyName = "CreateSearchRequestIncludeAnswer2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.OneOf<bool?, global::Tavily.CreateSearchRequestIncludeRawContent?>), TypeInfoPropertyName = "OneOfBooleanCreateSearchRequestIncludeRawContent2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchRequestIncludeRawContent), TypeInfoPropertyName = "CreateSearchRequestIncludeRawContent2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.OneOf<bool?, global::Tavily.SearchRequestIncludeAnswer?>), TypeInfoPropertyName = "OneOfBooleanSearchRequestIncludeAnswer2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.SearchRequestIncludeAnswer), TypeInfoPropertyName = "SearchRequestIncludeAnswer2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.OneOf<bool?, global::Tavily.SearchRequestIncludeRawContent?>), TypeInfoPropertyName = "OneOfBooleanSearchRequestIncludeRawContent2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.SearchRequestIncludeRawContent), TypeInfoPropertyName = "SearchRequestIncludeRawContent2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchRequestIncludeDomainsMode), TypeInfoPropertyName = "CreateSearchRequestIncludeDomainsMode2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchRequestCountry), TypeInfoPropertyName = "CreateSearchRequestCountry2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateExtractRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.SearchRequestIncludeDomainsMode), TypeInfoPropertyName = "SearchRequestIncludeDomainsMode2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.SearchRequestCountry), TypeInfoPropertyName = "SearchRequestCountry2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.ExtractRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.OneOf<string, global::System.Collections.Generic.IList<string>>), TypeInfoPropertyName = "OneOfStringIListString2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateExtractRequestExtractDepth), TypeInfoPropertyName = "CreateExtractRequestExtractDepth2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateExtractRequestFormat), TypeInfoPropertyName = "CreateExtractRequestFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.ExtractRequestExtractDepth), TypeInfoPropertyName = "ExtractRequestExtractDepth2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.ExtractRequestFormat), TypeInfoPropertyName = "ExtractRequestFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(float))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateCrawlRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateCrawlRequestExtractDepth), TypeInfoPropertyName = "CreateCrawlRequestExtractDepth2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateCrawlRequestFormat), TypeInfoPropertyName = "CreateCrawlRequestFormat2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateMapRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CrawlRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CrawlRequestExtractDepth), TypeInfoPropertyName = "CrawlRequestExtractDepth2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CrawlRequestFormat), TypeInfoPropertyName = "CrawlRequestFormat2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.MapRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchRequestModel), TypeInfoPropertyName = "CreateResearchRequestModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchRequestOutputSchema))]
@@ -164,158 +185,88 @@ namespace Tavily
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.CreateResearchRequestFile>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchRequestFile))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchRequestFileType), TypeInfoPropertyName = "CreateResearchRequestFileType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateFeedbackRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.OneOf<double?, string>), TypeInfoPropertyName = "OneOfDoubleString2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.CreateFeedbackRequestExtraScore>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateFeedbackRequestExtraScore))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.CreateFeedbackRequestUrlsScore>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateFeedbackRequestUrlsScore))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.CreateFeedbackRequestUrlsScoreScore>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateFeedbackRequestUrlsScoreScore))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.CreateLogsRequestEndpoint>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsRequestEndpoint), TypeInfoPropertyName = "CreateLogsRequestEndpoint2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageRequestDepth), TypeInfoPropertyName = "CreateOrgUsageRequestDepth2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.CreateSearchResponseImage>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponseImage))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.CreateSearchResponseResult>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponseResult))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.CreateSearchResponseResultImage>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponseResultImage))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponse2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponseDetail))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponse3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponseDetail2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponse4))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponseDetail3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponse5))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponseDetail4))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponse6))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponseDetail5))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponse7))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateSearchResponseDetail6))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateExtractResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.CreateExtractResponseResult>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateExtractResponseResult))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.CreateExtractResponseFailedResult>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateExtractResponseFailedResult))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateExtractResponse2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateExtractResponseDetail))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateExtractResponse3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateExtractResponseDetail2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateExtractResponse4))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateExtractResponseDetail3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateExtractResponse5))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateExtractResponseDetail4))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateExtractResponse6))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateExtractResponseDetail5))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateExtractResponse7))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateExtractResponseDetail6))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateCrawlResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.CreateCrawlResponseResult>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateCrawlResponseResult))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateCrawlResponse2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateCrawlResponseDetail))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateCrawlResponse3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateCrawlResponseDetail2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateCrawlResponse4))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateCrawlResponseDetail3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateCrawlResponse5))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateCrawlResponseDetail4))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateCrawlResponse6))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateCrawlResponseDetail5))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateCrawlResponse7))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateCrawlResponseDetail6))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateCrawlResponse8))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateCrawlResponseDetail7))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateMapResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateMapResponse2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateMapResponseDetail))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateMapResponse3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateMapResponseDetail2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateMapResponse4))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateMapResponseDetail3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateMapResponse5))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateMapResponseDetail4))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateMapResponse6))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateMapResponseDetail5))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateMapResponse7))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateMapResponseDetail6))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateMapResponse8))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateMapResponseDetail7))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.SearchResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.SearchResponseImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.SearchResponseImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.SearchResponseResult>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.SearchResponseResult))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.SearchResponseResultImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.SearchResponseResultImage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.ExtractResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.ExtractResponseResult>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.ExtractResponseResult))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.ExtractResponseFailedResult>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.ExtractResponseFailedResult))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.AllOf<global::Tavily.ApiError, global::Tavily.ExtractResponse3>), TypeInfoPropertyName = "AllOfApiErrorExtractResponse32")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.ExtractResponse3))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.ExtractResponseDetail))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.ExtractResponseDetailFailedResult>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.ExtractResponseDetailFailedResult))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CrawlResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.CrawlResponseResult>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CrawlResponseResult))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.MapResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchResponse2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchResponseDetail))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchResponse3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchResponseDetail2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchResponse4))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchResponseDetail3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchResponse5))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchResponseDetail4))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchResponse6))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchResponseDetail5))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchResponse7))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateResearchResponseDetail6))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponseStatus), TypeInfoPropertyName = "GetResearchResponseStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponse2), TypeInfoPropertyName = "GetResearchResponse22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponseDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponseDiscriminatorStatus), TypeInfoPropertyName = "GetResearchResponseDiscriminatorStatus2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponse3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponseDetail))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponse4))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponseDetail2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponse5))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetResearchResponseDetail3))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateFeedbackResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateFeedbackResponse2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateFeedbackResponseDetail))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateFeedbackResponse3))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateFeedbackResponseDetail2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateFeedbackResponse4))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateFeedbackResponseDetail3))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateFeedbackResponse5))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateFeedbackResponseDetail4))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateFeedbackResponse6))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateFeedbackResponseDetail5))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetUsageResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetUsageResponseKey))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetUsageResponseAccount))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetUsageResponse2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetUsageResponseDetail))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetUsageResponse3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.GetUsageResponseDetail2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.CreateLogsResponseLog>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponseLog))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponseLogEndpoint), TypeInfoPropertyName = "CreateLogsResponseLogEndpoint2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponse2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponseDetail))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponse3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponseDetail2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponse4))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponseDetail3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponse5))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponseDetail4))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponse6))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateLogsResponseDetail5))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponseOrganization))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponseOrganizationFilters))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponseTotals))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tavily.CreateOrgUsageResponseKey>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponseKey))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponse2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponseDetail))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponse3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponseDetail2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponse4))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponseDetail3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponse5))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponseDetail4))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponse6))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponseDetail5))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponse7))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponseDetail6))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponse8))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponseDetail7))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponse9))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.CreateOrgUsageResponseDetail8))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.ResearchTaskCompletedSource>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.ValidationErrorDetailItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.OneOf<string, int?>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Tavily.OneOf<string, global::System.Collections.Generic.List<string>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateResearchRequestFile>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateFeedbackRequestExtraScore>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateFeedbackRequestUrlsScore>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateFeedbackRequestUrlsScoreScore>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateLogsRequestEndpoint>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateSearchResponseImage>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateSearchResponseResult>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateSearchResponseResultImage>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateExtractResponseResult>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateExtractResponseFailedResult>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateCrawlResponseResult>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.SearchResponseImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.SearchResponseResult>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.SearchResponseResultImage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.ExtractResponseResult>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.ExtractResponseFailedResult>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.ExtractResponseDetailFailedResult>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CrawlResponseResult>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateLogsResponseLog>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Tavily.CreateOrgUsageResponseKey>))]
     public sealed partial class SourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext

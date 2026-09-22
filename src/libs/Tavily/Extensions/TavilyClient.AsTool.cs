@@ -20,7 +20,7 @@ public static class TavilyToolExtensions
     public static AIFunction AsSearchTool(
         this TavilyClient client,
         int maxResults = 5,
-        CreateSearchRequestSearchDepth searchDepth = CreateSearchRequestSearchDepth.Basic,
+        SearchRequestSearchDepth searchDepth = SearchRequestSearchDepth.Basic,
         bool includeAnswer = true)
     {
         ArgumentNullException.ThrowIfNull(client);
@@ -28,7 +28,7 @@ public static class TavilyToolExtensions
         return AIFunctionFactory.Create(
             async (string query, CancellationToken cancellationToken) =>
             {
-                var response = await client.CreateSearchAsync(
+                var response = await client.SearchAsync(
                     query: query,
                     maxResults: maxResults,
                     searchDepth: searchDepth,
@@ -54,7 +54,7 @@ public static class TavilyToolExtensions
         return AIFunctionFactory.Create(
             async (string url, CancellationToken cancellationToken) =>
             {
-                var response = await client.CreateExtractAsync(
+                var response = await client.ExtractAsync(
                     urls: url,
                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
@@ -64,7 +64,7 @@ public static class TavilyToolExtensions
             description: "Extracts and returns the main content from a given URL.");
     }
 
-    private static string FormatSearchResponse(CreateSearchResponse response)
+    private static string FormatSearchResponse(SearchResponse response)
     {
         var parts = new List<string>();
 

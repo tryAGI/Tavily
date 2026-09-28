@@ -47,8 +47,8 @@ namespace Tavily
         /// <summary>
         ///
         /// </summary>
-        public global::Tavily.ResearchTaskCompleted PickCompleted() => IsCompleted
-            ? Completed!
+        public global::Tavily.ResearchTaskCompleted PickCompleted() => Completed is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Completed' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Tavily
         /// <summary>
         ///
         /// </summary>
-        public global::Tavily.ResearchTaskFailed PickFailed() => IsFailed
-            ? Failed!
+        public global::Tavily.ResearchTaskFailed PickFailed() => Failed is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Failed' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -185,13 +185,13 @@ namespace Tavily
                 Validate();
             }
 
-            if (IsCompleted && completed != null)
+            if (Completed is { } __value0 && completed != null)
             {
-                return completed(Completed!);
+                return completed(__value0);
             }
-            else if (IsFailed && failed != null)
+            else if (Failed is { } __value1 && failed != null)
             {
-                return failed(Failed!);
+                return failed(__value1);
             }
 
             return default(TResult);
@@ -211,13 +211,13 @@ namespace Tavily
                 Validate();
             }
 
-            if (IsCompleted)
+            if (Completed is { } __value0)
             {
-                completed?.Invoke(Completed!);
+                completed?.Invoke(__value0);
             }
-            else if (IsFailed)
+            else if (Failed is { } __value1)
             {
-                failed?.Invoke(Failed!);
+                failed?.Invoke(__value1);
             }
         }
 
@@ -234,13 +234,13 @@ namespace Tavily
                 Validate();
             }
 
-            if (IsCompleted)
+            if (Completed is { } __value0)
             {
-                completed?.Invoke(Completed!);
+                completed?.Invoke(__value0);
             }
-            else if (IsFailed)
+            else if (Failed is { } __value1)
             {
-                failed?.Invoke(Failed!);
+                failed?.Invoke(__value1);
             }
         }
 

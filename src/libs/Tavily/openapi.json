@@ -183,12 +183,12 @@
                   },
                   "include_domains_mode": {
                     "type": "string",
-                    "description": "Controls how `include_domains` is applied. `restrict` limits results to only the listed domains. `prefer` also searches the rest of the web, so results outside `include_domains` can still surface, rather than excluding them. Requires `include_domains` to be set; returns a 400 error otherwise.",
+                    "description": "Controls how `include_domains` is applied. `restrict` limits results to only the listed domains. `prefer` also searches the rest of the web, so results outside `include_domains` can still surface, rather than excluding them. Defaults to `restrict`, so `include_domains` acts as a hard filter unless set to `prefer`. Setting it without `include_domains` returns a 400 error.",
                     "enum": [
                       "restrict",
                       "prefer"
                     ],
-                    "default": null
+                    "default": "restrict"
                   },
                   "country": {
                     "type": "string",

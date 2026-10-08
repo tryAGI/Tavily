@@ -51,7 +51,7 @@ namespace Tavily
         /// User intent for reranking extracted content chunks. When provided, chunks are reranked based on relevance to this query.
         /// </param>
         /// <param name="chunksPerSource">
-        /// Chunks are short content snippets (maximum 500 characters each) pulled directly from the source. Use `chunks_per_source` to define the maximum number of relevant chunks returned per source and to control the `raw_content` length. Chunks will appear in the `raw_content` field as: `&lt;chunk 1&gt; [...] &lt;chunk 2&gt; [...] &lt;chunk 3&gt;`. Available only when `query` is provided. Must be between 1 and 5.<br/>
+        /// Chunks are short content snippets (about 800 characters each) pulled directly from the source. Use `chunks_per_source` to define the maximum number of relevant chunks returned per source and to control the `raw_content` length. Chunks will appear in the `raw_content` field as: `&lt;chunk 1&gt; [...] &lt;chunk 2&gt; [...] &lt;chunk 3&gt;`. If a page splits into no more chunks than `chunks_per_source`, its full content is returned. Available only when `query` is provided. Must be between 1 and 5.<br/>
         /// Default Value: 3
         /// </param>
         /// <param name="extractDepth">

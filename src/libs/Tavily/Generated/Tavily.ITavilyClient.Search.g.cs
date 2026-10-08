@@ -63,7 +63,7 @@ namespace Tavily
         /// Default Value: basic
         /// </param>
         /// <param name="chunksPerSource">
-        /// Chunks are short content snippets (maximum 500 characters each) pulled directly from the source. Use `chunks_per_source` to define the maximum number of relevant chunks returned per source and to control the `content` length. Chunks will appear in the `content` field as: `&lt;chunk 1&gt; [...] &lt;chunk 2&gt; [...] &lt;chunk 3&gt;`. Available when `search_depth` is `advanced`, `basic` or `fast`.<br/>
+        /// Chunks are short content snippets (about 500 characters each for `basic` and `fast`, 800 for `advanced`) pulled directly from the source. Use `chunks_per_source` to define the maximum number of relevant chunks returned per source and to control the `content` length. Chunks will appear in the `content` field as: `&lt;chunk 1&gt; [...] &lt;chunk 2&gt; [...] &lt;chunk 3&gt;`. Adjacent chunks may be joined into one longer passage, so chunk length is a target, not a hard limit. Available when `search_depth` is `advanced`, `basic` or `fast`.<br/>
         /// Default Value: 3
         /// </param>
         /// <param name="maxResults">

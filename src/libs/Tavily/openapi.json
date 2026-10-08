@@ -58,7 +58,7 @@
                   },
                   "chunks_per_source": {
                     "type": "integer",
-                    "description": "Chunks are short content snippets (maximum 500 characters each) pulled directly from the source. Use `chunks_per_source` to define the maximum number of relevant chunks returned per source and to control the `content` length. Chunks will appear in the `content` field as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`. Available when `search_depth` is `advanced`, `basic` or `fast`.",
+                    "description": "Chunks are short content snippets (about 500 characters each for `basic` and `fast`, 800 for `advanced`) pulled directly from the source. Use `chunks_per_source` to define the maximum number of relevant chunks returned per source and to control the `content` length. Chunks will appear in the `content` field as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`. Adjacent chunks may be joined into one longer passage, so chunk length is a target, not a hard limit. Available when `search_depth` is `advanced`, `basic` or `fast`.",
                     "default": 3,
                     "minimum": 1,
                     "maximum": 3
@@ -719,7 +719,7 @@
                   },
                   "chunks_per_source": {
                     "type": "integer",
-                    "description": "Chunks are short content snippets (maximum 500 characters each) pulled directly from the source. Use `chunks_per_source` to define the maximum number of relevant chunks returned per source and to control the `raw_content` length. Chunks will appear in the `raw_content` field as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`. Available only when `query` is provided. Must be between 1 and 5.",
+                    "description": "Chunks are short content snippets (about 800 characters each) pulled directly from the source. Use `chunks_per_source` to define the maximum number of relevant chunks returned per source and to control the `raw_content` length. Chunks will appear in the `raw_content` field as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`. If a page splits into no more chunks than `chunks_per_source`, its full content is returned. Available only when `query` is provided. Must be between 1 and 5.",
                     "minimum": 1,
                     "maximum": 5,
                     "default": 3
@@ -1066,7 +1066,7 @@
                   },
                   "chunks_per_source": {
                     "type": "integer",
-                    "description": "Chunks are short content snippets (maximum 500 characters each) pulled directly from the source. Use `chunks_per_source` to define the maximum number of relevant chunks returned per source and to control the `raw_content` length. Chunks will appear in the `raw_content` field as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`. Available only when `instructions` are provided. Must be between 1 and 5.",
+                    "description": "Chunks are short content snippets (about 800 characters each) pulled directly from the source. Use `chunks_per_source` to define the maximum number of relevant chunks returned per source and to control the `raw_content` length. Chunks will appear in the `raw_content` field as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`. If a page splits into no more chunks than `chunks_per_source`, its full content is returned. Available only when `instructions` are provided. Must be between 1 and 5.",
                     "minimum": 1,
                     "maximum": 5,
                     "default": 3

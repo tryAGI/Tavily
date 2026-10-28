@@ -120,7 +120,7 @@
                   },
                   "max_age_hours": {
                     "type": "integer",
-                    "description": "The maximum age in hours of Tavily's cached copy of each result.\n\nAccepted values:\n\n- `1` to `720` (30 days): only return a cached copy fetched within that many hours.\n- `0`: always fetch the page live.\n- `-1`: never fetch live.\n\nLower values do not cost more credits, but fetching live adds latency. Results whose cached copy is too old and can't be fetched live are left out, so you may get fewer than `max_results`.\n\nOn non-paying plans, live fetching is best-effort. While Tavily is under heavy load, requests that set `max_age_hours` may be refused with `434 Flex tier capacity exceeded`.",
+                    "description": "The maximum age in hours of Tavily's cached copy of each result.\n\nAccepted values:\n\n- unset (default): Tavily serves cached copies and fetches pages live as needed.\n- `1` to `720` (30 days): only return a cached copy fetched within that many hours.\n- `0`: always fetch the page live.\n- `-1`: never fetch live.\n\nLower values do not cost more credits, but fetching live adds latency. Results whose cached copy is too old and can't be fetched live are left out, so you may get fewer than `max_results`.\n\nOn non-paying plans, live fetching is best-effort. While Tavily is under heavy load, requests that set `max_age_hours` may be refused with `434 Flex tier capacity exceeded`.",
                     "minimum": -1,
                     "maximum": 720,
                     "example": 24,

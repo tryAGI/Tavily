@@ -118,6 +118,14 @@
                     "description": "Remove results whose published date falls outside the `time_range`, `start_date`, or `end_date` window. Results with no detectable published date are also removed. Setting this to `true` also enables `include_published_date`.\n\nIf you want date-window filtering but don't want to lose sources without a detectable date, leave this `false` and set `include_published_date: true` together with a date range instead.",
                     "default": false
                   },
+                  "max_age_hours": {
+                    "type": "integer",
+                    "description": "The maximum age in hours of Tavily's cached copy of each result.\n\nAccepted values:\n\n- `1` to `720` (30 days): only return a cached copy fetched within that many hours.\n- `0`: always fetch the page live.\n- `-1`: never fetch live.\n\nLower values do not cost more credits, but fetching live adds latency. Results whose cached copy is too old and can't be fetched live are left out, so you may get fewer than `max_results`.\n\nOn non-paying plans, live fetching is best-effort. While Tavily is under heavy load, requests that set `max_age_hours` may be refused with `434 Flex tier capacity exceeded`.",
+                    "minimum": -1,
+                    "maximum": 720,
+                    "example": 24,
+                    "default": null
+                  },
                   "include_answer": {
                     "oneOf": [
                       {
@@ -616,6 +624,21 @@
             "headers": {
               "Retry-After": {
                 "$ref": "#/components/headers/RetryAfter"
+              }
+            }
+          },
+          "434": {
+            "description": "Flex tier capacity exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                },
+                "example": {
+                  "detail": {
+                    "error": "Live content fetching is temporarily unavailable on your plan due to high demand. Retry shortly, or omit max_age_hours/fetch_timeout to be served from cache."
+                  }
+                }
               }
             }
           },

@@ -99,6 +99,17 @@ namespace Tavily
         /// If you want date-window filtering but don't want to lose sources without a detectable date, leave this `false` and set `include_published_date: true` together with a date range instead.<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="maxAgeHours">
+        /// The maximum age in hours of Tavily's cached copy of each result.<br/>
+        /// Accepted values:<br/>
+        /// - `1` to `720` (30 days): only return a cached copy fetched within that many hours.<br/>
+        /// - `0`: always fetch the page live.<br/>
+        /// - `-1`: never fetch live.<br/>
+        /// Lower values do not cost more credits, but fetching live adds latency. Results whose cached copy is too old and can't be fetched live are left out, so you may get fewer than `max_results`.<br/>
+        /// On non-paying plans, live fetching is best-effort. While Tavily is under heavy load, requests that set `max_age_hours` may be refused with `434 Flex tier capacity exceeded`.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464<br/>
+        /// Example: 24
+        /// </param>
         /// <param name="includeAnswer">
         /// Include an LLM-generated answer to the provided query. `basic` or `true` returns a quick answer. `advanced` returns a more detailed answer.<br/>
         /// Default Value: false
@@ -174,6 +185,7 @@ namespace Tavily
             string? endDate = default,
             bool? includePublishedDate = default,
             bool? filterByPublishedDate = default,
+            int? maxAgeHours = default,
             global::Tavily.OneOf<bool?, global::Tavily.SearchRequestIncludeAnswer?>? includeAnswer = default,
             global::Tavily.OneOf<bool?, global::Tavily.SearchRequestIncludeRawContent?>? includeRawContent = default,
             bool? includeImages = default,

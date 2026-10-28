@@ -102,6 +102,7 @@ namespace Tavily
         /// <summary>
         /// The maximum age in hours of Tavily's cached copy of each result.<br/>
         /// Accepted values:<br/>
+        /// - unset (default): Tavily serves cached copies and fetches pages live as needed.<br/>
         /// - `1` to `720` (30 days): only return a cached copy fetched within that many hours.<br/>
         /// - `0`: always fetch the page live.<br/>
         /// - `-1`: never fetch live.<br/>
@@ -290,6 +291,7 @@ namespace Tavily
         /// <param name="maxAgeHours">
         /// The maximum age in hours of Tavily's cached copy of each result.<br/>
         /// Accepted values:<br/>
+        /// - unset (default): Tavily serves cached copies and fetches pages live as needed.<br/>
         /// - `1` to `720` (30 days): only return a cached copy fetched within that many hours.<br/>
         /// - `0`: always fetch the page live.<br/>
         /// - `-1`: never fetch live.<br/>

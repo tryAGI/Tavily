@@ -534,6 +534,43 @@ namespace Tavily
                                         h => h.Key,
                                         h => h.Value));
                             }
+                            // Flex tier capacity exceeded
+                            if ((int)__response.StatusCode == 434)
+                            {
+                                string? __content_434 = null;
+                                global::System.Exception? __exception_434 = null;
+                                global::Tavily.ApiError? __value_434 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_434 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_434 = global::Tavily.ApiError.FromJson(__content_434, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_434 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_434 = global::Tavily.ApiError.FromJson(__content_434, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_434 = __ex;
+                                }
+
+
+                                throw global::Tavily.ApiException<global::Tavily.ApiError>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_434 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_434,
+                                    responseBody: __content_434,
+                                    responseObject: __value_434,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
                             // Internal Server Error - We had a problem with our server.
                             if ((int)__response.StatusCode == 500)
                             {
@@ -761,6 +798,17 @@ namespace Tavily
         /// If you want date-window filtering but don't want to lose sources without a detectable date, leave this `false` and set `include_published_date: true` together with a date range instead.<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="maxAgeHours">
+        /// The maximum age in hours of Tavily's cached copy of each result.<br/>
+        /// Accepted values:<br/>
+        /// - `1` to `720` (30 days): only return a cached copy fetched within that many hours.<br/>
+        /// - `0`: always fetch the page live.<br/>
+        /// - `-1`: never fetch live.<br/>
+        /// Lower values do not cost more credits, but fetching live adds latency. Results whose cached copy is too old and can't be fetched live are left out, so you may get fewer than `max_results`.<br/>
+        /// On non-paying plans, live fetching is best-effort. While Tavily is under heavy load, requests that set `max_age_hours` may be refused with `434 Flex tier capacity exceeded`.<br/>
+        /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464<br/>
+        /// Example: 24
+        /// </param>
         /// <param name="includeAnswer">
         /// Include an LLM-generated answer to the provided query. `basic` or `true` returns a quick answer. `advanced` returns a more detailed answer.<br/>
         /// Default Value: false
@@ -836,6 +884,7 @@ namespace Tavily
             string? endDate = default,
             bool? includePublishedDate = default,
             bool? filterByPublishedDate = default,
+            int? maxAgeHours = default,
             global::Tavily.OneOf<bool?, global::Tavily.SearchRequestIncludeAnswer?>? includeAnswer = default,
             global::Tavily.OneOf<bool?, global::Tavily.SearchRequestIncludeRawContent?>? includeRawContent = default,
             bool? includeImages = default,
@@ -866,6 +915,7 @@ namespace Tavily
                 EndDate = endDate,
                 IncludePublishedDate = includePublishedDate,
                 FilterByPublishedDate = filterByPublishedDate,
+                MaxAgeHours = maxAgeHours,
                 IncludeAnswer = includeAnswer,
                 IncludeRawContent = includeRawContent,
                 IncludeImages = includeImages,

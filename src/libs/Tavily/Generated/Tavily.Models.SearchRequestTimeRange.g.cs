@@ -4,7 +4,7 @@
 namespace Tavily
 {
     /// <summary>
-    /// The time range back from the current date to filter results based on publish date or last updated date. Useful when looking for sources that have published or updated data. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.<br/>
+    /// The time range back from the current date to filter results by publish date. Continuously updated pages, such as weather forecasts and prices, keep old publish dates and get filtered out. For those, leave `time_range` unset and use `max_age_hours`. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.<br/>
     /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
     /// </summary>
     public enum SearchRequestTimeRange

@@ -58,7 +58,7 @@ namespace Tavily
         public global::Tavily.SearchRequestTopic? Topic { get; set; }
 
         /// <summary>
-        /// The time range back from the current date to filter results based on publish date or last updated date. Useful when looking for sources that have published or updated data. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.<br/>
+        /// The time range back from the current date to filter results by publish date. Continuously updated pages, such as weather forecasts and prices, keep old publish dates and get filtered out. For those, leave `time_range` unset and use `max_age_hours`. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("time_range")]
@@ -66,7 +66,7 @@ namespace Tavily
         public global::Tavily.SearchRequestTimeRange? TimeRange { get; set; }
 
         /// <summary>
-        /// Will return all results after the specified start date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.<br/>
+        /// Will return all results after the specified start date based on publish date. Required to be written in the format YYYY-MM-DD. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464<br/>
         /// Example: 2025-02-09
         /// </summary>
@@ -75,7 +75,7 @@ namespace Tavily
         public string? StartDate { get; set; }
 
         /// <summary>
-        /// Will return all results before the specified end date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.<br/>
+        /// Will return all results before the specified end date based on publish date. Required to be written in the format YYYY-MM-DD. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464<br/>
         /// Example: 2025-12-29
         /// </summary>
@@ -106,6 +106,7 @@ namespace Tavily
         /// - `1` to `720` (30 days): only return a cached copy fetched within that many hours.<br/>
         /// - `0`: always fetch the page live.<br/>
         /// - `-1`: never fetch live.<br/>
+        /// Use this for continuously updated pages, such as weather forecasts and prices, where `time_range` drops results. You can combine the two.<br/>
         /// Lower values do not cost more credits, but fetching live adds latency. Results whose cached copy is too old and can't be fetched live are left out, so you may get fewer than `max_results`.<br/>
         /// On non-paying plans, live fetching is best-effort. While Tavily is under heavy load, requests that set `max_age_hours` may be refused with `434 Flex tier capacity exceeded`.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464<br/>
@@ -265,16 +266,16 @@ namespace Tavily
         /// Default Value: general
         /// </param>
         /// <param name="timeRange">
-        /// The time range back from the current date to filter results based on publish date or last updated date. Useful when looking for sources that have published or updated data. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.<br/>
+        /// The time range back from the current date to filter results by publish date. Continuously updated pages, such as weather forecasts and prices, keep old publish dates and get filtered out. For those, leave `time_range` unset and use `max_age_hours`. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464
         /// </param>
         /// <param name="startDate">
-        /// Will return all results after the specified start date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.<br/>
+        /// Will return all results after the specified start date based on publish date. Required to be written in the format YYYY-MM-DD. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464<br/>
         /// Example: 2025-02-09
         /// </param>
         /// <param name="endDate">
-        /// Will return all results before the specified end date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.<br/>
+        /// Will return all results before the specified end date based on publish date. Required to be written in the format YYYY-MM-DD. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464<br/>
         /// Example: 2025-12-29
         /// </param>
@@ -295,6 +296,7 @@ namespace Tavily
         /// - `1` to `720` (30 days): only return a cached copy fetched within that many hours.<br/>
         /// - `0`: always fetch the page live.<br/>
         /// - `-1`: never fetch live.<br/>
+        /// Use this for continuously updated pages, such as weather forecasts and prices, where `time_range` drops results. You can combine the two.<br/>
         /// Lower values do not cost more credits, but fetching live adds latency. Results whose cached copy is too old and can't be fetched live are left out, so you may get fewer than `max_results`.<br/>
         /// On non-paying plans, live fetching is best-effort. While Tavily is under heavy load, requests that set `max_age_hours` may be refused with `434 Flex tier capacity exceeded`.<br/>
         /// Default Value: openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464<br/>

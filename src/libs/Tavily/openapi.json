@@ -83,7 +83,7 @@
                   },
                   "time_range": {
                     "type": "string",
-                    "description": "The time range back from the current date to filter results based on publish date or last updated date. Useful when looking for sources that have published or updated data. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.",
+                    "description": "The time range back from the current date to filter results by publish date. Continuously updated pages, such as weather forecasts and prices, keep old publish dates and get filtered out. For those, leave `time_range` unset and use `max_age_hours`. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.",
                     "enum": [
                       "day",
                       "week",
@@ -98,13 +98,13 @@
                   },
                   "start_date": {
                     "type": "string",
-                    "description": "Will return all results after the specified start date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.",
+                    "description": "Will return all results after the specified start date based on publish date. Required to be written in the format YYYY-MM-DD. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.",
                     "example": "2025-02-09",
                     "default": null
                   },
                   "end_date": {
                     "type": "string",
-                    "description": "Will return all results before the specified end date based on publish date or last updated date. Required to be written in the format YYYY-MM-DD. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.",
+                    "description": "Will return all results before the specified end date based on publish date. Required to be written in the format YYYY-MM-DD. By default, results with no detectable published date are not removed; set `filter_by_published_date` to `true` to remove them.",
                     "example": "2025-12-29",
                     "default": null
                   },
@@ -120,7 +120,7 @@
                   },
                   "max_age_hours": {
                     "type": "integer",
-                    "description": "The maximum age in hours of Tavily's cached copy of each result.\n\nAccepted values:\n\n- unset (default): Tavily serves cached copies and fetches pages live as needed.\n- `1` to `720` (30 days): only return a cached copy fetched within that many hours.\n- `0`: always fetch the page live.\n- `-1`: never fetch live.\n\nLower values do not cost more credits, but fetching live adds latency. Results whose cached copy is too old and can't be fetched live are left out, so you may get fewer than `max_results`.\n\nOn non-paying plans, live fetching is best-effort. While Tavily is under heavy load, requests that set `max_age_hours` may be refused with `434 Flex tier capacity exceeded`.",
+                    "description": "The maximum age in hours of Tavily's cached copy of each result.\n\nAccepted values:\n\n- unset (default): Tavily serves cached copies and fetches pages live as needed.\n- `1` to `720` (30 days): only return a cached copy fetched within that many hours.\n- `0`: always fetch the page live.\n- `-1`: never fetch live.\n\nUse this for continuously updated pages, such as weather forecasts and prices, where `time_range` drops results. You can combine the two.\n\nLower values do not cost more credits, but fetching live adds latency. Results whose cached copy is too old and can't be fetched live are left out, so you may get fewer than `max_results`.\n\nOn non-paying plans, live fetching is best-effort. While Tavily is under heavy load, requests that set `max_age_hours` may be refused with `434 Flex tier capacity exceeded`.",
                     "minimum": -1,
                     "maximum": 720,
                     "example": 24,

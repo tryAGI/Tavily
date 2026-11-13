@@ -41,6 +41,14 @@ namespace Tavily
         public string? Favicon { get; set; }
 
         /// <summary>
+        /// Tavily's best estimate of when the source was published or last updated. Can be later than the original publish date. `null` if no date could be detected. Only returned when `include_published_date` is `true`.<br/>
+        /// Example: Thu, 18 Sep 2025 15:19:00 GMT
+        /// </summary>
+        /// <example>Thu, 18 Sep 2025 15:19:00 GMT</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("published_date")]
+        public string? PublishedDate { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -65,6 +73,10 @@ namespace Tavily
         /// The favicon URL for the result.<br/>
         /// Example: https://en.wikipedia.org/static/favicon/wikipedia.ico
         /// </param>
+        /// <param name="publishedDate">
+        /// Tavily's best estimate of when the source was published or last updated. Can be later than the original publish date. `null` if no date could be detected. Only returned when `include_published_date` is `true`.<br/>
+        /// Example: Thu, 18 Sep 2025 15:19:00 GMT
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -72,12 +84,14 @@ namespace Tavily
             string? url,
             string? rawContent,
             global::System.Collections.Generic.IList<string>? images,
-            string? favicon)
+            string? favicon,
+            string? publishedDate)
         {
             this.Url = url;
             this.RawContent = rawContent;
             this.Images = images;
             this.Favicon = favicon;
+            this.PublishedDate = publishedDate;
         }
 
         /// <summary>

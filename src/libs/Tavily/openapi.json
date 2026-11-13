@@ -766,6 +766,11 @@
                     "description": "Whether to include the favicon URL for each result.",
                     "default": false
                   },
+                  "include_published_date": {
+                    "type": "boolean",
+                    "description": "Include a `published_date` field in each result. The date is Tavily's best estimate of when the source was published or last updated, so it can be later than the original publish date. Results with no detectable date return `null`.\n\n**Note**: this feature is currently in beta.",
+                    "default": false
+                  },
                   "format": {
                     "type": "string",
                     "description": "The format of the extracted web page content. `markdown` returns content in markdown format. `text` returns plain text and may increase latency.",
@@ -832,6 +837,12 @@
                             "type": "string",
                             "description": "The favicon URL for the result.",
                             "example": "https://en.wikipedia.org/static/favicon/wikipedia.ico"
+                          },
+                          "published_date": {
+                            "type": "string",
+                            "nullable": true,
+                            "description": "Tavily's best estimate of when the source was published or last updated. Can be later than the original publish date. `null` if no date could be detected. Only returned when `include_published_date` is `true`.",
+                            "example": "Thu, 18 Sep 2025 15:19:00 GMT"
                           }
                         }
                       }

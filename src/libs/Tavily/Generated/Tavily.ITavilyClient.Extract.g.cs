@@ -66,6 +66,11 @@ namespace Tavily
         /// Whether to include the favicon URL for each result.<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="includePublishedDate">
+        /// Include a `published_date` field in each result. The date is Tavily's best estimate of when the source was published or last updated, so it can be later than the original publish date. Results with no detectable date return `null`.<br/>
+        /// **Note**: this feature is currently in beta.<br/>
+        /// Default Value: false
+        /// </param>
         /// <param name="format">
         /// The format of the extracted web page content. `markdown` returns content in markdown format. `text` returns plain text and may increase latency.<br/>
         /// Default Value: markdown
@@ -88,6 +93,7 @@ namespace Tavily
             global::Tavily.ExtractRequestExtractDepth? extractDepth = default,
             bool? includeImages = default,
             bool? includeFavicon = default,
+            bool? includePublishedDate = default,
             global::Tavily.ExtractRequestFormat? format = default,
             float? timeout = default,
             bool? includeUsage = default,

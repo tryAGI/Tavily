@@ -52,6 +52,14 @@ namespace Tavily
         public bool? IncludeFavicon { get; set; }
 
         /// <summary>
+        /// Include a `published_date` field in each result. The date is Tavily's best estimate of when the source was published or last updated, so it can be later than the original publish date. Results with no detectable date return `null`.<br/>
+        /// **Note**: this feature is currently in beta.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("include_published_date")]
+        public bool? IncludePublishedDate { get; set; }
+
+        /// <summary>
         /// The format of the extracted web page content. `markdown` returns content in markdown format. `text` returns plain text and may increase latency.<br/>
         /// Default Value: markdown
         /// </summary>
@@ -102,6 +110,11 @@ namespace Tavily
         /// Whether to include the favicon URL for each result.<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="includePublishedDate">
+        /// Include a `published_date` field in each result. The date is Tavily's best estimate of when the source was published or last updated, so it can be later than the original publish date. Results with no detectable date return `null`.<br/>
+        /// **Note**: this feature is currently in beta.<br/>
+        /// Default Value: false
+        /// </param>
         /// <param name="format">
         /// The format of the extracted web page content. `markdown` returns content in markdown format. `text` returns plain text and may increase latency.<br/>
         /// Default Value: markdown
@@ -124,6 +137,7 @@ namespace Tavily
             global::Tavily.ExtractRequestExtractDepth? extractDepth,
             bool? includeImages,
             bool? includeFavicon,
+            bool? includePublishedDate,
             global::Tavily.ExtractRequestFormat? format,
             float? timeout,
             bool? includeUsage)
@@ -134,6 +148,7 @@ namespace Tavily
             this.ExtractDepth = extractDepth;
             this.IncludeImages = includeImages;
             this.IncludeFavicon = includeFavicon;
+            this.IncludePublishedDate = includePublishedDate;
             this.Format = format;
             this.Timeout = timeout;
             this.IncludeUsage = includeUsage;

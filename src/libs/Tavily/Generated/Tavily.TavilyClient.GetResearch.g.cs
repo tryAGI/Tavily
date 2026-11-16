@@ -60,7 +60,7 @@ namespace Tavily
         /// response = tavily_client.get_research("123e4567-e89b-12d3-a456-426614174111")<br/>
         /// print(response)
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Tavily.GetResearchResponse> GetResearchAsync(
+        public async global::System.Threading.Tasks.Task<global::Tavily.GetResearchResponse2> GetResearchAsync(
             string requestId,
             bool? includeUsage = default,
             global::Tavily.AutoSDKRequestOptions? requestOptions = default,
@@ -92,7 +92,7 @@ namespace Tavily
         /// response = tavily_client.get_research("123e4567-e89b-12d3-a456-426614174111")<br/>
         /// print(response)
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Tavily.AutoSDKHttpResponse<global::Tavily.GetResearchResponse>> GetResearchAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Tavily.AutoSDKHttpResponse<global::Tavily.GetResearchResponse2>> GetResearchAsResponseAsync(
             string requestId,
             bool? includeUsage = default,
             global::Tavily.AutoSDKRequestOptions? requestOptions = default,
@@ -487,9 +487,9 @@ namespace Tavily
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Tavily.GetResearchResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Tavily.GetResearchResponse2.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Tavily.AutoSDKHttpResponse<global::Tavily.GetResearchResponse>(
+                                    return new global::Tavily.AutoSDKHttpResponse<global::Tavily.GetResearchResponse2>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Tavily.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -519,9 +519,9 @@ namespace Tavily
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Tavily.GetResearchResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Tavily.GetResearchResponse2.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Tavily.AutoSDKHttpResponse<global::Tavily.GetResearchResponse>(
+                                    return new global::Tavily.AutoSDKHttpResponse<global::Tavily.GetResearchResponse2>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Tavily.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,

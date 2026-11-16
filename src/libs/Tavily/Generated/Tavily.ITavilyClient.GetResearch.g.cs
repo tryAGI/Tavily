@@ -21,7 +21,7 @@ namespace Tavily
         /// response = tavily_client.get_research("123e4567-e89b-12d3-a456-426614174111")<br/>
         /// print(response)
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Tavily.GetResearchResponse> GetResearchAsync(
+        global::System.Threading.Tasks.Task<global::Tavily.GetResearchResponse2> GetResearchAsync(
             string requestId,
             bool? includeUsage = default,
             global::Tavily.AutoSDKRequestOptions? requestOptions = default,
@@ -43,7 +43,7 @@ namespace Tavily
         /// response = tavily_client.get_research("123e4567-e89b-12d3-a456-426614174111")<br/>
         /// print(response)
         /// </remarks>
-        global::System.Threading.Tasks.Task<global::Tavily.AutoSDKHttpResponse<global::Tavily.GetResearchResponse>> GetResearchAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Tavily.AutoSDKHttpResponse<global::Tavily.GetResearchResponse2>> GetResearchAsResponseAsync(
             string requestId,
             bool? includeUsage = default,
             global::Tavily.AutoSDKRequestOptions? requestOptions = default,

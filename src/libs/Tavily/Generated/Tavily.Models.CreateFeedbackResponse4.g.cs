@@ -12,7 +12,7 @@ namespace Tavily
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("detail")]
-        public global::Tavily.CreateFeedbackResponseDetail3? Detail { get; set; }
+        public global::Tavily.CreateFeedbackResponseDetail? Detail { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -28,7 +28,7 @@ namespace Tavily
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateFeedbackResponse4(
-            global::Tavily.CreateFeedbackResponseDetail3? detail)
+            global::Tavily.CreateFeedbackResponseDetail? detail)
         {
             this.Detail = detail;
         }
